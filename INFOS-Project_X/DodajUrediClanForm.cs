@@ -206,15 +206,15 @@ namespace INFOS_Project_X
 
         private void btnOdaberiDrustvo_Click(object sender, EventArgs e)
         {
-            //Form2 odaberiDrustvo            = new Form2(MaticniPodaci.Drustva, true);
+            Form2 odaberiDrustvo            = new Form2(MaticniPodaci.Drustva, true);
 
-            //odaberiDrustvo.Text             = "Odaberi društvo";
-            //odaberiDrustvo.WindowState      = FormWindowState.Normal;            
-            //if(odaberiDrustvo.ShowDialog() == DialogResult.OK)
-            //{
-            //    cboxMjesto.Text             = odaberiDrustvo.DrustvoRow.Naziv;
-            //    ClanRow.Drustvo_ID          = odaberiDrustvo.DrustvoRow.ID;
-            //}  
+            odaberiDrustvo.Text             = "Odaberi društvo";
+            odaberiDrustvo.WindowState      = FormWindowState.Normal;            
+            if(odaberiDrustvo.ShowDialog() == DialogResult.OK)
+            {
+                cboxDrustvo.Text             = odaberiDrustvo.DrustvoRow.Naziv;
+                ClanRow.Drustvo_ID          = odaberiDrustvo.DrustvoRow.ID;
+            }  
         }
     }
 }

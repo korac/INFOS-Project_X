@@ -36,9 +36,9 @@ namespace INFOS_Project_X {
         
         private global::System.Data.DataRelation relationFK_Clan_Mjesto;
         
-        private global::System.Data.DataRelation relationFK_Drustvo_Mjesto;
-        
         private global::System.Data.DataRelation relationFK_Mjesto_Drzava;
+        
+        private global::System.Data.DataRelation relationFK_Drustvo_Mjesto;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -51,6 +51,7 @@ namespace INFOS_Project_X {
             base.Tables.CollectionChanged += schemaChangedHandler;
             base.Relations.CollectionChanged += schemaChangedHandler;
             this.EndInit();
+            this.InitExpressions();
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -62,6 +63,9 @@ namespace INFOS_Project_X {
                 global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler1 = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
                 this.Tables.CollectionChanged += schemaChangedHandler1;
                 this.Relations.CollectionChanged += schemaChangedHandler1;
+                if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.ExcludeSchema)) {
+                    this.InitExpressions();
+                }
                 return;
             }
             string strSchema = ((string)(info.GetValue("XmlSchema", typeof(string))));
@@ -91,6 +95,7 @@ namespace INFOS_Project_X {
             }
             else {
                 this.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
+                this.InitExpressions();
             }
             this.GetSerializationData(info, context);
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -182,6 +187,7 @@ namespace INFOS_Project_X {
         public override global::System.Data.DataSet Clone() {
             infosXDatabaseDataSet cln = ((infosXDatabaseDataSet)(base.Clone()));
             cln.InitVars();
+            cln.InitExpressions();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
         }
@@ -276,8 +282,8 @@ namespace INFOS_Project_X {
             }
             this.relationFK_Clan_Drustvo = this.Relations["FK_Clan_Drustvo"];
             this.relationFK_Clan_Mjesto = this.Relations["FK_Clan_Mjesto"];
-            this.relationFK_Drustvo_Mjesto = this.Relations["FK_Drustvo_Mjesto"];
             this.relationFK_Mjesto_Drzava = this.Relations["FK_Mjesto_Drzava"];
+            this.relationFK_Drustvo_Mjesto = this.Relations["FK_Drustvo_Mjesto"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -288,13 +294,13 @@ namespace INFOS_Project_X {
             this.Namespace = "http://tempuri.org/infosXDatabaseDataSet1.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tableClan = new ClanDataTable();
+            this.tableClan = new ClanDataTable(false);
             base.Tables.Add(this.tableClan);
-            this.tableDrustvo = new DrustvoDataTable();
+            this.tableDrustvo = new DrustvoDataTable(false);
             base.Tables.Add(this.tableDrustvo);
             this.tableDrzava = new DrzavaDataTable();
             base.Tables.Add(this.tableDrzava);
-            this.tableMjesto = new MjestoDataTable();
+            this.tableMjesto = new MjestoDataTable(false);
             base.Tables.Add(this.tableMjesto);
             this.relationFK_Clan_Drustvo = new global::System.Data.DataRelation("FK_Clan_Drustvo", new global::System.Data.DataColumn[] {
                         this.tableDrustvo.IDColumn}, new global::System.Data.DataColumn[] {
@@ -304,14 +310,14 @@ namespace INFOS_Project_X {
                         this.tableMjesto.IDColumn}, new global::System.Data.DataColumn[] {
                         this.tableClan.Mjesto_IDColumn}, false);
             this.Relations.Add(this.relationFK_Clan_Mjesto);
-            this.relationFK_Drustvo_Mjesto = new global::System.Data.DataRelation("FK_Drustvo_Mjesto", new global::System.Data.DataColumn[] {
-                        this.tableMjesto.IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableDrustvo.Mjesto_IDColumn}, false);
-            this.Relations.Add(this.relationFK_Drustvo_Mjesto);
             this.relationFK_Mjesto_Drzava = new global::System.Data.DataRelation("FK_Mjesto_Drzava", new global::System.Data.DataColumn[] {
                         this.tableDrzava.IDColumn}, new global::System.Data.DataColumn[] {
                         this.tableMjesto.Drzava_IDColumn}, false);
             this.Relations.Add(this.relationFK_Mjesto_Drzava);
+            this.relationFK_Drustvo_Mjesto = new global::System.Data.DataRelation("FK_Drustvo_Mjesto", new global::System.Data.DataColumn[] {
+                        this.tableMjesto.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableDrustvo.Mjesto_IDColumn}, false);
+            this.Relations.Add(this.relationFK_Drustvo_Mjesto);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -393,6 +399,14 @@ namespace INFOS_Project_X {
             return type;
         }
         
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitExpressions() {
+            this.Clan.DrustvoExpColumn.Expression = "Parent(FK_Clan_Drustvo).Naziv";
+            this.Drustvo.MjestoExpColumn.Expression = "Parent.Ime";
+            this.Mjesto.DrzavaExpColumn.Expression = "Parent.Ime";
+        }
+        
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void ClanRowChangeEventHandler(object sender, ClanRowChangeEvent e);
         
@@ -432,12 +446,23 @@ namespace INFOS_Project_X {
             
             private global::System.Data.DataColumn columnTelefon;
             
+            private global::System.Data.DataColumn columnDrustvoExp;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ClanDataTable() {
+            public ClanDataTable() : 
+                    this(false) {
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ClanDataTable(bool initExpressions) {
                 this.TableName = "Clan";
                 this.BeginInit();
                 this.InitClass();
+                if ((initExpressions == true)) {
+                    this.InitExpressions();
+                }
                 this.EndInit();
             }
             
@@ -547,6 +572,14 @@ namespace INFOS_Project_X {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn DrustvoExpColumn {
+                get {
+                    return this.columnDrustvoExp;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -582,6 +615,33 @@ namespace INFOS_Project_X {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ClanRow AddClanRow(string OIB, string Ime, string Prezime, System.DateTime DatumRodenja, string Zanimanje, DrustvoRow parentDrustvoRowByFK_Clan_Drustvo, MjestoRow parentMjestoRowByFK_Clan_Mjesto, string Email, string Adresa, string Telefon, string DrustvoExp) {
+                ClanRow rowClanRow = ((ClanRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        OIB,
+                        Ime,
+                        Prezime,
+                        DatumRodenja,
+                        Zanimanje,
+                        null,
+                        null,
+                        Email,
+                        Adresa,
+                        Telefon,
+                        DrustvoExp};
+                if ((parentDrustvoRowByFK_Clan_Drustvo != null)) {
+                    columnValuesArray[5] = parentDrustvoRowByFK_Clan_Drustvo[0];
+                }
+                if ((parentMjestoRowByFK_Clan_Mjesto != null)) {
+                    columnValuesArray[6] = parentMjestoRowByFK_Clan_Mjesto[0];
+                }
+                rowClanRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowClanRow);
+                return rowClanRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ClanRow AddClanRow(string OIB, string Ime, string Prezime, System.DateTime DatumRodenja, string Zanimanje, DrustvoRow parentDrustvoRowByFK_Clan_Drustvo, MjestoRow parentMjestoRowByFK_Clan_Mjesto, string Email, string Adresa, string Telefon) {
                 ClanRow rowClanRow = ((ClanRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
@@ -594,7 +654,8 @@ namespace INFOS_Project_X {
                         null,
                         Email,
                         Adresa,
-                        Telefon};
+                        Telefon,
+                        null};
                 if ((parentDrustvoRowByFK_Clan_Drustvo != null)) {
                     columnValuesArray[5] = parentDrustvoRowByFK_Clan_Drustvo[0];
                 }
@@ -640,6 +701,7 @@ namespace INFOS_Project_X {
                 this.columnEmail = base.Columns["Email"];
                 this.columnAdresa = base.Columns["Adresa"];
                 this.columnTelefon = base.Columns["Telefon"];
+                this.columnDrustvoExp = base.Columns["DrustvoExp"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -665,6 +727,8 @@ namespace INFOS_Project_X {
                 base.Columns.Add(this.columnAdresa);
                 this.columnTelefon = new global::System.Data.DataColumn("Telefon", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTelefon);
+                this.columnDrustvoExp = new global::System.Data.DataColumn("DrustvoExp", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDrustvoExp);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnOIB}, true));
                 this.columnOIB.AllowDBNull = false;
@@ -680,6 +744,7 @@ namespace INFOS_Project_X {
                 this.columnEmail.MaxLength = 50;
                 this.columnAdresa.MaxLength = 50;
                 this.columnTelefon.MaxLength = 20;
+                this.columnDrustvoExp.ReadOnly = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -698,6 +763,12 @@ namespace INFOS_Project_X {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Type GetRowType() {
                 return typeof(ClanRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitExpressions() {
+                this.DrustvoExpColumn.Expression = "Parent(FK_Clan_Drustvo).Naziv";
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -827,12 +898,23 @@ namespace INFOS_Project_X {
             
             private global::System.Data.DataColumn columnTelefon;
             
+            private global::System.Data.DataColumn columnMjestoExp;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DrustvoDataTable() {
+            public DrustvoDataTable() : 
+                    this(false) {
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public DrustvoDataTable(bool initExpressions) {
                 this.TableName = "Drustvo";
                 this.BeginInit();
                 this.InitClass();
+                if ((initExpressions == true)) {
+                    this.InitExpressions();
+                }
                 this.EndInit();
             }
             
@@ -918,6 +1000,14 @@ namespace INFOS_Project_X {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn MjestoExpColumn {
+                get {
+                    return this.columnMjestoExp;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -953,6 +1043,27 @@ namespace INFOS_Project_X {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public DrustvoRow AddDrustvoRow(string Naziv, string Adresa, string Email, MjestoRow parentMjestoRowByFK_Drustvo_Mjesto, string BrojRacuna, string Telefon, string MjestoExp) {
+                DrustvoRow rowDrustvoRow = ((DrustvoRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        null,
+                        Naziv,
+                        Adresa,
+                        Email,
+                        null,
+                        BrojRacuna,
+                        Telefon,
+                        MjestoExp};
+                if ((parentMjestoRowByFK_Drustvo_Mjesto != null)) {
+                    columnValuesArray[4] = parentMjestoRowByFK_Drustvo_Mjesto[0];
+                }
+                rowDrustvoRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowDrustvoRow);
+                return rowDrustvoRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public DrustvoRow AddDrustvoRow(string Naziv, string Adresa, string Email, MjestoRow parentMjestoRowByFK_Drustvo_Mjesto, string BrojRacuna, string Telefon) {
                 DrustvoRow rowDrustvoRow = ((DrustvoRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
@@ -962,7 +1073,8 @@ namespace INFOS_Project_X {
                         Email,
                         null,
                         BrojRacuna,
-                        Telefon};
+                        Telefon,
+                        null};
                 if ((parentMjestoRowByFK_Drustvo_Mjesto != null)) {
                     columnValuesArray[4] = parentMjestoRowByFK_Drustvo_Mjesto[0];
                 }
@@ -1002,6 +1114,7 @@ namespace INFOS_Project_X {
                 this.columnMjesto_ID = base.Columns["Mjesto_ID"];
                 this.columnBrojRacuna = base.Columns["BrojRacuna"];
                 this.columnTelefon = base.Columns["Telefon"];
+                this.columnMjestoExp = base.Columns["MjestoExp"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1021,6 +1134,8 @@ namespace INFOS_Project_X {
                 base.Columns.Add(this.columnBrojRacuna);
                 this.columnTelefon = new global::System.Data.DataColumn("Telefon", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTelefon);
+                this.columnMjestoExp = new global::System.Data.DataColumn("MjestoExp", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMjestoExp);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
                 this.columnID.AutoIncrement = true;
@@ -1036,6 +1151,7 @@ namespace INFOS_Project_X {
                 this.columnMjesto_ID.AllowDBNull = false;
                 this.columnBrojRacuna.MaxLength = 30;
                 this.columnTelefon.MaxLength = 50;
+                this.columnMjestoExp.ReadOnly = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1054,6 +1170,12 @@ namespace INFOS_Project_X {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Type GetRowType() {
                 return typeof(DrustvoRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitExpressions() {
+                this.MjestoExpColumn.Expression = "Parent.Ime";
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1501,12 +1623,23 @@ namespace INFOS_Project_X {
             
             private global::System.Data.DataColumn columnDrzava_ID;
             
+            private global::System.Data.DataColumn columnDrzavaExp;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public MjestoDataTable() {
+            public MjestoDataTable() : 
+                    this(false) {
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public MjestoDataTable(bool initExpressions) {
                 this.TableName = "Mjesto";
                 this.BeginInit();
                 this.InitClass();
+                if ((initExpressions == true)) {
+                    this.InitExpressions();
+                }
                 this.EndInit();
             }
             
@@ -1560,6 +1693,14 @@ namespace INFOS_Project_X {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn DrzavaExpColumn {
+                get {
+                    return this.columnDrzavaExp;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1595,11 +1736,29 @@ namespace INFOS_Project_X {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public MjestoRow AddMjestoRow(string Ime, DrzavaRow parentDrzavaRowByFK_Mjesto_Drzava, string DrzavaExp) {
+                MjestoRow rowMjestoRow = ((MjestoRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        null,
+                        Ime,
+                        null,
+                        DrzavaExp};
+                if ((parentDrzavaRowByFK_Mjesto_Drzava != null)) {
+                    columnValuesArray[2] = parentDrzavaRowByFK_Mjesto_Drzava[0];
+                }
+                rowMjestoRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowMjestoRow);
+                return rowMjestoRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public MjestoRow AddMjestoRow(string Ime, DrzavaRow parentDrzavaRowByFK_Mjesto_Drzava) {
                 MjestoRow rowMjestoRow = ((MjestoRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         Ime,
+                        null,
                         null};
                 if ((parentDrzavaRowByFK_Mjesto_Drzava != null)) {
                     columnValuesArray[2] = parentDrzavaRowByFK_Mjesto_Drzava[0];
@@ -1636,6 +1795,7 @@ namespace INFOS_Project_X {
                 this.columnID = base.Columns["ID"];
                 this.columnIme = base.Columns["Ime"];
                 this.columnDrzava_ID = base.Columns["Drzava_ID"];
+                this.columnDrzavaExp = base.Columns["DrzavaExp"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1647,6 +1807,8 @@ namespace INFOS_Project_X {
                 base.Columns.Add(this.columnIme);
                 this.columnDrzava_ID = new global::System.Data.DataColumn("Drzava_ID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDrzava_ID);
+                this.columnDrzavaExp = new global::System.Data.DataColumn("DrzavaExp", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDrzavaExp);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
                 this.columnID.AutoIncrement = true;
@@ -1658,6 +1820,7 @@ namespace INFOS_Project_X {
                 this.columnIme.AllowDBNull = false;
                 this.columnIme.MaxLength = 50;
                 this.columnDrzava_ID.AllowDBNull = false;
+                this.columnDrzavaExp.ReadOnly = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1676,6 +1839,12 @@ namespace INFOS_Project_X {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Type GetRowType() {
                 return typeof(MjestoRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitExpressions() {
+                this.DrzavaExpColumn.Expression = "Parent.Ime";
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1935,6 +2104,22 @@ namespace INFOS_Project_X {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string DrustvoExp {
+                get {
+                    try {
+                        return ((string)(this[this.tableClan.DrustvoExpColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'DrustvoExp\' in table \'Clan\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableClan.DrustvoExpColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public DrustvoRow DrustvoRow {
                 get {
                     return ((DrustvoRow)(this.GetParentRow(this.Table.ParentRelations["FK_Clan_Drustvo"])));
@@ -2013,6 +2198,18 @@ namespace INFOS_Project_X {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetTelefonNull() {
                 this[this.tableClan.TelefonColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsDrustvoExpNull() {
+                return this.IsNull(this.tableClan.DrustvoExpColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetDrustvoExpNull() {
+                this[this.tableClan.DrustvoExpColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -2129,6 +2326,22 @@ namespace INFOS_Project_X {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string MjestoExp {
+                get {
+                    try {
+                        return ((string)(this[this.tableDrustvo.MjestoExpColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'MjestoExp\' in table \'Drustvo\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDrustvo.MjestoExpColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public MjestoRow MjestoRow {
                 get {
                     return ((MjestoRow)(this.GetParentRow(this.Table.ParentRelations["FK_Drustvo_Mjesto"])));
@@ -2184,6 +2397,18 @@ namespace INFOS_Project_X {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetTelefonNull() {
                 this[this.tableDrustvo.TelefonColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsMjestoExpNull() {
+                return this.IsNull(this.tableDrustvo.MjestoExpColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetMjestoExpNull() {
+                this[this.tableDrustvo.MjestoExpColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2328,6 +2553,22 @@ namespace INFOS_Project_X {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string DrzavaExp {
+                get {
+                    try {
+                        return ((string)(this[this.tableMjesto.DrzavaExpColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'DrzavaExp\' in table \'Mjesto\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMjesto.DrzavaExpColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public DrzavaRow DrzavaRow {
                 get {
                     return ((DrzavaRow)(this.GetParentRow(this.Table.ParentRelations["FK_Mjesto_Drzava"])));
@@ -2335,6 +2576,18 @@ namespace INFOS_Project_X {
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FK_Mjesto_Drzava"]);
                 }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsDrzavaExpNull() {
+                return this.IsNull(this.tableMjesto.DrzavaExpColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetDrzavaExpNull() {
+                this[this.tableMjesto.DrzavaExpColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2734,7 +2987,7 @@ SELECT OIB, Ime, Prezime, DatumRodenja, Zanimanje, Drustvo_ID, Mjesto_ID, Telefo
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual infosXDatabaseDataSet.ClanDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            infosXDatabaseDataSet.ClanDataTable dataTable = new infosXDatabaseDataSet.ClanDataTable();
+            infosXDatabaseDataSet.ClanDataTable dataTable = new infosXDatabaseDataSet.ClanDataTable(true);
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -3292,7 +3545,7 @@ SELECT ID, Naziv, Adresa, Email, Telefon, Mjesto_ID, BrojRacuna FROM Drustvo WHE
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT  *  FROM Drustvo";
+            this._commandCollection[0].CommandText = "SELECT ID, Naziv, Adresa, Email, Telefon, Mjesto_ID, BrojRacuna FROM Drustvo";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -3315,7 +3568,7 @@ SELECT ID, Naziv, Adresa, Email, Telefon, Mjesto_ID, BrojRacuna FROM Drustvo WHE
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual infosXDatabaseDataSet.DrustvoDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            infosXDatabaseDataSet.DrustvoDataTable dataTable = new infosXDatabaseDataSet.DrustvoDataTable();
+            infosXDatabaseDataSet.DrustvoDataTable dataTable = new infosXDatabaseDataSet.DrustvoDataTable(true);
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -4160,7 +4413,7 @@ SELECT ID, Ime, Jezik, PozivniBroj, Valuta FROM Drzava WHERE (ID = @ID)";
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual infosXDatabaseDataSet.MjestoDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            infosXDatabaseDataSet.MjestoDataTable dataTable = new infosXDatabaseDataSet.MjestoDataTable();
+            infosXDatabaseDataSet.MjestoDataTable dataTable = new infosXDatabaseDataSet.MjestoDataTable(true);
             this.Adapter.Fill(dataTable);
             return dataTable;
         }

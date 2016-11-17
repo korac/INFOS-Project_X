@@ -28,6 +28,7 @@ namespace INFOS_Project_X
 
         public infosXDatabaseDataSet.MjestoRow MjestoRow { get; set; }
         public infosXDatabaseDataSet.DrzavaRow DrzavaRow { get; set; }
+        public infosXDatabaseDataSet.DrustvoRow DrustvoRow { get; set; }
 
         public Form2(MaticniPodaci maticniPodaci, bool odaberi)
         {
@@ -63,7 +64,7 @@ namespace INFOS_Project_X
 
                     DataGridViewTextBoxColumn dgcDrustvo    = new DataGridViewTextBoxColumn();
                     dgcDrustvo.HeaderText                   = "Društvo";
-                    dgcDrustvo.DataPropertyName             = "Drustvo_ID";
+                    dgcDrustvo.DataPropertyName             = "DrustvoExp";
                     dgcDrustvo.ToolTipText                  = "Društvo člana";
 
                     dgvPrikaz.Columns.Add(dgcIme);
@@ -75,6 +76,8 @@ namespace INFOS_Project_X
                     AutoSizeDgvColumns(dgvPrikaz.Columns);
 
                     this.Cursor                             = Cursors.WaitCursor;
+                    drustvoTA.Fill(ds.Drustvo);
+
                     clanTA.Fill(ds.Clan);
                     clanBS.DataSource                       = ds.Clan;
                     dgvPrikaz.DataSource                    = clanBS;
@@ -103,13 +106,21 @@ namespace INFOS_Project_X
                     dgcAdresa.DataPropertyName              = "Adresa";
                     dgcAdresa.ToolTipText                   = "Adresa društva";
 
+                    DataGridViewTextBoxColumn dgcMjesto     = new DataGridViewTextBoxColumn();
+                    dgcMjesto.HeaderText                    = "Mjesto";
+                    dgcMjesto.DataPropertyName              = "MjestoExp";
+                    dgcMjesto.ToolTipText                   = "Mjesto društva";
+                    
                     dgvPrikaz.Columns.Add(dgcNaziv);
                     dgvPrikaz.Columns.Add(dgcEmail);
                     dgvPrikaz.Columns.Add(dgcAdresa);
+                    dgvPrikaz.Columns.Add(dgcMjesto);
 
                     AutoSizeDgvColumns(dgvPrikaz.Columns);
 
                     this.Cursor                             = Cursors.WaitCursor;
+                    mjestoTA.Fill(ds.Mjesto);
+
                     drustvoTA.Fill(ds.Drustvo);
                     drustvoBS.DataSource                    = ds.Drustvo;
                     dgvPrikaz.DataSource                    = drustvoBS;
@@ -130,7 +141,7 @@ namespace INFOS_Project_X
 
                     DataGridViewTextBoxColumn dgcDrzava     = new DataGridViewTextBoxColumn();
                     dgcDrzava.HeaderText                    = "Država";
-                    dgcDrzava.DataPropertyName              = "Drzava_ID";
+                    dgcDrzava.DataPropertyName              = "DrzavaExp";
                     dgcDrzava.ToolTipText                   = "Država mjesta";
 
                     dgvPrikaz.Columns.Add(dgcImeMjesta);
@@ -139,6 +150,8 @@ namespace INFOS_Project_X
                     AutoSizeDgvColumns(dgvPrikaz.Columns);
 
                     this.Cursor                             = Cursors.WaitCursor;
+                    drzavaTA.Fill(ds.Drzava);
+
                     mjestoTA.Fill(ds.Mjesto);
                     mjestoBS.DataSource                     = ds.Mjesto;
                     dgvPrikaz.DataSource                    = mjestoBS;
@@ -419,6 +432,14 @@ namespace INFOS_Project_X
 
                     infosXDatabaseDataSet.DrzavaRow currentDrzavaRow    = ((DataRowView)(drzavaBS.Current)).Row as infosXDatabaseDataSet.DrzavaRow;
                     DrzavaRow                                           = currentDrzavaRow;
+
+                    this.DialogResult                                   = DialogResult.OK;
+                    break;
+
+                case MaticniPodaci.Drustva:
+
+                    infosXDatabaseDataSet.DrustvoRow currentDrustvoRow  = ((DataRowView)(drustvoBS.Current)).Row as infosXDatabaseDataSet.DrustvoRow;
+                    DrustvoRow                                          = currentDrustvoRow;
 
                     this.DialogResult                                   = DialogResult.OK;
                     break;
