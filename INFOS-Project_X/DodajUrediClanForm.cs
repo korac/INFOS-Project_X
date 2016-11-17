@@ -75,18 +75,26 @@ namespace INFOS_Project_X
 
         private void btnPrihvati_Click(object sender, EventArgs e)
         {
-            ClanRow.Ime                     = tboxIme.Text;
-            ClanRow.Prezime                 = tboxPrezime.Text;
-            ClanRow.OIB                     = tboxOib.Text;
-            ClanRow.DatumRodenja            = Convert.ToDateTime(tboxDatumRodenja.Text);
-            ClanRow.Zanimanje               = tboxZanimanje.Text;
-            ClanRow.Drustvo_ID              = (int) cboxDrustvo.SelectedValue;
-            ClanRow.Mjesto_ID               = (int) cboxMjesto.SelectedValue;
-            ClanRow.Telefon                 = tboxTelefon.Text;
-            ClanRow.Email                   = tboxEmail.Text;
-            ClanRow.Adresa                  = tboxAdresa.Text;
+            if (ValidateIme("ime") && ValidateIme("prezime") && ValidateOIB() && ValidateDatumRodenja() && ValidateZanimanje() && ValidateAdresa() && ValidateTelefon())
+            {
+                ClanRow.Ime                     = tboxIme.Text;
+                ClanRow.Prezime                 = tboxPrezime.Text;
+                ClanRow.OIB                     = tboxOib.Text;
+                ClanRow.DatumRodenja            = Convert.ToDateTime(tboxDatumRodenja.Text);
+                ClanRow.Zanimanje               = tboxZanimanje.Text;
+                ClanRow.Drustvo_ID              = (int) cboxDrustvo.SelectedValue;
+                ClanRow.Mjesto_ID               = (int) cboxMjesto.SelectedValue;
+                ClanRow.Telefon                 = tboxTelefon.Text;
+                ClanRow.Email                   = tboxEmail.Text;
+                ClanRow.Adresa                  = tboxAdresa.Text;
 
-            this.DialogResult               = DialogResult.OK;
+                this.DialogResult               = DialogResult.OK;
+            }
+            else
+            {
+                MessageBox.Show("Molimo unesite sve potrebne podatke");
+            }
+            
         }
 
         private void btnOdustani_Click(object sender, EventArgs e)
@@ -102,6 +110,18 @@ namespace INFOS_Project_X
         private void tboxPrezime_Validating(object sender, CancelEventArgs e)
         {
             ValidateIme("prezime");
+        }
+
+
+        private void tboxOib_Validating(object sender, CancelEventArgs e)
+        {
+            ValidateOIB();
+        }
+
+
+        private void tboxDatumRodenja_Validating(object sender, CancelEventArgs e)
+        {
+            ValidateDatumRodenja();
         }
 
         private void tboxZanimanje_Validating(object sender, CancelEventArgs e)
@@ -138,6 +158,48 @@ namespace INFOS_Project_X
             else
             {
                 errProvider             .SetError(box, "");
+            }
+
+            return bStatus;
+        }
+
+        private bool ValidateOIB()
+        {
+            bool bStatus                = true;
+            if (tboxOib.Text == "")
+            {
+                errProviderOIB          .SetError(tboxOib, "Molimo unesite OIB člana");
+                bStatus                 = false;
+            }
+            else if(!PomocneFunkcije.isValidOIB(tboxOib.Text))
+            {
+                errProviderOIB          .SetError(tboxOib, "Molimo unesite ispravan OIB člana");
+                bStatus                 = false;
+            }
+            else
+            {
+                errProviderOIB          .SetError(tboxOib, "");
+            }
+
+            return bStatus;
+        }
+
+        private bool ValidateDatumRodenja()
+        {
+            bool bStatus                = true;
+            if (tboxDatumRodenja.Text == "")
+            {
+                errProviderDatumRodenja .SetError(tboxDatumRodenja, "Molimo unesite datum rođenja člana");
+                bStatus                 = false;
+            }
+            else if(!PomocneFunkcije.isValidDatumRodenja(tboxDatumRodenja.Text))
+            {
+                errProviderDatumRodenja .SetError(tboxDatumRodenja, "Molimo unesite ispravan datum rođenja člana");
+                bStatus                 = false;
+            }
+            else
+            {
+                errProviderDatumRodenja .SetError(tboxDatumRodenja, "");
             }
 
             return bStatus;
@@ -216,5 +278,6 @@ namespace INFOS_Project_X
                 ClanRow.Drustvo_ID          = odaberiDrustvo.DrustvoRow.ID;
             }  
         }
+
     }
 }

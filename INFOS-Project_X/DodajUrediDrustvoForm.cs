@@ -54,17 +54,17 @@ namespace INFOS_Project_X
         }
 
         private void btnPrihvati_Click(object sender, EventArgs e)
-        {
-            DrustvoRow.Naziv            = tboxNaziv.Text;
-            DrustvoRow.Adresa           = tboxAdresa.Text;
-            DrustvoRow.Email            = tboxEmail.Text;
-            DrustvoRow.Telefon          = tboxTelefon.Text;
-            DrustvoRow.Mjesto_ID        = (int) cboxMjesto.SelectedValue;
-            DrustvoRow.BrojRacuna       = tboxBrojRacuna.Text;
-
+        {            
             if(ValidateNaziv() && ValidateAdresa() && ValidateTelefon() && ValidateBrojRacuna())
             {
-                this.DialogResult       = DialogResult.OK;
+                DrustvoRow.Naziv            = tboxNaziv.Text;
+                DrustvoRow.Adresa           = tboxAdresa.Text;
+                DrustvoRow.Email            = tboxEmail.Text;
+                DrustvoRow.Telefon          = tboxTelefon.Text;
+                DrustvoRow.Mjesto_ID        = (int) cboxMjesto.SelectedValue;
+                DrustvoRow.BrojRacuna       = tboxBrojRacuna.Text;
+
+                this.DialogResult           = DialogResult.OK;
             }
             else
             {

@@ -59,12 +59,16 @@
             this.errProviderAdresa = new System.Windows.Forms.ErrorProvider(this.components);
             this.errProviderIme = new System.Windows.Forms.ErrorProvider(this.components);
             this.errProviderPrezime = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errProviderOIB = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errProviderDatumRodenja = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.errProviderZanimanje)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errProviderTelefon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errProviderEmail)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errProviderAdresa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errProviderIme)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errProviderPrezime)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errProviderOIB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errProviderDatumRodenja)).BeginInit();
             this.SuspendLayout();
             // 
             // btnOdaberiMjesta
@@ -122,6 +126,7 @@
             this.tboxOib.Name = "tboxOib";
             this.tboxOib.Size = new System.Drawing.Size(206, 23);
             this.tboxOib.TabIndex = 45;
+            this.tboxOib.Validating += new System.ComponentModel.CancelEventHandler(this.tboxOib_Validating);
             // 
             // lblUrediZanimanje
             // 
@@ -169,6 +174,7 @@
             this.tboxDatumRodenja.Name = "tboxDatumRodenja";
             this.tboxDatumRodenja.Size = new System.Drawing.Size(206, 23);
             this.tboxDatumRodenja.TabIndex = 40;
+            this.tboxDatumRodenja.Validating += new System.ComponentModel.CancelEventHandler(this.tboxDatumRodenja_Validating);
             // 
             // lblUrediPrezime
             // 
@@ -322,6 +328,16 @@
             this.errProviderPrezime.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.errProviderPrezime.ContainerControl = this;
             // 
+            // errProviderOIB
+            // 
+            this.errProviderOIB.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errProviderOIB.ContainerControl = this;
+            // 
+            // errProviderDatumRodenja
+            // 
+            this.errProviderDatumRodenja.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errProviderDatumRodenja.ContainerControl = this;
+            // 
             // DodajUrediClanForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -360,6 +376,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.errProviderAdresa)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errProviderIme)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errProviderPrezime)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errProviderOIB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errProviderDatumRodenja)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -397,5 +415,7 @@
         private System.Windows.Forms.ErrorProvider errProviderAdresa;
         private System.Windows.Forms.ErrorProvider errProviderIme;
         private System.Windows.Forms.ErrorProvider errProviderPrezime;
+        private System.Windows.Forms.ErrorProvider errProviderOIB;
+        private System.Windows.Forms.ErrorProvider errProviderDatumRodenja;
     }
 }
