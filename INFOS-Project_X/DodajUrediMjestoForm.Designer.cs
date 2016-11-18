@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblUrediIme = new System.Windows.Forms.Label();
             this.tboxIme = new System.Windows.Forms.TextBox();
             this.lblUrediDrzava = new System.Windows.Forms.Label();
@@ -35,6 +36,8 @@
             this.btnOdaberiDrzavu = new System.Windows.Forms.Button();
             this.btnOdustani = new System.Windows.Forms.Button();
             this.btnPrihvati = new System.Windows.Forms.Button();
+            this.errProviderIme = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errProviderIme)).BeginInit();
             this.SuspendLayout();
             // 
             // lblUrediIme
@@ -54,6 +57,7 @@
             this.tboxIme.Name = "tboxIme";
             this.tboxIme.Size = new System.Drawing.Size(206, 23);
             this.tboxIme.TabIndex = 24;
+            this.tboxIme.Validating += new System.ComponentModel.CancelEventHandler(this.tboxIme_Validating);
             // 
             // lblUrediDrzava
             // 
@@ -103,6 +107,11 @@
             this.btnPrihvati.UseVisualStyleBackColor = true;
             this.btnPrihvati.Click += new System.EventHandler(this.btnPrihvati_Click);
             // 
+            // errProviderIme
+            // 
+            this.errProviderIme.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errProviderIme.ContainerControl = this;
+            // 
             // DodajUrediMjestoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -118,6 +127,7 @@
             this.Name = "DodajUrediMjestoForm";
             this.Text = "DodajUrediMjestoForm";
             this.Load += new System.EventHandler(this.DodajUrediMjestoForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.errProviderIme)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -131,5 +141,6 @@
         private System.Windows.Forms.Button btnOdaberiDrzavu;
         private System.Windows.Forms.Button btnOdustani;
         private System.Windows.Forms.Button btnPrihvati;
+        private System.Windows.Forms.ErrorProvider errProviderIme;
     }
 }

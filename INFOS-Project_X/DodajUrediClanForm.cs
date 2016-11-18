@@ -97,6 +97,26 @@ namespace INFOS_Project_X
             
         }
 
+        private void RefreshComboDrustvo()
+        {
+            ds.Drustvo.Clear();
+            drustvoTA.Fill(ds.Drustvo);
+
+            cboxDrustvo.DataSource      = ds.Drustvo;
+            cboxDrustvo.DisplayMember   = "Naziv";
+            cboxDrustvo.ValueMember     = "ID";
+        }
+
+        private void RefreshComboMjesto()
+        {
+            ds.Mjesto.Clear();
+            mjestoTA.Fill(ds.Mjesto);
+
+            cboxMjesto.DataSource       = ds.Mjesto;
+            cboxMjesto.DisplayMember    = "Ime";
+            cboxMjesto.ValueMember      = "ID";
+        }
+
         private void btnOdustani_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -261,8 +281,8 @@ namespace INFOS_Project_X
             odaberiMjesto.WindowState   = FormWindowState.Normal;            
             if(odaberiMjesto.ShowDialog() == DialogResult.OK)
             {
-                cboxMjesto.Text         = odaberiMjesto.MjestoRow.Ime;
-                ClanRow.Mjesto_ID       = odaberiMjesto.MjestoRow.ID;
+                RefreshComboMjesto();
+                cboxMjesto.SelectedValue    = odaberiMjesto.MjestoRow.ID;
             }    
         }
 
@@ -274,8 +294,8 @@ namespace INFOS_Project_X
             odaberiDrustvo.WindowState      = FormWindowState.Normal;            
             if(odaberiDrustvo.ShowDialog() == DialogResult.OK)
             {
-                cboxDrustvo.Text             = odaberiDrustvo.DrustvoRow.Naziv;
-                ClanRow.Drustvo_ID          = odaberiDrustvo.DrustvoRow.ID;
+                RefreshComboDrustvo();
+                cboxDrustvo.SelectedValue   = odaberiDrustvo.DrustvoRow.ID;
             }  
         }
 

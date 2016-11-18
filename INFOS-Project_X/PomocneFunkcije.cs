@@ -25,7 +25,7 @@ namespace INFOS_Project_X
         {
             foreach (char l in naziv)
             {
-                if (!Char.IsLetter(l) && Char.ToString(l) != "." && Char.ToString(l) != " ")
+                if (!Char.IsLetter(l) && Char.ToString(l) != "." && Char.ToString(l) != " " && Char.ToString(l) != "-")
                 {
                     return false;
                 }

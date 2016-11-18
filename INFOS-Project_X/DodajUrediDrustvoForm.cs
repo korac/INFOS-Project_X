@@ -73,6 +73,16 @@ namespace INFOS_Project_X
             
         }
 
+        private void RefreshComboMjesta()
+        {
+            ds.Mjesto.Clear();
+            mjestoTA.Fill(ds.Mjesto);
+
+            cboxMjesto.DataSource           = ds.Mjesto;
+            cboxMjesto.DisplayMember        = "Ime";
+            cboxMjesto.ValueMember          = "ID";
+        }
+
         private void btnOdustani_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -80,14 +90,14 @@ namespace INFOS_Project_X
 
         private void btnOdaberiMjesta_Click(object sender, EventArgs e)
         {
-            Form2 odaberiMjesto         = new Form2(MaticniPodaci.Mjesta, true);
+            Form2 odaberiMjesto                 = new Form2(MaticniPodaci.Mjesta, true);
 
-            odaberiMjesto.Text          = "Odaberi mjesto";
-            odaberiMjesto.WindowState   = FormWindowState.Normal;            
+            odaberiMjesto.Text                  = "Odaberi mjesto";
+            odaberiMjesto.WindowState           = FormWindowState.Normal;            
             if(odaberiMjesto.ShowDialog() == DialogResult.OK)
             {
-                cboxMjesto.Text         = odaberiMjesto.MjestoRow.Ime;
-                DrustvoRow.Mjesto_ID    = odaberiMjesto.MjestoRow.ID;
+                RefreshComboMjesta();
+                cboxMjesto.SelectedValue        = odaberiMjesto.MjestoRow.ID;
             }            
         }
 
