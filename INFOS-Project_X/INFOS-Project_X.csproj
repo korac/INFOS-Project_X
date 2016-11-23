@@ -100,6 +100,12 @@
     <Compile Include="DodajUrediDrustvoForm.Designer.cs">
       <DependentUpon>DodajUrediDrustvoForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ServerAuthForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ServerAuthForm.Designer.cs">
+      <DependentUpon>ServerAuthForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="DodajUrediClanForm.resx">
       <DependentUpon>DodajUrediClanForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -129,6 +135,9 @@
     </Compile>
     <EmbeddedResource Include="DodajUrediDrustvoForm.resx">
       <DependentUpon>DodajUrediDrustvoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ServerAuthForm.resx">
+      <DependentUpon>ServerAuthForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="infosXDatabaseDataSet1.xsc">
       <DependentUpon>infosXDatabaseDataSet1.xsd</DependentUpon>

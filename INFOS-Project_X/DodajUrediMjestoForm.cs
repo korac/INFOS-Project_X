@@ -70,7 +70,7 @@ namespace INFOS_Project_X
         {
             ds.Drzava.Clear();
             drzavaTA.Fill(ds.Drzava);
-
+            
             cboxDrzava.DataSource           = ds.Drzava;
             cboxDrzava.DisplayMember        = "Ime";
             cboxDrzava.ValueMember          = "ID";

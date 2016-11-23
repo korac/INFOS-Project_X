@@ -46,6 +46,7 @@
             this.dgvPrikaz.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPrikaz.Location = new System.Drawing.Point(285, 84);
             this.dgvPrikaz.Name = "dgvPrikaz";
+            this.dgvPrikaz.ReadOnly = true;
             this.dgvPrikaz.RowHeadersVisible = false;
             this.dgvPrikaz.Size = new System.Drawing.Size(524, 290);
             this.dgvPrikaz.TabIndex = 0;
