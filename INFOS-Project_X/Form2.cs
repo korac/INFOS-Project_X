@@ -38,6 +38,8 @@ namespace INFOS_Project_X
             btnOdaberi.Visible                          = odaberi;
             btnOdustani.Visible                         = odaberi;
 
+            btnIzveziXML.Visible                        = !odaberi;
+
             clanTA.Connection.ConnectionString          = PomocneFunkcije.connectionString;
             drustvoTA.Connection.ConnectionString       = PomocneFunkcije.connectionString;
             mjestoTA.Connection.ConnectionString        = PomocneFunkcije.connectionString;
@@ -455,6 +457,52 @@ namespace INFOS_Project_X
             
         }
 
+        private void btnIzveziXML_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFile         = new SaveFileDialog();
+            saveFile.Filter                 = "xml files (*.xml) | *.xml";
+            saveFile.FilterIndex            = 1;
+
+            switch (_maticniPodaci)
+            {
+                case MaticniPodaci.Clan:
+
+                    if(saveFile.ShowDialog() == DialogResult.OK)
+                    {
+                        ds.Clan.WriteXml(saveFile.FileName.ToString(), XmlWriteMode.WriteSchema);
+                        MessageBox.Show("Izvezeno u XML");
+                    }                    
+                    break;
+
+                case MaticniPodaci.Drustva:
+
+                    if (saveFile.ShowDialog() == DialogResult.OK)
+                    {
+                        ds.Drustvo.WriteXml(saveFile.FileName.ToString(), XmlWriteMode.WriteSchema);
+                        MessageBox.Show("Izvezeno u XML");
+                    }
+                    break;
+
+                case MaticniPodaci.Mjesta:
+
+                    if (saveFile.ShowDialog() == DialogResult.OK)
+                    {
+                        ds.Mjesto.WriteXml(saveFile.FileName.ToString(), XmlWriteMode.WriteSchema);
+                        MessageBox.Show("Izvezeno u XML");
+                    }
+                    break;
+
+                case MaticniPodaci.Drzave:
+
+                    if (saveFile.ShowDialog() == DialogResult.OK)
+                    {
+                        ds.Drzava.WriteXml(saveFile.FileName.ToString(), XmlWriteMode.WriteSchema);
+                        MessageBox.Show("Izvezeno u XML");
+                    }
+                    break;
+            }
+        }
+
         private void AutoSizeDgvColumns(DataGridViewColumnCollection dgvColumns)
         {
             for(int i = 0; i < dgvColumns.Count; i++)
@@ -469,5 +517,6 @@ namespace INFOS_Project_X
                 }                
             }
         }
+
     }
 }

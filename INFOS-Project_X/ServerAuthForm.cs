@@ -106,6 +106,7 @@ namespace INFOS_Project_X
 
                 try
                 {
+                    this.Cursor                         = Cursors.WaitCursor;
                     SqlConnection infosConnection       = new SqlConnection(connectionString);
                     //SqlCredential infosCredentials      = new SqlCredential(username, securePassword);
 
@@ -132,8 +133,9 @@ namespace INFOS_Project_X
 
                     PomocneFunkcije.connectionString    = connectionString;
 
-                    infosConnection         .Close();
-                    this                    .Hide();
+                    infosConnection                     .Close();
+                    this                                .Hide();
+                    this.Cursor                         = Cursors.Default;
                 }
                 catch
                 {
