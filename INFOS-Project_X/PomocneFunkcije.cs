@@ -9,6 +9,8 @@ namespace INFOS_Project_X
 {
     class PomocneFunkcije
     {
+        public static string connectionString;
+
         public static bool IsValidIme(string ime)
         {
             foreach (char l in ime)

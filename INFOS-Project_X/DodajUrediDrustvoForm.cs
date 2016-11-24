@@ -20,8 +20,10 @@ namespace INFOS_Project_X
         public DodajUrediDrustvoForm(infosXDatabaseDataSet.DrustvoRow drustvoRow, bool isUredi)
         {
             InitializeComponent();
-            _isUredi                    = isUredi;
-            DrustvoRow                  = drustvoRow;
+            _isUredi                                    = isUredi;
+            DrustvoRow                                  = drustvoRow;
+
+            mjestoTA.Connection.ConnectionString        = PomocneFunkcije.connectionString;
         }
 
         private void DodajUrediDrustvoForm_Load(object sender, EventArgs e)

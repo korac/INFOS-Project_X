@@ -33,14 +33,21 @@ namespace INFOS_Project_X
         public Form2(MaticniPodaci maticniPodaci, bool odaberi)
         {
             InitializeComponent();
-            _maticniPodaci      = maticniPodaci;
+            _maticniPodaci                              = maticniPodaci;
 
-            btnOdaberi.Visible  = odaberi;
-            btnOdustani.Visible = odaberi;
+            btnOdaberi.Visible                          = odaberi;
+            btnOdustani.Visible                         = odaberi;
+
+            clanTA.Connection.ConnectionString          = PomocneFunkcije.connectionString;
+            drustvoTA.Connection.ConnectionString       = PomocneFunkcije.connectionString;
+            mjestoTA.Connection.ConnectionString        = PomocneFunkcije.connectionString;
+            drzavaTA.Connection.ConnectionString        = PomocneFunkcije.connectionString;
         }
 
         private void Form2_Load(object sender, EventArgs e)
         {
+
+            Console.WriteLine(PomocneFunkcije.connectionString);
             dgvPrikaz.AutoGenerateColumns                   = false;
 
             switch (_maticniPodaci)

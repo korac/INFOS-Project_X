@@ -21,8 +21,11 @@ namespace INFOS_Project_X
         public DodajUrediClanForm(infosXDatabaseDataSet.ClanRow clanRow, bool isUredi)
         {
             InitializeComponent();
-            _isUredi                = isUredi;
-            ClanRow                 = clanRow;
+            _isUredi                                    = isUredi;
+            ClanRow                                     = clanRow;
+
+            drustvoTA.Connection.ConnectionString       = PomocneFunkcije.connectionString;
+            mjestoTA.Connection.ConnectionString        = PomocneFunkcije.connectionString;
         }
 
         private void DodajUrediClanForm_Load(object sender, EventArgs e)

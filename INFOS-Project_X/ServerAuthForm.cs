@@ -83,14 +83,18 @@ namespace INFOS_Project_X
                 bool winAuth            = ckBox.Checked;
 
                 string connectionString = "Data Source=" + server
-                                            + ";Initial Catalog=" + database
-                                            + ";Integrated Security=" + winAuth.ToString();                                    
+                                        + ";Initial Catalog=" + database
+                                        + ";Integrated Security=" + winAuth.ToString();                                    
 
                 if (!winAuth)
                 {
                     connectionString += ";User ID=" + username
                                      + ";Password=" + password
                                      + ";";
+                }
+                else
+                {
+                    connectionString += ";";
                 }
             
                 // If using SqlCredential Class rather than passing username and password in connection string; more secure
@@ -106,25 +110,27 @@ namespace INFOS_Project_X
                     //SqlCredential infosCredentials      = new SqlCredential(username, securePassword);
 
                     //infosConnection.Credential          = infosCredentials;
-                    infosConnection         .Open();
+                    infosConnection                     .Open();
 
-                    Console                 .WriteLine("State {0}", infosConnection.State);
-                    Console                 .WriteLine("ConnectionString: {0}", infosConnection.ConnectionString);
+                    Console                             .WriteLine("State {0}", infosConnection.State);
+                    Console                             .WriteLine("ConnectionString: {0}", infosConnection.ConnectionString);
 
-                    Form1 form1             = new Form1();
-                    form1                   .Show();
+                    Form1 form1                         = new Form1();
+                    form1                               .Show();
 
-                    RegistryKey InfosKey    = Registry.CurrentUser;
-                    InfosKey                = InfosKey.CreateSubKey("SOFTWARE\\C#\\Infos-ProjectX");
+                    RegistryKey InfosKey                = Registry.CurrentUser;
+                    InfosKey                            = InfosKey.CreateSubKey("SOFTWARE\\C#\\Infos-ProjectX");
 
-                    InfosKey                .SetValue("Server", server);
-                    InfosKey                .SetValue("Database", database);
+                    InfosKey                            .SetValue("Server", server);
+                    InfosKey                            .SetValue("Database", database);
 
                     if (!ckBox.Checked)
                     {
-                        InfosKey            .SetValue("username", username);
-                        InfosKey            .SetValue("password", password);
+                        InfosKey                        .SetValue("username", username);
+                        InfosKey                        .SetValue("password", password);
                     }
+
+                    PomocneFunkcije.connectionString    = connectionString;
 
                     infosConnection         .Close();
                     this                    .Hide();

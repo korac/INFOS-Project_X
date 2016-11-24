@@ -33,11 +33,11 @@
             this.tsmiDatoteka = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiIzlaz = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiMaticniPodaci = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiClan = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiDrustvo = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiMjesto = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiDrzava = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiProzor = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiClan = new System.Windows.Forms.ToolStripMenuItem();
             this.infosXDatabaseDataSet1 = new INFOS_Project_X.infosXDatabaseDataSet();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.infosXDatabaseDataSet1)).BeginInit();
@@ -90,24 +90,31 @@
             this.tsmiMaticniPodaci.Size = new System.Drawing.Size(98, 20);
             this.tsmiMaticniPodaci.Text = "Matični Podaci";
             // 
+            // tsmiClan
+            // 
+            this.tsmiClan.Name = "tsmiClan";
+            this.tsmiClan.Size = new System.Drawing.Size(115, 22);
+            this.tsmiClan.Text = "Član";
+            this.tsmiClan.Click += new System.EventHandler(this.tsmiClan_Click);
+            // 
             // tsmiDrustvo
             // 
             this.tsmiDrustvo.Name = "tsmiDrustvo";
-            this.tsmiDrustvo.Size = new System.Drawing.Size(152, 22);
+            this.tsmiDrustvo.Size = new System.Drawing.Size(115, 22);
             this.tsmiDrustvo.Text = "Društvo";
             this.tsmiDrustvo.Click += new System.EventHandler(this.tsmiDrustvo_Click);
             // 
             // tsmiMjesto
             // 
             this.tsmiMjesto.Name = "tsmiMjesto";
-            this.tsmiMjesto.Size = new System.Drawing.Size(152, 22);
+            this.tsmiMjesto.Size = new System.Drawing.Size(115, 22);
             this.tsmiMjesto.Text = "Mjesto";
             this.tsmiMjesto.Click += new System.EventHandler(this.tsmiMjesto_Click);
             // 
             // tsmiDrzava
             // 
             this.tsmiDrzava.Name = "tsmiDrzava";
-            this.tsmiDrzava.Size = new System.Drawing.Size(152, 22);
+            this.tsmiDrzava.Size = new System.Drawing.Size(115, 22);
             this.tsmiDrzava.Text = "Država";
             this.tsmiDrzava.Click += new System.EventHandler(this.tsmiDrzava_Click);
             // 
@@ -116,13 +123,6 @@
             this.tsmiProzor.Name = "tsmiProzor";
             this.tsmiProzor.Size = new System.Drawing.Size(53, 20);
             this.tsmiProzor.Text = "Prozor";
-            // 
-            // tsmiClan
-            // 
-            this.tsmiClan.Name = "tsmiClan";
-            this.tsmiClan.Size = new System.Drawing.Size(152, 22);
-            this.tsmiClan.Text = "Član";
-            this.tsmiClan.Click += new System.EventHandler(this.tsmiClan_Click);
             // 
             // infosXDatabaseDataSet1
             // 
@@ -140,7 +140,6 @@
             this.Name = "Form1";
             this.Text = "INFOS Projekt X";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.infosXDatabaseDataSet1)).EndInit();

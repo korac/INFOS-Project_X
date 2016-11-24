@@ -21,8 +21,10 @@ namespace INFOS_Project_X
         public DodajUrediMjestoForm(infosXDatabaseDataSet.MjestoRow mjestoRow, bool isUredi)
         {
             InitializeComponent();
-            _isUredi                    = isUredi;
-            MjestoRow                   = mjestoRow;
+            _isUredi                                    = isUredi;
+            MjestoRow                                   = mjestoRow;
+
+            drzavaTA.Connection.ConnectionString        = PomocneFunkcije.connectionString;
 
         }
 

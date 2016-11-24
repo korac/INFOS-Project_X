@@ -14,31 +14,10 @@ namespace INFOS_Project_X
     public partial class Form1 : Form
     {
         
-        //infosXDatabaseDataSet ds = new infosXDatabaseDataSet();
-        //infosXDatabaseDataSetTableAdapters.MjestoTableAdapter mjestoTA = new infosXDatabaseDataSetTableAdapters.MjestoTableAdapter();
-        //infosXDatabaseDataSetTableAdapters.DrzavaTableAdapter drzavaTA = new infosXDatabaseDataSetTableAdapters.DrzavaTableAdapter();
-        //infosXDatabaseDataSetTableAdapters.DrustvoTableAdapter drustvoTA = new infosXDatabaseDataSetTableAdapters.DrustvoTableAdapter();
-        //infosXDatabaseDataSetTableAdapters.ClanTableAdapter clanTA = new infosXDatabaseDataSetTableAdapters.ClanTableAdapter();
-
         public Form1()
         {
             InitializeComponent();
-            //mjestoTA.Fill(ds.Mjesto);
-            //drzavaTA.Fill(ds.Drzava);
-            //drustvoTA.Fill(ds.Drustvo);
-            //clanTA.Fill(ds.Clan);
-
             Console.WriteLine("Bravo!");
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            //dgvMjesta.AutoGenerateColumns = true;
-            //dgvDrzava.AutoGenerateColumns = true;
-
-            //dgvMjesta.DataSource = ds.Mjesto;
-            //dgvDrzava.DataSource = ds.Drzava;
-            //infosXDatabaseDataSet1.Mjesto.Count;
         }
 
         private void ClearMdiChildren()
