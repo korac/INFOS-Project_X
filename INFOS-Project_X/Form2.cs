@@ -482,11 +482,7 @@ namespace INFOS_Project_X
                     {
                         foreach (infosXDatabaseDataSet.ClanRow row in ds.Clan)
                         {
-                            Console.WriteLine("Clan: " + row.Ime);
-
-                            XmlNode clanNode = newXMLDoc.CreateNode(XmlNodeType.Element, "Clan", null);
-
-                            XmlElement clanElem             = newXMLDoc.CreateElement(string.Empty, "Clan", string.Empty);
+                            XmlNode clanNode                = newXMLDoc.CreateNode(XmlNodeType.Element, "Clan", null);
 
                             XmlElement oibElem              = newXMLDoc.CreateElement(string.Empty, "OIB", string.Empty);
                             XmlElement imeElem              = newXMLDoc.CreateElement(string.Empty, "Ime", string.Empty);
@@ -532,9 +528,8 @@ namespace INFOS_Project_X
 
                         }
 
-                        newXMLDoc.Save(saveFile.FileName.ToString());
-
-                        MessageBox.Show("Spremljeno u vanjsku XML datoteku");
+                        newXMLDoc                           .Save(saveFile.FileName.ToString());
+                        MessageBox                          .Show("Spremljeno u vanjsku XML datoteku");
                     }                    
                     break;
 
@@ -542,8 +537,44 @@ namespace INFOS_Project_X
 
                     if (saveFile.ShowDialog() == DialogResult.OK)
                     {
-                        ds.Drustvo.WriteXml(saveFile.FileName.ToString(), XmlWriteMode.WriteSchema);
-                        MessageBox.Show("Izvezeno u XML");
+                        foreach(infosXDatabaseDataSet.DrustvoRow row in ds.Drustvo)
+                        {
+                            XmlNode drustvoNode                 = newXMLDoc.CreateNode(XmlNodeType.Element, "Drustvo", null);
+
+                            XmlElement nazivElem                = newXMLDoc.CreateElement(string.Empty, "Naziv", string.Empty);
+                            XmlElement adresaElem               = newXMLDoc.CreateElement(string.Empty, "Adresa", string.Empty);
+                            XmlElement emailElem                = newXMLDoc.CreateElement(string.Empty, "Email", string.Empty);
+                            XmlElement brojRacunaElem           = newXMLDoc.CreateElement(string.Empty, "BrojRacuna", string.Empty);
+                            XmlElement telefonElem              = newXMLDoc.CreateElement(string.Empty, "Telefon", string.Empty);
+                            XmlElement mjestoExpElem            = newXMLDoc.CreateElement(string.Empty, "Mjesto", string.Empty);
+    
+                            XmlText naziv                       = newXMLDoc.CreateTextNode(row.Naziv);
+                            XmlText adresa                      = (!row.IsAdresaNull()) ? newXMLDoc.CreateTextNode(row.Adresa) : newXMLDoc.CreateTextNode("");
+                            XmlText email                       = (!row.IsEmailNull()) ? newXMLDoc.CreateTextNode(row.Email) : newXMLDoc.CreateTextNode("");
+                            XmlText brojRacuna                  = (!row.IsBrojRacunaNull()) ? newXMLDoc.CreateTextNode(row.BrojRacuna) : newXMLDoc.CreateTextNode("");
+                            XmlText telefon                     = (!row.IsTelefonNull()) ? newXMLDoc.CreateTextNode(row.Telefon) : newXMLDoc.CreateTextNode("");
+                            XmlText mjestoExp                   = (!row.IsMjestoExpNull()) ? newXMLDoc.CreateTextNode(row.MjestoExp) : newXMLDoc.CreateTextNode("");
+
+                            nazivElem                           .AppendChild(naziv);
+                            adresaElem                          .AppendChild(adresa);
+                            emailElem                           .AppendChild(email);
+                            brojRacunaElem                      .AppendChild(brojRacuna);
+                            telefonElem                         .AppendChild(telefon);
+                            mjestoExpElem                       .AppendChild(mjestoExp);
+
+                            drustvoNode                         .AppendChild(nazivElem);
+                            drustvoNode                         .AppendChild(adresaElem);
+                            drustvoNode                         .AppendChild(emailElem);
+                            drustvoNode                         .AppendChild(brojRacunaElem);
+                            drustvoNode                         .AppendChild(telefonElem);
+                            drustvoNode                         .AppendChild(mjestoExpElem);
+
+                            infosElem                           .AppendChild(drustvoNode);
+
+                        }
+
+                        newXMLDoc                               .Save(saveFile.FileName.ToString());
+                        MessageBox                              .Show("Spremljeno u vanjsku XML datoteku");
                     }
                     break;
 
@@ -551,8 +582,27 @@ namespace INFOS_Project_X
 
                     if (saveFile.ShowDialog() == DialogResult.OK)
                     {
-                        ds.Mjesto.WriteXml(saveFile.FileName.ToString(), XmlWriteMode.WriteSchema);
-                        MessageBox.Show("Izvezeno u XML");
+                        foreach(infosXDatabaseDataSet.MjestoRow row in ds.Mjesto)
+                        {
+                            XmlNode mjestoNode                  = newXMLDoc.CreateNode(XmlNodeType.Element, "Mjesto", null);
+
+                            XmlElement imeElem                  = newXMLDoc.CreateElement(string.Empty, "Ime", string.Empty);
+                            XmlElement drzavaExpElem            = newXMLDoc.CreateElement(string.Empty, "Drzava", string.Empty);
+
+                            XmlText ime                         = newXMLDoc.CreateTextNode(row.Ime);
+                            XmlText drzavaExp                   = newXMLDoc.CreateTextNode(row.DrzavaExp);
+
+                            imeElem                             .AppendChild(ime);
+                            drzavaExpElem                       .AppendChild(drzavaExp);
+
+                            mjestoNode                          .AppendChild(imeElem);
+                            mjestoNode                          .AppendChild(drzavaExpElem);
+
+                            infosElem                           .AppendChild(mjestoNode);
+                        }
+
+                        newXMLDoc                               .Save(saveFile.FileName.ToString());
+                        MessageBox                              .Show("Spremljeno u vanjsku XML datoteku");
                     }
                     break;
 
@@ -560,8 +610,35 @@ namespace INFOS_Project_X
 
                     if (saveFile.ShowDialog() == DialogResult.OK)
                     {
-                        ds.Drzava.WriteXml(saveFile.FileName.ToString(), XmlWriteMode.WriteSchema);
-                        MessageBox.Show("Izvezeno u XML");
+                        foreach(infosXDatabaseDataSet.DrzavaRow row in ds.Drzava)
+                        {
+                            XmlNode drzavaNode                  = newXMLDoc.CreateNode(XmlNodeType.Element, "Drzava", null);
+
+                            XmlElement imeElem                  = newXMLDoc.CreateElement(string.Empty, "Ime", string.Empty);
+                            XmlElement jezikElem                = newXMLDoc.CreateElement(string.Empty, "Jezik", string.Empty);
+                            XmlElement pozivniElem              = newXMLDoc.CreateElement(string.Empty, "PozivniBroj", string.Empty);
+                            XmlElement valutaElem               = newXMLDoc.CreateElement(string.Empty, "Valuta", string.Empty);
+
+                            XmlText ime                         = newXMLDoc.CreateTextNode(row.Ime);
+                            XmlText jezik                       = newXMLDoc.CreateTextNode(row.Jezik);
+                            XmlText pozivni                     = newXMLDoc.CreateTextNode(row.PozivniBroj);
+                            XmlText valuta                      = newXMLDoc.CreateTextNode(row.Valuta);
+
+                            imeElem                             .AppendChild(ime);
+                            jezikElem                           .AppendChild(jezik);
+                            pozivniElem                         .AppendChild(pozivni);
+                            valutaElem                          .AppendChild(valuta);
+
+                            drzavaNode                          .AppendChild(imeElem);
+                            drzavaNode                          .AppendChild(jezikElem);
+                            drzavaNode                          .AppendChild(pozivniElem);
+                            drzavaNode                          .AppendChild(valutaElem);
+
+                            infosElem                           .AppendChild(drzavaNode);
+                        }
+
+                        newXMLDoc                               .Save(saveFile.FileName.ToString());
+                        MessageBox                              .Show("Spremljeno u vanjsku XML datoteku");
                     }
                     break;
             }
