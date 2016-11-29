@@ -36,7 +36,7 @@
             this.txtBoxName = new System.Windows.Forms.TextBox();
             this.btnOdaberi = new System.Windows.Forms.Button();
             this.btnOdustani = new System.Windows.Forms.Button();
-            this.btnIzveziXML = new System.Windows.Forms.Button();
+            this.btnSpremiXML = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrikaz)).BeginInit();
             this.SuspendLayout();
             // 
@@ -119,22 +119,22 @@
             this.btnOdustani.UseVisualStyleBackColor = true;
             this.btnOdustani.Click += new System.EventHandler(this.btnOdustani_Click);
             // 
-            // btnIzveziXML
+            // btnSpremiXML
             // 
-            this.btnIzveziXML.Location = new System.Drawing.Point(472, 400);
-            this.btnIzveziXML.Name = "btnIzveziXML";
-            this.btnIzveziXML.Size = new System.Drawing.Size(164, 45);
-            this.btnIzveziXML.TabIndex = 15;
-            this.btnIzveziXML.Text = "Izvezi u XML";
-            this.btnIzveziXML.UseVisualStyleBackColor = true;
-            this.btnIzveziXML.Click += new System.EventHandler(this.btnIzveziXML_Click);
+            this.btnSpremiXML.Location = new System.Drawing.Point(472, 400);
+            this.btnSpremiXML.Name = "btnSpremiXML";
+            this.btnSpremiXML.Size = new System.Drawing.Size(164, 45);
+            this.btnSpremiXML.TabIndex = 15;
+            this.btnSpremiXML.Text = "Spremi u XML formatu";
+            this.btnSpremiXML.UseVisualStyleBackColor = true;
+            this.btnSpremiXML.Click += new System.EventHandler(this.btnSpremiXML_Click);
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(821, 457);
-            this.Controls.Add(this.btnIzveziXML);
+            this.Controls.Add(this.btnSpremiXML);
             this.Controls.Add(this.btnOdustani);
             this.Controls.Add(this.btnOdaberi);
             this.Controls.Add(this.txtBoxName);
@@ -162,6 +162,6 @@
         private System.Windows.Forms.TextBox txtBoxName;
         private System.Windows.Forms.Button btnOdaberi;
         private System.Windows.Forms.Button btnOdustani;
-        private System.Windows.Forms.Button btnIzveziXML;
+        private System.Windows.Forms.Button btnSpremiXML;
     }
 }
