@@ -58,24 +58,14 @@ namespace INFOS_Project_X
             tboxImeBaze.Text        = database;
             tboxKorisnickoIme.Text  = username;
             tboxLozinka.Text        = password;
-            
+
+
         }
 
         private void btnSpoji_Click(object sender, EventArgs e)
         {
             if(ValidateInput("server") && ValidateInput("baza") && (ValidateInput("korisnicko") || ckBox.Checked) && (ValidateInput("lozinka") || ckBox.Checked))
             {
-                //RegistryKey InfosKey    = Registry.CurrentUser;
-                //InfosKey                = InfosKey.CreateSubKey("SOFTWARE\\C#\\Infos-ProjectX");
-
-                //InfosKey.SetValue("Server", "KRISTIJAN-HP\\SQLEXPRESS01");
-                //InfosKey.SetValue("Database", "infosXDatabase");
-
-                //InfosKey.SetValue("username", "infos");
-                //InfosKey.SetValue("password", "infos");
-
-                //InfosKey.Close();
-
                 string server           = tboxNazivServera.Text;
                 string database         = tboxImeBaze.Text;
                 string username         = tboxKorisnickoIme.Text;
@@ -88,13 +78,13 @@ namespace INFOS_Project_X
 
                 if (!winAuth)
                 {
-                    connectionString += ";User ID=" + username
-                                     + ";Password=" + password
-                                     + ";";
+                    connectionString    += ";User ID=" + username
+                                        + ";Password=" + password
+                                        + ";";
                 }
                 else
                 {
-                    connectionString += ";";
+                    connectionString    += ";";
                 }
             
                 // If using SqlCredential Class rather than passing username and password in connection string; more secure
@@ -116,9 +106,6 @@ namespace INFOS_Project_X
                     Console                             .WriteLine("State {0}", infosConnection.State);
                     Console                             .WriteLine("ConnectionString: {0}", infosConnection.ConnectionString);
 
-                    Form1 form1                         = new Form1();
-                    form1                               .Show();
-
                     RegistryKey InfosKey                = Registry.CurrentUser;
                     InfosKey                            = InfosKey.CreateSubKey("SOFTWARE\\C#\\Infos-ProjectX");
 
@@ -134,12 +121,13 @@ namespace INFOS_Project_X
                     PomocneFunkcije.connectionString    = connectionString;
 
                     infosConnection                     .Close();
-                    this                                .Hide();
+                    this                                .DialogResult = DialogResult.OK;
                     this.Cursor                         = Cursors.Default;
                 }
                 catch
                 {
-                    MessageBox.Show("Pogrešni podaci. Molimo unesite ispravne podatke");
+                    this.Cursor                         = Cursors.Default;
+                    MessageBox.Show("Molimo unesite ispravne podatke");
                 }
 
             }

@@ -16,7 +16,18 @@ namespace INFOS_Project_X
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ServerAuthForm());
+
+            Splash splash           = new Splash();
+
+            if(splash.ShowDialog() == DialogResult.OK)
+            {
+                Application.Run(new Form1());
+            }
+            else
+            {
+                Application.Exit();
+            }
+            
         }
     }
 }
