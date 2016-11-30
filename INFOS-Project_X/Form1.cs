@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Xml;
 
 namespace INFOS_Project_X
 {
@@ -58,7 +59,16 @@ namespace INFOS_Project_X
             newMDIChild.Show();
             newMDIChild.WindowState = FormWindowState.Maximized;
         }
-        
+
+        private void tsmiUvezi_Click(object sender, EventArgs e)
+        {
+            UvozForm uvoz           = new UvozForm();
+            if(uvoz.ShowDialog() == DialogResult.OK)
+            {
+                MessageBox.Show("Spremljeno u bazu");
+            }
+        }
+
         private void tsmiIzlaz_Click(object sender, EventArgs e)
         {
             Application.Exit();

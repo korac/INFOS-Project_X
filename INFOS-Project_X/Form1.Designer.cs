@@ -39,6 +39,7 @@
             this.tsmiDrzava = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiProzor = new System.Windows.Forms.ToolStripMenuItem();
             this.infosXDatabaseDataSet1 = new INFOS_Project_X.infosXDatabaseDataSet();
+            this.tsmiUvezi = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.infosXDatabaseDataSet1)).BeginInit();
             this.SuspendLayout();
@@ -67,6 +68,7 @@
             // tsmiDatoteka
             // 
             this.tsmiDatoteka.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiUvezi,
             this.tsmiIzlaz});
             this.tsmiDatoteka.Name = "tsmiDatoteka";
             this.tsmiDatoteka.Size = new System.Drawing.Size(66, 20);
@@ -75,7 +77,7 @@
             // tsmiIzlaz
             // 
             this.tsmiIzlaz.Name = "tsmiIzlaz";
-            this.tsmiIzlaz.Size = new System.Drawing.Size(96, 22);
+            this.tsmiIzlaz.Size = new System.Drawing.Size(152, 22);
             this.tsmiIzlaz.Text = "Izlaz";
             this.tsmiIzlaz.Click += new System.EventHandler(this.tsmiIzlaz_Click);
             // 
@@ -129,6 +131,13 @@
             this.infosXDatabaseDataSet1.DataSetName = "infosXDatabaseDataSet";
             this.infosXDatabaseDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
+            // tsmiUvezi
+            // 
+            this.tsmiUvezi.Name = "tsmiUvezi";
+            this.tsmiUvezi.Size = new System.Drawing.Size(152, 22);
+            this.tsmiUvezi.Text = "Uvezi";
+            this.tsmiUvezi.Click += new System.EventHandler(this.tsmiUvezi_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -160,6 +169,7 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiMjesto;
         private System.Windows.Forms.ToolStripMenuItem tsmiDrzava;
         private System.Windows.Forms.ToolStripMenuItem tsmiClan;
+        private System.Windows.Forms.ToolStripMenuItem tsmiUvezi;
     }
 }
 
