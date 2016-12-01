@@ -68,8 +68,8 @@ namespace INFOS_Project_X
             }
             catch(Exception ex)
             {
-                MessageBox.Show(ex.Message);
-                throw ex;
+                MessageBox.Show("Greška sa uvozom vanjske XML datoteke: \n" + ex.Message);
+                //throw ex;
             }
         }
 
@@ -114,8 +114,8 @@ namespace INFOS_Project_X
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
-                throw ex;
+                MessageBox.Show("Greška sa uvozom vanjske XML datoteke: \n" + ex.Message);
+                //throw ex;
             }
         }
 
@@ -155,8 +155,8 @@ namespace INFOS_Project_X
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
-                throw ex;
+                MessageBox.Show("Greška sa uvozom vanjske XML datoteke: \n" + ex.Message);
+                //throw ex;
             }
         }
 
@@ -198,8 +198,8 @@ namespace INFOS_Project_X
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
-                throw ex;
+                MessageBox.Show("Greška sa uvozom vanjske XML datoteke: \n" + ex.Message);
+                //throw ex;
             }
         }
 
