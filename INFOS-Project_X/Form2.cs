@@ -50,8 +50,6 @@ namespace INFOS_Project_X
 
         private void Form2_Load(object sender, EventArgs e)
         {
-
-            Console.WriteLine(PomocneFunkcije.connectionString);
             dgvPrikaz.AutoGenerateColumns                   = false;
 
             switch (_maticniPodaci)
@@ -84,7 +82,7 @@ namespace INFOS_Project_X
                     dgvPrikaz.Columns.Add(dgcDrustvo);
 
                     //Custom funkcija za resizanje stupaca u DataGridView
-                    AutoSizeDgvColumns(dgvPrikaz.Columns);
+                    PomocneFunkcije.AutoSizeDgvColumns(dgvPrikaz.Columns);
 
                     this.Cursor                             = Cursors.WaitCursor;
                     drustvoTA.Fill(ds.Drustvo);
@@ -127,7 +125,7 @@ namespace INFOS_Project_X
                     dgvPrikaz.Columns.Add(dgcAdresa);
                     dgvPrikaz.Columns.Add(dgcMjesto);
 
-                    AutoSizeDgvColumns(dgvPrikaz.Columns);
+                    PomocneFunkcije.AutoSizeDgvColumns(dgvPrikaz.Columns);
 
                     this.Cursor                             = Cursors.WaitCursor;
                     mjestoTA.Fill(ds.Mjesto);
@@ -158,7 +156,7 @@ namespace INFOS_Project_X
                     dgvPrikaz.Columns.Add(dgcImeMjesta);
                     dgvPrikaz.Columns.Add(dgcDrzava);
 
-                    AutoSizeDgvColumns(dgvPrikaz.Columns);
+                    PomocneFunkcije.AutoSizeDgvColumns(dgvPrikaz.Columns);
 
                     this.Cursor                             = Cursors.WaitCursor;
                     drzavaTA.Fill(ds.Drzava);
@@ -195,7 +193,7 @@ namespace INFOS_Project_X
                     dgvPrikaz.Columns.Add(dgcPozivniBroj);
                     dgvPrikaz.Columns.Add(dgcValuta);
 
-                    AutoSizeDgvColumns(dgvPrikaz.Columns);
+                    PomocneFunkcije.AutoSizeDgvColumns(dgvPrikaz.Columns);
 
                     this.Cursor                                 = Cursors.WaitCursor;
                     drzavaTA.Fill(ds.Drzava);
@@ -269,7 +267,7 @@ namespace INFOS_Project_X
                 case MaticniPodaci.Drzave:
 
                     infosXDatabaseDataSet.DrzavaRow newDrzavaRow        = ds.Drzava.NewDrzavaRow();
-                    DodajUrediDrzavaForm dodajDrzavaForm                 = new DodajUrediDrzavaForm(newDrzavaRow, false);
+                    DodajUrediDrzavaForm dodajDrzavaForm                = new DodajUrediDrzavaForm(newDrzavaRow, false);
                     if(dodajDrzavaForm.ShowDialog() == DialogResult.OK)
                     {
                         ds.Drzava           .AddDrzavaRow(dodajDrzavaForm.DrzavaRow);
@@ -669,21 +667,6 @@ namespace INFOS_Project_X
                         MessageBox                              .Show("Spremljeno u vanjsku XML datoteku");
                     }
                     break;
-            }
-        }
-
-        private void AutoSizeDgvColumns(DataGridViewColumnCollection dgvColumns)
-        {
-            for(int i = 0; i < dgvColumns.Count; i++)
-            {
-                if (i == dgvColumns.Count - 1)
-                {
-                    dgvColumns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                }
-                else
-                {
-                    dgvColumns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-                }                
             }
         }
 

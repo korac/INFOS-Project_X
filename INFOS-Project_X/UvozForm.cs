@@ -21,6 +21,8 @@ namespace INFOS_Project_X
         public UvozForm()
         {
             InitializeComponent();
+
+            dgvUvoz.AutoGenerateColumns                 = false;
         }
 
         private void btnUveziClanove_Click(object sender, EventArgs e)
@@ -46,7 +48,6 @@ namespace INFOS_Project_X
                     {
                         infosXDatabaseDataSet.ClanRow clanRow   = ds.Clan.NewClanRow();
 
-                        //Provjeri koji su nule
                         clanRow.OIB                     = i.Element("OIB").Value;
                         clanRow.Ime                     = i.Element("Ime").Value;
                         clanRow.Prezime                 = i.Element("Prezime").Value;
@@ -61,7 +62,8 @@ namespace INFOS_Project_X
                         ds.Clan                         .AddClanRow(clanRow);
                     }
 
-                    dgvUvoz.DataSource = ds.Clan;
+                    PomocneFunkcije                     .AutoSizeDgvColumns(dgvUvoz.Columns);
+                    dgvUvoz.DataSource                  = ds.Clan;
                 }
             }
             catch(Exception ex)
@@ -106,6 +108,7 @@ namespace INFOS_Project_X
                         ds.Drustvo                      .AddDrustvoRow(drustvoRow);
                     }
 
+                    PomocneFunkcije                     .AutoSizeDgvColumns(dgvUvoz.Columns);
                     dgvUvoz.DataSource                  = ds.Drustvo;
                 }                
             }
@@ -118,12 +121,86 @@ namespace INFOS_Project_X
 
         private void btnUveziMjesta_Click(object sender, EventArgs e)
         {
+            try
+            {
+                OpenFileDialog openXml                  = new OpenFileDialog();
 
+                if(openXml.ShowDialog() == DialogResult.OK)
+                {
+                    btnUveziClanove.Visible             = false;
+                    btnUveziDrustva.Visible             = false;
+                    btnUveziMjesta.Visible              = false;
+                    btnUveziDrzave.Visible              = false;
+
+                    btnPohrani.Visible                  = true;
+                    btnOdustani.Visible                 = true;
+                    dgvUvoz.Visible                     = true;
+
+                    XDocument xmlDoc                    = XDocument.Load(openXml.FileName);
+
+                    foreach(var i in xmlDoc.Descendants("Mjesto"))
+                    {
+                        infosXDatabaseDataSet.MjestoRow mjestoRow       = ds.Mjesto.NewMjestoRow();
+
+                        mjestoRow.ID                    = Convert.ToInt16(i.Element("ID").Value);
+                        mjestoRow.Ime                   = i.Element("Ime").Value;
+                        mjestoRow.Drzava_ID             = Convert.ToInt16(i.Element("Drzava_ID").Value);
+                        
+                        ds.Mjesto                       .AddMjestoRow(mjestoRow);
+                    }
+
+                    PomocneFunkcije                     .AutoSizeDgvColumns(dgvUvoz.Columns);
+                    dgvUvoz.DataSource                  = ds.Mjesto;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                throw ex;
+            }
         }
 
         private void btnUveziDrzave_Click(object sender, EventArgs e)
         {
+            try
+            {
+                OpenFileDialog openXml                  = new OpenFileDialog();
 
+                if(openXml.ShowDialog() == DialogResult.OK)
+                {
+                    btnUveziClanove.Visible             = false;
+                    btnUveziDrustva.Visible             = false;
+                    btnUveziMjesta.Visible              = false;
+                    btnUveziDrzave.Visible              = false;
+
+                    btnPohrani.Visible                  = true;
+                    btnOdustani.Visible                 = true;
+                    dgvUvoz.Visible                     = true;
+
+                    XDocument xmlDoc                    = XDocument.Load(openXml.FileName);
+
+                    foreach(var i in xmlDoc.Descendants("Drzava"))
+                    {
+                        infosXDatabaseDataSet.DrzavaRow drzavaRow       = ds.Drzava.NewDrzavaRow();
+
+                        drzavaRow.ID                    = Convert.ToInt16(i.Element("ID").Value);
+                        drzavaRow.Ime                   = i.Element("Ime").Value;
+                        drzavaRow.Jezik                 = i.Element("Jezik").Value;
+                        drzavaRow.PozivniBroj           = i.Element("PozivniBroj").Value;
+                        drzavaRow.Valuta                = i.Element("Valuta").Value;
+
+                        ds.Drzava                       .AddDrzavaRow(drzavaRow);
+                    }
+                    
+                    PomocneFunkcije                     .AutoSizeDgvColumns(dgvUvoz.Columns);
+                    dgvUvoz.DataSource                  = ds.Drzava;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                throw ex;
+            }
         }
 
         private void btnPohrani_Click(object sender, EventArgs e)

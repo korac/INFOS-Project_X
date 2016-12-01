@@ -4,12 +4,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using System.Windows.Forms;
 
 namespace INFOS_Project_X
 {
     class PomocneFunkcije
     {
         public static string connectionString;
+
+        public static void AutoSizeDgvColumns(DataGridViewColumnCollection dgvColumns)
+        {
+            for (int i = 0; i < dgvColumns.Count; i++)
+            {
+                if (i == dgvColumns.Count - 1)
+                {
+                    dgvColumns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                }
+                else
+                {
+                    dgvColumns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+                }
+            }
+        }
 
         public static bool IsValidIme(string ime)
         {
