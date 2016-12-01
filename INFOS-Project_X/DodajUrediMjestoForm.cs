@@ -58,7 +58,7 @@ namespace INFOS_Project_X
             if(ValidateIme())
             {
                 MjestoRow.Ime               = tboxIme.Text;
-                MjestoRow.Drzava_ID         = (int) cboxDrzava.SelectedValue;
+                MjestoRow.Drzava_ID         = cboxDrzava.SelectedValue.ToString();
 
                 this.DialogResult           = DialogResult.OK;
             }

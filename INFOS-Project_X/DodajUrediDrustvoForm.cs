@@ -63,7 +63,7 @@ namespace INFOS_Project_X
                 DrustvoRow.Adresa           = tboxAdresa.Text;
                 DrustvoRow.Email            = tboxEmail.Text;
                 DrustvoRow.Telefon          = tboxTelefon.Text;
-                DrustvoRow.Mjesto_ID        = (int) cboxMjesto.SelectedValue;
+                DrustvoRow.Mjesto_ID        = cboxMjesto.SelectedValue.ToString();
                 DrustvoRow.BrojRacuna       = tboxBrojRacuna.Text;
 
                 this.DialogResult           = DialogResult.OK;

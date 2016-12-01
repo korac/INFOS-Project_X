@@ -85,8 +85,8 @@ namespace INFOS_Project_X
                 ClanRow.OIB                     = tboxOib.Text;
                 ClanRow.DatumRodenja            = Convert.ToDateTime(tboxDatumRodenja.Text);
                 ClanRow.Zanimanje               = tboxZanimanje.Text;
-                ClanRow.Drustvo_ID              = (int) cboxDrustvo.SelectedValue;
-                ClanRow.Mjesto_ID               = (int) cboxMjesto.SelectedValue;
+                ClanRow.Drustvo_ID              = cboxDrustvo.SelectedValue.ToString();
+                ClanRow.Mjesto_ID               = cboxMjesto.SelectedValue.ToString();
                 ClanRow.Telefon                 = tboxTelefon.Text;
                 ClanRow.Email                   = tboxEmail.Text;
                 ClanRow.Adresa                  = tboxAdresa.Text;

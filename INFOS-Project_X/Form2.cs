@@ -500,7 +500,7 @@ namespace INFOS_Project_X
                             XmlText datumRodenja            = newXMLDoc.CreateTextNode(row.DatumRodenja.ToString());
                             XmlText zanimanje               = (!row.IsZanimanjeNull()) ? newXMLDoc.CreateTextNode(row.Zanimanje) : newXMLDoc.CreateTextNode("");
                             XmlText drustvoId               = newXMLDoc.CreateTextNode(row.Drustvo_ID.ToString());
-                            XmlText mjestoId                = (!row.IsMjesto_IDNull()) ? newXMLDoc.CreateTextNode(row.Mjesto_ID.ToString()) : newXMLDoc.CreateTextNode("");
+                            XmlText mjestoId                = (!row.IsMjesto_IDNull()) ? newXMLDoc.CreateTextNode(row.Mjesto_ID) : newXMLDoc.CreateTextNode("");
                             XmlText email                   = (!row.IsEmailNull()) ? newXMLDoc.CreateTextNode(row.Email) : newXMLDoc.CreateTextNode("");
                             XmlText adresa                  = (!row.IsAdresaNull()) ? newXMLDoc.CreateTextNode(row.Adresa) : newXMLDoc.CreateTextNode("");
                             XmlText telefon                 = (!row.IsTelefonNull()) ? newXMLDoc.CreateTextNode(row.Telefon) : newXMLDoc.CreateTextNode("");
@@ -547,7 +547,6 @@ namespace INFOS_Project_X
                         {
                             XmlNode drustvoNode                 = newXMLDoc.CreateNode(XmlNodeType.Element, "Drustvo", null);
 
-                            XmlElement idElem                   = newXMLDoc.CreateElement(string.Empty, "ID", string.Empty);
                             XmlElement nazivElem                = newXMLDoc.CreateElement(string.Empty, "Naziv", string.Empty);
                             XmlElement adresaElem               = newXMLDoc.CreateElement(string.Empty, "Adresa", string.Empty);
                             XmlElement emailElem                = newXMLDoc.CreateElement(string.Empty, "Email", string.Empty);
@@ -556,16 +555,14 @@ namespace INFOS_Project_X
                             XmlElement telefonElem              = newXMLDoc.CreateElement(string.Empty, "Telefon", string.Empty);
                             XmlElement mjestoExpElem            = newXMLDoc.CreateElement(string.Empty, "Mjesto", string.Empty);
                             
-                            XmlText id                          = newXMLDoc.CreateTextNode(row.ID.ToString());
                             XmlText naziv                       = newXMLDoc.CreateTextNode(row.Naziv);
                             XmlText adresa                      = (!row.IsAdresaNull()) ? newXMLDoc.CreateTextNode(row.Adresa) : newXMLDoc.CreateTextNode("");
                             XmlText email                       = (!row.IsEmailNull()) ? newXMLDoc.CreateTextNode(row.Email) : newXMLDoc.CreateTextNode("");
-                            XmlText mjestoId                    = newXMLDoc.CreateTextNode(row.Mjesto_ID.ToString());
+                            XmlText mjestoId                    = newXMLDoc.CreateTextNode(row.Mjesto_ID);
                             XmlText brojRacuna                  = (!row.IsBrojRacunaNull()) ? newXMLDoc.CreateTextNode(row.BrojRacuna) : newXMLDoc.CreateTextNode("");
                             XmlText telefon                     = (!row.IsTelefonNull()) ? newXMLDoc.CreateTextNode(row.Telefon) : newXMLDoc.CreateTextNode("");
                             XmlText mjestoExp                   = (!row.IsMjestoExpNull()) ? newXMLDoc.CreateTextNode(row.MjestoExp) : newXMLDoc.CreateTextNode("");
 
-                            idElem                              .AppendChild(id);
                             nazivElem                           .AppendChild(naziv);
                             adresaElem                          .AppendChild(adresa);
                             emailElem                           .AppendChild(email);
@@ -574,7 +571,6 @@ namespace INFOS_Project_X
                             telefonElem                         .AppendChild(telefon);
                             mjestoExpElem                       .AppendChild(mjestoExp);
 
-                            drustvoNode                         .AppendChild(idElem);
                             drustvoNode                         .AppendChild(nazivElem);
                             drustvoNode                         .AppendChild(adresaElem);
                             drustvoNode                         .AppendChild(emailElem);
@@ -605,17 +601,14 @@ namespace INFOS_Project_X
                             XmlElement drzavaIdElem             = newXMLDoc.CreateElement(string.Empty, "Drzava_ID", string.Empty);
                             XmlElement drzavaExpElem            = newXMLDoc.CreateElement(string.Empty, "Drzava", string.Empty);
 
-                            XmlText id                          = newXMLDoc.CreateTextNode(row.ID.ToString());
                             XmlText ime                         = newXMLDoc.CreateTextNode(row.Ime);
                             XmlText drzavaId                    = newXMLDoc.CreateTextNode(row.Drzava_ID.ToString());
                             XmlText drzavaExp                   = newXMLDoc.CreateTextNode(row.DrzavaExp);
 
-                            idElem                              .AppendChild(id);
                             imeElem                             .AppendChild(ime);
                             drzavaIdElem                        .AppendChild(drzavaId);
                             drzavaExpElem                       .AppendChild(drzavaExp);
 
-                            mjestoNode                          .AppendChild(idElem);
                             mjestoNode                          .AppendChild(imeElem);
                             mjestoNode                          .AppendChild(drzavaIdElem);
                             mjestoNode                          .AppendChild(drzavaExpElem);
@@ -636,25 +629,21 @@ namespace INFOS_Project_X
                         {
                             XmlNode drzavaNode                  = newXMLDoc.CreateNode(XmlNodeType.Element, "Drzava", null);
 
-                            XmlElement idElem                   = newXMLDoc.CreateElement(string.Empty, "ID", string.Empty);
                             XmlElement imeElem                  = newXMLDoc.CreateElement(string.Empty, "Ime", string.Empty);
                             XmlElement jezikElem                = newXMLDoc.CreateElement(string.Empty, "Jezik", string.Empty);
                             XmlElement pozivniElem              = newXMLDoc.CreateElement(string.Empty, "PozivniBroj", string.Empty);
                             XmlElement valutaElem               = newXMLDoc.CreateElement(string.Empty, "Valuta", string.Empty);
 
-                            XmlText id                          = newXMLDoc.CreateTextNode(row.ID.ToString());
                             XmlText ime                         = newXMLDoc.CreateTextNode(row.Ime);
                             XmlText jezik                       = newXMLDoc.CreateTextNode(row.Jezik);
                             XmlText pozivni                     = newXMLDoc.CreateTextNode(row.PozivniBroj);
                             XmlText valuta                      = newXMLDoc.CreateTextNode(row.Valuta);
 
-                            idElem                              .AppendChild(id);
                             imeElem                             .AppendChild(ime);
                             jezikElem                           .AppendChild(jezik);
                             pozivniElem                         .AppendChild(pozivni);
                             valutaElem                          .AppendChild(valuta);
 
-                            drzavaNode                          .AppendChild(idElem);
                             drzavaNode                          .AppendChild(imeElem);
                             drzavaNode                          .AppendChild(jezikElem);
                             drzavaNode                          .AppendChild(pozivniElem);

@@ -77,9 +77,6 @@
     <Compile Include="Form2.Designer.cs">
       <DependentUpon>Form2.cs</DependentUpon>
     </Compile>
-    <Compile Include="infosXDatabaseDataSet1.cs">
-      <DependentUpon>infosXDatabaseDataSet1.xsd</DependentUpon>
-    </Compile>
     <Compile Include="infosXDatabaseDataSet1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

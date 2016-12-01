@@ -134,6 +134,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(821, 457);
+            this.ControlBox = false;
             this.Controls.Add(this.btnSpremiXML);
             this.Controls.Add(this.btnOdustani);
             this.Controls.Add(this.btnOdaberi);
@@ -143,6 +144,7 @@
             this.Controls.Add(this.btnDodaj);
             this.Controls.Add(this.lblPrikaz);
             this.Controls.Add(this.dgvPrikaz);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form2";
             this.Text = "Form2";
             this.Load += new System.EventHandler(this.Form2_Load);

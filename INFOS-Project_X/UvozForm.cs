@@ -21,8 +21,6 @@ namespace INFOS_Project_X
         public UvozForm()
         {
             InitializeComponent();
-
-            dgvUvoz.AutoGenerateColumns                 = false;
         }
 
         private void btnUveziClanove_Click(object sender, EventArgs e)
@@ -53,8 +51,8 @@ namespace INFOS_Project_X
                         clanRow.Prezime                 = i.Element("Prezime").Value;
                         clanRow.DatumRodenja            = Convert.ToDateTime(i.Element("DatumRodenja").Value);
                         clanRow.Zanimanje               = (i.Element("Zanimanje").Value != "") ? i.Element("Zanimanje").Value : "";
-                        clanRow.Drustvo_ID              = Convert.ToInt16(i.Element("Drustvo_ID").Value);
-                        clanRow.Mjesto_ID               = Convert.ToInt16((i.Element("Mjesto_ID").Value != "") ? i.Element("Mjesto_ID").Value : null);
+                        clanRow.Drustvo_ID              = i.Element("Drustvo_ID").Value;
+                        clanRow.Mjesto_ID               = (i.Element("Mjesto_ID").Value != "") ? i.Element("Mjesto_ID").Value : null;
                         clanRow.Email                   = (i.Element("Email").Value != "") ? i.Element("Email").Value : "";
                         clanRow.Adresa                  = (i.Element("Adresa").Value != "") ? i.Element("Adresa").Value : "";
                         clanRow.Telefon                 = (i.Element("Telefon").Value != "") ? i.Element("Telefon").Value : "";
@@ -62,7 +60,6 @@ namespace INFOS_Project_X
                         ds.Clan                         .AddClanRow(clanRow);
                     }
 
-                    PomocneFunkcije                     .AutoSizeDgvColumns(dgvUvoz.Columns);
                     dgvUvoz.DataSource                  = ds.Clan;
                 }
             }
@@ -93,22 +90,23 @@ namespace INFOS_Project_X
 
                     XDocument xmlDoc                    = XDocument.Load(openXml.FileName);
 
+                    int j = 1;
                     foreach(var i in xmlDoc.Descendants("Drustvo"))
                     {
                         infosXDatabaseDataSet.DrustvoRow drustvoRow    = ds.Drustvo.NewDrustvoRow();
 
-                        drustvoRow.ID                   = Convert.ToInt16(i.Element("ID").Value);
+                        drustvoRow.ID                   = "drustvo" + j;
                         drustvoRow.Naziv                = i.Element("Naziv").Value;
                         drustvoRow.Adresa               = (i.Element("Adresa").Value != "") ? i.Element("Adresa").Value : ""; //null
                         drustvoRow.Email                = (i.Element("Email").Value != "") ? i.Element("Email").Value : ""; //null
-                        drustvoRow.Mjesto_ID            = Convert.ToInt16(i.Element("Mjesto_ID").Value);
+                        drustvoRow.Mjesto_ID            = i.Element("Mjesto_ID").Value;
                         drustvoRow.BrojRacuna           = (i.Element("BrojRacuna").Value != "") ? i.Element("BrojRacuna").Value : ""; //null
                         drustvoRow.Telefon              = (i.Element("Telefon").Value != "") ? i.Element("Telefon").Value : ""; //null
 
                         ds.Drustvo                      .AddDrustvoRow(drustvoRow);
+                        j++;
                     }
 
-                    PomocneFunkcije                     .AutoSizeDgvColumns(dgvUvoz.Columns);
                     dgvUvoz.DataSource                  = ds.Drustvo;
                 }                
             }
@@ -138,18 +136,19 @@ namespace INFOS_Project_X
 
                     XDocument xmlDoc                    = XDocument.Load(openXml.FileName);
 
+                    int j = 1;
                     foreach(var i in xmlDoc.Descendants("Mjesto"))
                     {
                         infosXDatabaseDataSet.MjestoRow mjestoRow       = ds.Mjesto.NewMjestoRow();
 
-                        mjestoRow.ID                    = Convert.ToInt16(i.Element("ID").Value);
+                        mjestoRow.ID                    = "mjesto" + j;
                         mjestoRow.Ime                   = i.Element("Ime").Value;
-                        mjestoRow.Drzava_ID             = Convert.ToInt16(i.Element("Drzava_ID").Value);
+                        mjestoRow.Drzava_ID             = i.Element("Drzava_ID").Value;
                         
                         ds.Mjesto                       .AddMjestoRow(mjestoRow);
+                        j++;
                     }
 
-                    PomocneFunkcije                     .AutoSizeDgvColumns(dgvUvoz.Columns);
                     dgvUvoz.DataSource                  = ds.Mjesto;
                 }
             }
@@ -179,54 +178,75 @@ namespace INFOS_Project_X
 
                     XDocument xmlDoc                    = XDocument.Load(openXml.FileName);
 
+                    int j = 1;
                     foreach(var i in xmlDoc.Descendants("Drzava"))
                     {
                         infosXDatabaseDataSet.DrzavaRow drzavaRow       = ds.Drzava.NewDrzavaRow();
 
-                        drzavaRow.ID                    = Convert.ToInt16(i.Element("ID").Value);
+                        drzavaRow.ID                    = "drzava" + j;
                         drzavaRow.Ime                   = i.Element("Ime").Value;
                         drzavaRow.Jezik                 = i.Element("Jezik").Value;
                         drzavaRow.PozivniBroj           = i.Element("PozivniBroj").Value;
                         drzavaRow.Valuta                = i.Element("Valuta").Value;
 
                         ds.Drzava                       .AddDrzavaRow(drzavaRow);
+
+                        j++;
                     }
                     
-                    PomocneFunkcije                     .AutoSizeDgvColumns(dgvUvoz.Columns);
                     dgvUvoz.DataSource                  = ds.Drzava;
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Greška sa uvozom vanjske XML datoteke: \n" + ex.Message);
-                //throw ex;
+                throw ex;
             }
         }
 
         private void btnPohrani_Click(object sender, EventArgs e)
         {
-            if (dgvUvoz.DataSource == ds.Clan)
+            try
             {
-                clanTA.Update(ds.Clan);
-                ds.AcceptChanges();
-            }
+                if (dgvUvoz.DataSource == ds.Clan)
+                {
+                    clanTA          .Update(ds.Clan);
+                    MessageBox      .Show("Zapis je uspješno uvezen");
+                    ds              .AcceptChanges();
+
+                    this            .Close();
+                }
             
-            if(dgvUvoz.DataSource == ds.Drustvo)
-            {
-                drustvoTA.Update(ds.Drustvo);
-                ds.AcceptChanges();
-            }
+                if(dgvUvoz.DataSource == ds.Drustvo)
+                {
+                    drustvoTA       .Update(ds.Drustvo);
+                    MessageBox      .Show("Zapis je uspješno uvezen");
+                    ds              .AcceptChanges();
 
-            if (dgvUvoz.DataSource == ds.Mjesto)
-            {
-                mjestoTA.Update(ds.Mjesto);
-                ds.AcceptChanges();
-            }
+                    this            .Close();
+                }
 
-            if (dgvUvoz.DataSource == ds.Drzava)
+                if (dgvUvoz.DataSource == ds.Mjesto)
+                {
+                    mjestoTA        .Update(ds.Mjesto);
+                    MessageBox      .Show("Zapis je uspješno uvezen");
+                    ds              .AcceptChanges();
+
+                    this            .Close();
+                }
+
+                if (dgvUvoz.DataSource == ds.Drzava)
+                {
+                    drzavaTA        .Update(ds.Drzava);
+                    MessageBox      .Show("Zapis je uspješno uvezen");
+                    ds              .AcceptChanges();
+
+                    this            .Close();
+                }
+            }
+            catch (Exception ex)
             {
-                drzavaTA.Update(ds.Drzava);
-                ds.AcceptChanges();
+                MessageBox          .Show(ex.Message);
             }
         }
 
