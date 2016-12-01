@@ -91,6 +91,12 @@
     <Compile Include="IzbrisiUpozorenjeForm.Designer.cs">
       <DependentUpon>IzbrisiUpozorenjeForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="IzlazUpozorenjeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IzlazUpozorenjeForm.Designer.cs">
+      <DependentUpon>IzlazUpozorenjeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MaticniPodaci.cs" />
     <Compile Include="PomocneFunkcije.cs" />
     <Compile Include="Program.cs" />
@@ -136,6 +142,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="IzbrisiUpozorenjeForm.resx">
       <DependentUpon>IzbrisiUpozorenjeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IzlazUpozorenjeForm.resx">
+      <DependentUpon>IzlazUpozorenjeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -71,7 +71,8 @@ namespace INFOS_Project_X
 
         private void tsmiIzlaz_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            IzlazUpozorenjeForm izlaz   = new IzlazUpozorenjeForm();
+            izlaz                       .ShowDialog();
         }
 
     }
