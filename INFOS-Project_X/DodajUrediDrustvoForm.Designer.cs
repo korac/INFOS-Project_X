@@ -267,6 +267,7 @@
             this.Controls.Add(this.lblUrediNaziv);
             this.Controls.Add(this.tboxNaziv);
             this.Name = "DodajUrediDrustvoForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UrediDrustvoForm";
             this.Load += new System.EventHandler(this.DodajUrediDrustvoForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errProviderNaziv)).EndInit();

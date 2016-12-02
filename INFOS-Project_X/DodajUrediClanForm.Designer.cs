@@ -368,6 +368,7 @@
             this.Controls.Add(this.lblUrediIme);
             this.Controls.Add(this.tboxIme);
             this.Name = "DodajUrediClanForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DodajUrediClanForm";
             this.Load += new System.EventHandler(this.DodajUrediClanForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errProviderZanimanje)).EndInit();

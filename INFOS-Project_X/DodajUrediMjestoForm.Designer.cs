@@ -155,6 +155,7 @@
             this.Controls.Add(this.lblUrediIme);
             this.Controls.Add(this.tboxIme);
             this.Name = "DodajUrediMjestoForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DodajUrediMjestoForm";
             this.Load += new System.EventHandler(this.DodajUrediMjestoForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errProviderIme)).EndInit();

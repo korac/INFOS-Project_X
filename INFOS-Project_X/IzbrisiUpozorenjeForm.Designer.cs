@@ -73,6 +73,7 @@
             this.Controls.Add(this.btnIzbrisi);
             this.Controls.Add(this.lblPoruka);
             this.Name = "IzbrisiUpozorenjeForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "IzbrisiUpozorenjeForm";
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -31,6 +31,7 @@
             this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.tsmiDatoteka = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiUvezi = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiIzlaz = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiMaticniPodaci = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiClan = new System.Windows.Forms.ToolStripMenuItem();
@@ -39,7 +40,6 @@
             this.tsmiDrzava = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiProzor = new System.Windows.Forms.ToolStripMenuItem();
             this.infosXDatabaseDataSet1 = new INFOS_Project_X.infosXDatabaseDataSet();
-            this.tsmiUvezi = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.infosXDatabaseDataSet1)).BeginInit();
             this.SuspendLayout();
@@ -74,10 +74,17 @@
             this.tsmiDatoteka.Size = new System.Drawing.Size(66, 20);
             this.tsmiDatoteka.Text = "Datoteka";
             // 
+            // tsmiUvezi
+            // 
+            this.tsmiUvezi.Name = "tsmiUvezi";
+            this.tsmiUvezi.Size = new System.Drawing.Size(102, 22);
+            this.tsmiUvezi.Text = "Uvezi";
+            this.tsmiUvezi.Click += new System.EventHandler(this.tsmiUvezi_Click);
+            // 
             // tsmiIzlaz
             // 
             this.tsmiIzlaz.Name = "tsmiIzlaz";
-            this.tsmiIzlaz.Size = new System.Drawing.Size(152, 22);
+            this.tsmiIzlaz.Size = new System.Drawing.Size(102, 22);
             this.tsmiIzlaz.Text = "Izlaz";
             this.tsmiIzlaz.Click += new System.EventHandler(this.tsmiIzlaz_Click);
             // 
@@ -131,17 +138,11 @@
             this.infosXDatabaseDataSet1.DataSetName = "infosXDatabaseDataSet";
             this.infosXDatabaseDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // tsmiUvezi
-            // 
-            this.tsmiUvezi.Name = "tsmiUvezi";
-            this.tsmiUvezi.Size = new System.Drawing.Size(152, 22);
-            this.tsmiUvezi.Text = "Uvezi";
-            this.tsmiUvezi.Click += new System.EventHandler(this.tsmiUvezi_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.WindowFrame;
             this.ClientSize = new System.Drawing.Size(751, 375);
             this.Controls.Add(this.menuStrip1);
             this.IsMdiContainer = true;

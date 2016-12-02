@@ -52,12 +52,10 @@ namespace INFOS_Project_X
         private void menuItemClickHandler(MaticniPodaci matpod)
         {
             ClearMdiChildren();
-            Form2 newMDIChild       = new Form2(matpod, false);
-            // Set the Parent Form of the Child window
-            newMDIChild.MdiParent   = this;
-            // Display the new form
-            newMDIChild.Show();
-            newMDIChild.WindowState = FormWindowState.Maximized;
+            Form2 newMDIChild               = new Form2(matpod, false);
+            newMDIChild.MdiParent           = this;
+            newMDIChild.WindowState         = FormWindowState.Maximized;
+            newMDIChild                     .Show();
         }
 
         private void tsmiUvezi_Click(object sender, EventArgs e)

@@ -39,7 +39,6 @@ namespace INFOS_Project_X
 
             btnOdaberi.Visible                          = odaberi;
             btnOdustani.Visible                         = odaberi;
-
             btnSpremiXML.Visible                        = !odaberi;
 
             clanTA.Connection.ConnectionString          = PomocneFunkcije.connectionString;
@@ -92,10 +91,7 @@ namespace INFOS_Project_X
                     dgvPrikaz.DataSource                    = clanBS;
                     this.Cursor                             = Cursors.Default;
 
-                    txtBoxName.DataBindings.Add(new Binding("Text", clanBS, "Ime"));
-
                     lblPrikaz.Text                          = "Članovi";
-                    btnDodaj.Text                           = "Dodaj člana";
                     break;
 
                 case MaticniPodaci.Drustva:
@@ -135,10 +131,7 @@ namespace INFOS_Project_X
                     dgvPrikaz.DataSource                    = drustvoBS;
                     this.Cursor                             = Cursors.Default;
 
-                    txtBoxName.DataBindings.Add(new Binding("Text", drustvoBS, "Naziv"));
-
                     lblPrikaz.Text                          = "Društva";
-                    btnDodaj.Text                           = "Dodaj društvo";
                     break;
 
                 case MaticniPodaci.Mjesta:
@@ -166,10 +159,7 @@ namespace INFOS_Project_X
                     dgvPrikaz.DataSource                    = mjestoBS;
                     this.Cursor                             = Cursors.Default;
 
-                    txtBoxName.DataBindings.Add(new Binding("Text", mjestoBS, "Ime"));
-
                     lblPrikaz.Text                          = "Mjesta";
-                    btnDodaj.Text                           = "Dodaj mjesto";
                     break;
 
                 case MaticniPodaci.Drzave:
@@ -201,10 +191,7 @@ namespace INFOS_Project_X
                     dgvPrikaz.DataSource                        = drzavaBS;
                     this.Cursor                                 = Cursors.Default;
 
-                    txtBoxName.DataBindings.Add(new Binding("Text", drzavaBS, "Ime"));
-
                     lblPrikaz.Text                              = "Države";
-                    btnDodaj.Text                               = "Dodaj državu";
                     break;
             }
         }
