@@ -34,6 +34,7 @@ namespace INFOS_Project_X
             {
                 this.Text                   = "Uredi društvo";
 
+                tboxDrustvoID.Text          = DrustvoRow.ID;
                 tboxNaziv.Text              = DrustvoRow.Naziv;
                 tboxAdresa.Text             = DrustvoRow.IsAdresaNull() ? "" : DrustvoRow.Adresa;
                 tboxEmail.Text              = DrustvoRow.IsEmailNull() ? "" : DrustvoRow.Email;
@@ -56,23 +57,26 @@ namespace INFOS_Project_X
         }
 
         private void btnPrihvati_Click(object sender, EventArgs e)
-        {            
-            if(ValidateNaziv() && ValidateAdresa() && ValidateTelefon() && ValidateBrojRacuna())
+        {
+            if (ValidateID())
             {
-                DrustvoRow.Naziv            = tboxNaziv.Text;
-                DrustvoRow.Adresa           = tboxAdresa.Text;
-                DrustvoRow.Email            = tboxEmail.Text;
-                DrustvoRow.Telefon          = tboxTelefon.Text;
-                DrustvoRow.Mjesto_ID        = cboxMjesto.SelectedValue.ToString();
-                DrustvoRow.BrojRacuna       = tboxBrojRacuna.Text;
+                if(ValidateNaziv() && ValidateAdresa() && ValidateTelefon() && ValidateBrojRacuna())
+                {
+                    DrustvoRow.ID               = tboxDrustvoID.Text;
+                    DrustvoRow.Naziv            = tboxNaziv.Text;
+                    DrustvoRow.Adresa           = tboxAdresa.Text;
+                    DrustvoRow.Email            = tboxEmail.Text;
+                    DrustvoRow.Telefon          = tboxTelefon.Text;
+                    DrustvoRow.Mjesto_ID        = cboxMjesto.SelectedValue.ToString();
+                    DrustvoRow.BrojRacuna       = tboxBrojRacuna.Text;
 
-                this.DialogResult           = DialogResult.OK;
-            }
-            else
-            {
-                MessageBox.Show("Molimo unesite sve potrebne podatke");
-            }
-            
+                    this.DialogResult           = DialogResult.OK;
+                }
+                else
+                {
+                    MessageBox.Show("Unesite sve potrebne podatke");
+                }
+            }        
         }
 
         private void RefreshComboMjesta()
@@ -103,6 +107,11 @@ namespace INFOS_Project_X
             }            
         }
 
+        private void tboxDrustvoID_Validating(object sender, CancelEventArgs e)
+        {
+            ValidateID();
+        }
+
         private void tboxNaziv_Validating(object sender, CancelEventArgs e)
         {
             ValidateNaziv();
@@ -124,17 +133,39 @@ namespace INFOS_Project_X
             ValidateBrojRacuna();
         }
 
+        private bool ValidateID()
+        {
+            bool bStatus                = true;
+            if(tboxDrustvoID.Text == "")
+            {
+                errProviderID           .SetError(tboxDrustvoID, "Unesite ID društva");
+                bStatus                 = false;
+            }
+            else if (!PomocneFunkcije.IDExists(tboxDrustvoID.Text, MaticniPodaci.Drustva))
+            {
+                MessageBox              .Show("Unijeli ste već postojeći ID");
+                errProviderID           .SetError(tboxDrustvoID, "Unesite jedinstveni ID drustvo");
+                bStatus                 = false;
+            }
+            else
+            {
+                errProviderID           .SetError(tboxDrustvoID, "");
+            }
+
+            return bStatus;
+        }
+
         private bool ValidateNaziv()
         {
             bool bStatus                = true;
             if(tboxNaziv.Text == "")
             {
-                errProviderNaziv        .SetError(tboxNaziv, "Molimo unesite naziv društva");
+                errProviderNaziv        .SetError(tboxNaziv, "Unesite naziv društva");
                 bStatus                 = false;
             }
             else if (!PomocneFunkcije.IsValidNaziv(tboxNaziv.Text))
             {
-                errProviderNaziv        .SetError(tboxNaziv, "Molimo unesite ispravan naziv društva");
+                errProviderNaziv        .SetError(tboxNaziv, "Unesite ispravan naziv društva");
                 bStatus                 = false;
             }
             else
@@ -150,7 +181,7 @@ namespace INFOS_Project_X
             bool bStatus = true;
             if(!PomocneFunkcije.isValidAdresa(tboxAdresa.Text))
             {
-                errProviderAdresa       .SetError(tboxAdresa, "Molimo unesite ispravnu adresu");
+                errProviderAdresa       .SetError(tboxAdresa, "Unesite ispravnu adresu");
                 bStatus                 = false;
             }
             else
@@ -166,7 +197,7 @@ namespace INFOS_Project_X
             bool bStatus                = true;
             if (!PomocneFunkcije.isValidTelefon(tboxTelefon.Text))
             {
-                errProviderTelefon      .SetError(tboxTelefon, "Molimo unesite ispravan broj telefona");
+                errProviderTelefon      .SetError(tboxTelefon, "Unesite ispravan broj telefona");
                 bStatus                 = false;
             }
             else
@@ -182,7 +213,7 @@ namespace INFOS_Project_X
             bool bStatus                = true;
             if (!PomocneFunkcije.isValidBrojRacuna(tboxBrojRacuna.Text))
             {
-                errProviderBrojRacuna   .SetError(tboxBrojRacuna, "Molimo unesite ispravan broj računa");
+                errProviderBrojRacuna   .SetError(tboxBrojRacuna, "Unesite ispravan broj računa");
                 bStatus                 = false;
             }
             else
@@ -192,6 +223,7 @@ namespace INFOS_Project_X
 
             return bStatus;
         }
+
 
     }
 }

@@ -37,14 +37,18 @@
             this.btnOdustani = new System.Windows.Forms.Button();
             this.btnPrihvati = new System.Windows.Forms.Button();
             this.errProviderIme = new System.Windows.Forms.ErrorProvider(this.components);
+            this.lblMjestoID = new System.Windows.Forms.Label();
+            this.tboxMjestoID = new System.Windows.Forms.TextBox();
+            this.errProviderID = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.errProviderIme)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errProviderID)).BeginInit();
             this.SuspendLayout();
             // 
             // lblUrediIme
             // 
             this.lblUrediIme.AutoSize = true;
             this.lblUrediIme.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblUrediIme.Location = new System.Drawing.Point(61, 36);
+            this.lblUrediIme.Location = new System.Drawing.Point(66, 77);
             this.lblUrediIme.Name = "lblUrediIme";
             this.lblUrediIme.Size = new System.Drawing.Size(34, 17);
             this.lblUrediIme.TabIndex = 25;
@@ -53,7 +57,7 @@
             // tboxIme
             // 
             this.tboxIme.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.tboxIme.Location = new System.Drawing.Point(110, 33);
+            this.tboxIme.Location = new System.Drawing.Point(115, 74);
             this.tboxIme.Name = "tboxIme";
             this.tboxIme.Size = new System.Drawing.Size(206, 23);
             this.tboxIme.TabIndex = 24;
@@ -63,7 +67,7 @@
             // 
             this.lblUrediDrzava.AutoSize = true;
             this.lblUrediDrzava.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblUrediDrzava.Location = new System.Drawing.Point(38, 87);
+            this.lblUrediDrzava.Location = new System.Drawing.Point(43, 118);
             this.lblUrediDrzava.Name = "lblUrediDrzava";
             this.lblUrediDrzava.Size = new System.Drawing.Size(57, 17);
             this.lblUrediDrzava.TabIndex = 28;
@@ -72,14 +76,14 @@
             // cboxDrzava
             // 
             this.cboxDrzava.FormattingEnabled = true;
-            this.cboxDrzava.Location = new System.Drawing.Point(110, 87);
+            this.cboxDrzava.Location = new System.Drawing.Point(115, 118);
             this.cboxDrzava.Name = "cboxDrzava";
             this.cboxDrzava.Size = new System.Drawing.Size(170, 21);
             this.cboxDrzava.TabIndex = 35;
             // 
             // btnOdaberiDrzavu
             // 
-            this.btnOdaberiDrzavu.Location = new System.Drawing.Point(286, 86);
+            this.btnOdaberiDrzavu.Location = new System.Drawing.Point(291, 117);
             this.btnOdaberiDrzavu.Name = "btnOdaberiDrzavu";
             this.btnOdaberiDrzavu.Size = new System.Drawing.Size(30, 21);
             this.btnOdaberiDrzavu.TabIndex = 36;
@@ -89,7 +93,7 @@
             // 
             // btnOdustani
             // 
-            this.btnOdustani.Location = new System.Drawing.Point(215, 147);
+            this.btnOdustani.Location = new System.Drawing.Point(220, 174);
             this.btnOdustani.Name = "btnOdustani";
             this.btnOdustani.Size = new System.Drawing.Size(101, 30);
             this.btnOdustani.TabIndex = 38;
@@ -99,7 +103,7 @@
             // 
             // btnPrihvati
             // 
-            this.btnPrihvati.Location = new System.Drawing.Point(97, 147);
+            this.btnPrihvati.Location = new System.Drawing.Point(102, 174);
             this.btnPrihvati.Name = "btnPrihvati";
             this.btnPrihvati.Size = new System.Drawing.Size(101, 30);
             this.btnPrihvati.TabIndex = 37;
@@ -112,11 +116,37 @@
             this.errProviderIme.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.errProviderIme.ContainerControl = this;
             // 
+            // lblMjestoID
+            // 
+            this.lblMjestoID.AutoSize = true;
+            this.lblMjestoID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lblMjestoID.Location = new System.Drawing.Point(30, 34);
+            this.lblMjestoID.Name = "lblMjestoID";
+            this.lblMjestoID.Size = new System.Drawing.Size(70, 17);
+            this.lblMjestoID.TabIndex = 40;
+            this.lblMjestoID.Text = "Mjesto ID:";
+            // 
+            // tboxMjestoID
+            // 
+            this.tboxMjestoID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.tboxMjestoID.Location = new System.Drawing.Point(115, 31);
+            this.tboxMjestoID.Name = "tboxMjestoID";
+            this.tboxMjestoID.Size = new System.Drawing.Size(206, 23);
+            this.tboxMjestoID.TabIndex = 39;
+            this.tboxMjestoID.Validating += new System.ComponentModel.CancelEventHandler(this.tboxMjestoID_Validating);
+            // 
+            // errProviderID
+            // 
+            this.errProviderID.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errProviderID.ContainerControl = this;
+            // 
             // DodajUrediMjestoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(380, 207);
+            this.ClientSize = new System.Drawing.Size(380, 228);
+            this.Controls.Add(this.lblMjestoID);
+            this.Controls.Add(this.tboxMjestoID);
             this.Controls.Add(this.btnOdustani);
             this.Controls.Add(this.btnPrihvati);
             this.Controls.Add(this.btnOdaberiDrzavu);
@@ -128,6 +158,7 @@
             this.Text = "DodajUrediMjestoForm";
             this.Load += new System.EventHandler(this.DodajUrediMjestoForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errProviderIme)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errProviderID)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -142,5 +173,8 @@
         private System.Windows.Forms.Button btnOdustani;
         private System.Windows.Forms.Button btnPrihvati;
         private System.Windows.Forms.ErrorProvider errProviderIme;
+        private System.Windows.Forms.Label lblMjestoID;
+        private System.Windows.Forms.TextBox tboxMjestoID;
+        private System.Windows.Forms.ErrorProvider errProviderID;
     }
 }

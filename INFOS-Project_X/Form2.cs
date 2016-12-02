@@ -211,76 +211,89 @@ namespace INFOS_Project_X
 
         private void btnDodaj_Click(object sender, EventArgs e)
         {
-            switch (_maticniPodaci)
+            try
             {
-                case MaticniPodaci.Clan:
+                switch (_maticniPodaci)
+                {
+                    case MaticniPodaci.Clan:
 
-                    infosXDatabaseDataSet.ClanRow newClanRow            = ds.Clan.NewClanRow();
-                    DodajUrediClanForm dodajClanForm                    = new DodajUrediClanForm(newClanRow, false);
-                    if(dodajClanForm.ShowDialog() == DialogResult.OK)
-                    {
-                        ds.Clan             .AddClanRow(dodajClanForm.ClanRow);
-                        clanTA              .Update(ds.Clan);
-                        MessageBox          .Show("Zapis je uspješno spremljen");
-                        ds                  .AcceptChanges();
-                    }
-                    else
-                    {
-                        ds                  .RejectChanges();
-                    }
-                    break;
-                case MaticniPodaci.Drustva:
+                        infosXDatabaseDataSet.ClanRow newClanRow            = ds.Clan.NewClanRow();
+                        DodajUrediClanForm dodajClanForm                    = new DodajUrediClanForm(newClanRow, false);
+                        if(dodajClanForm.ShowDialog() == DialogResult.OK)
+                        {
+                            ds.Clan             .AddClanRow(dodajClanForm.ClanRow);
+                            clanTA              .Update(ds.Clan);
+                            MessageBox          .Show("Zapis je uspješno spremljen");
+                            ds                  .AcceptChanges();
+                        }
+                        else
+                        {
+                            ds                  .RejectChanges();
+                        }
+                        break;
 
-                    infosXDatabaseDataSet.DrustvoRow newDrustvoRow      = ds.Drustvo.NewDrustvoRow();
-                    DodajUrediDrustvoForm dodajDrustvoForm              = new DodajUrediDrustvoForm(newDrustvoRow, false);
-                    if (dodajDrustvoForm.ShowDialog() == DialogResult.OK)
-                    {
-                        ds.Drustvo          .AddDrustvoRow(dodajDrustvoForm.DrustvoRow);
-                        drustvoTA           .Update(ds.Drustvo);
-                        MessageBox          .Show("Zapis je uspješno spremljen!");
-                        ds                  .AcceptChanges();
-                    }
-                    else
-                    {
-                        ds.Drustvo          .RejectChanges();
-                    }
+                    case MaticniPodaci.Drustva:
 
-                    break;
+                        infosXDatabaseDataSet.DrustvoRow newDrustvoRow      = ds.Drustvo.NewDrustvoRow();
+                        DodajUrediDrustvoForm dodajDrustvoForm              = new DodajUrediDrustvoForm(newDrustvoRow, false);
+                        if (dodajDrustvoForm.ShowDialog() == DialogResult.OK)
+                        {
+                            ds.Drustvo          .AddDrustvoRow(dodajDrustvoForm.DrustvoRow);
+                            drustvoTA           .Update(ds.Drustvo);
+                            MessageBox          .Show("Zapis je uspješno spremljen!");
+                            ds                  .AcceptChanges();
+                        }
+                        else
+                        {
+                            ds.Drustvo          .RejectChanges();
+                        }
 
-                case MaticniPodaci.Mjesta:
+                        break;
 
-                    infosXDatabaseDataSet.MjestoRow newMjestoRow        = ds.Mjesto.NewMjestoRow();
-                    DodajUrediMjestoForm dodajMjestoForm                = new DodajUrediMjestoForm(newMjestoRow, false);
-                    if(dodajMjestoForm.ShowDialog() == DialogResult.OK)
-                    {
-                        ds.Mjesto           .AddMjestoRow(dodajMjestoForm.MjestoRow);
-                        mjestoTA            .Update(ds.Mjesto);
-                        MessageBox          .Show("Zapis je uspješno spremljen!");
-                        ds                  .AcceptChanges();
-                    }
-                    else
-                    {
-                        ds                  .RejectChanges();
-                    }
-                    break;
+                    case MaticniPodaci.Mjesta:
 
-                case MaticniPodaci.Drzave:
+                        infosXDatabaseDataSet.MjestoRow newMjestoRow        = ds.Mjesto.NewMjestoRow();
+                        DodajUrediMjestoForm dodajMjestoForm                = new DodajUrediMjestoForm(newMjestoRow, false);
+                        if(dodajMjestoForm.ShowDialog() == DialogResult.OK)
+                        {
+                            ds.Mjesto           .AddMjestoRow(dodajMjestoForm.MjestoRow);
+                            mjestoTA            .Update(ds.Mjesto);
+                            MessageBox          .Show("Zapis je uspješno spremljen!");
+                            ds                  .AcceptChanges();
+                        }
+                        else
+                        {
+                            ds                  .RejectChanges();
+                        }
+                        break;
 
-                    infosXDatabaseDataSet.DrzavaRow newDrzavaRow        = ds.Drzava.NewDrzavaRow();
-                    DodajUrediDrzavaForm dodajDrzavaForm                = new DodajUrediDrzavaForm(newDrzavaRow, false);
-                    if(dodajDrzavaForm.ShowDialog() == DialogResult.OK)
-                    {
-                        ds.Drzava           .AddDrzavaRow(dodajDrzavaForm.DrzavaRow);
-                        drzavaTA            .Update(ds.Drzava);
-                        MessageBox          .Show("Zapis je uspješno spremljen");
-                        ds                  .AcceptChanges();
-                    }
-                    else
-                    {
-                        ds                  .RejectChanges();
-                    }
-                    break;
+                    case MaticniPodaci.Drzave:
+
+                        infosXDatabaseDataSet.DrzavaRow newDrzavaRow        = ds.Drzava.NewDrzavaRow();
+                        DodajUrediDrzavaForm dodajDrzavaForm                = new DodajUrediDrzavaForm(newDrzavaRow, false);
+                        if(dodajDrzavaForm.ShowDialog() == DialogResult.OK)
+                        {
+                            ds.Drzava           .AddDrzavaRow(dodajDrzavaForm.DrzavaRow);
+                            drzavaTA            .Update(ds.Drzava);
+                            MessageBox          .Show("Zapis je uspješno spremljen");
+                            ds                  .AcceptChanges();
+                        }
+                        else
+                        {
+                            ds                  .RejectChanges();
+                        }
+                        break;
+                }
             }
+            catch (Exception ex)
+            {
+                if (ex.GetType().IsAssignableFrom(typeof(ConstraintException)))
+                {
+                    MessageBox.Show("ID već postoji. Unesite jedinstveni ID");
+                }
+                
+            }
+            
         }
 
         private void btnUredi_Click(object sender, EventArgs e)

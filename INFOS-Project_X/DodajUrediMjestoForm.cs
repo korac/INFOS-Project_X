@@ -36,6 +36,7 @@ namespace INFOS_Project_X
             {
                 this.Text                   = "Uredi mjesto";
 
+                tboxMjestoID.Text           = MjestoRow.ID;
                 tboxIme.Text                = MjestoRow.Ime;
 
                 cboxDrzava.DataSource       = ds.Drzava;
@@ -55,16 +56,20 @@ namespace INFOS_Project_X
 
         private void btnPrihvati_Click(object sender, EventArgs e)
         {
-            if(ValidateIme())
+            if (ValidateID())
             {
-                MjestoRow.Ime               = tboxIme.Text;
-                MjestoRow.Drzava_ID         = cboxDrzava.SelectedValue.ToString();
+                if(ValidateIme())
+                {
+                    MjestoRow.ID                = tboxMjestoID.Text;
+                    MjestoRow.Ime               = tboxIme.Text;
+                    MjestoRow.Drzava_ID         = cboxDrzava.SelectedValue.ToString();
 
-                this.DialogResult           = DialogResult.OK;
-            }
-            else
-            {
-                MessageBox.Show("Molimo unesite sve potrebne podatke");
+                    this.DialogResult           = DialogResult.OK;
+                }
+                else
+                {
+                    MessageBox.Show("Unesite sve potrebne podatke");
+                }
             }
         }
 
@@ -95,9 +100,36 @@ namespace INFOS_Project_X
             }
         }
 
+        private void tboxMjestoID_Validating(object sender, CancelEventArgs e)
+        {
+            ValidateID();
+        }
+
         private void tboxIme_Validating(object sender, CancelEventArgs e)
         {
             ValidateIme();
+        }
+
+        private bool ValidateID()
+        {
+            bool bStatus                = true;
+            if(tboxMjestoID.Text == "")
+            {
+                errProviderID           .SetError(tboxMjestoID, "Unesite ID mjesta");
+                bStatus                 = false;
+            }
+            else if (!PomocneFunkcije.IDExists(tboxMjestoID.Text, MaticniPodaci.Mjesta))
+            {
+                MessageBox              .Show("Unijeli ste već postojeći ID");
+                errProviderID           .SetError(tboxMjestoID, "Unesite jedinstveni ID mjesta");
+                bStatus                 = false;
+            }
+            else
+            {
+                errProviderID           .SetError(tboxMjestoID, "");
+            }
+
+            return bStatus;
         }
 
         private bool ValidateIme()
@@ -105,12 +137,12 @@ namespace INFOS_Project_X
             bool bStatus                = true;
             if(tboxIme.Text == "")
             {
-                errProviderIme          .SetError(tboxIme, "Molimo unesite ime mjesta");
+                errProviderIme          .SetError(tboxIme, "Unesite ime mjesta");
                 bStatus                 = false;
             }
             else if (!PomocneFunkcije.IsValidNaziv(tboxIme.Text))
             {
-                errProviderIme          .SetError(tboxIme, "Molimo unesite ispravano ime mjesta");
+                errProviderIme          .SetError(tboxIme, "Unesite ispravano ime mjesta");
                 bStatus                 = false;
             }
             else
@@ -120,5 +152,7 @@ namespace INFOS_Project_X
 
             return bStatus;
         }
+
+
     }
 }

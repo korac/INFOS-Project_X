@@ -78,26 +78,28 @@ namespace INFOS_Project_X
 
         private void btnPrihvati_Click(object sender, EventArgs e)
         {
-            if (ValidateIme("ime") && ValidateIme("prezime") && ValidateOIB() && ValidateDatumRodenja() && ValidateZanimanje() && ValidateAdresa() && ValidateTelefon())
+            if (ValidateOIB())
             {
-                ClanRow.Ime                     = tboxIme.Text;
-                ClanRow.Prezime                 = tboxPrezime.Text;
-                ClanRow.OIB                     = tboxOib.Text;
-                ClanRow.DatumRodenja            = Convert.ToDateTime(tboxDatumRodenja.Text);
-                ClanRow.Zanimanje               = tboxZanimanje.Text;
-                ClanRow.Drustvo_ID              = cboxDrustvo.SelectedValue.ToString();
-                ClanRow.Mjesto_ID               = cboxMjesto.SelectedValue.ToString();
-                ClanRow.Telefon                 = tboxTelefon.Text;
-                ClanRow.Email                   = tboxEmail.Text;
-                ClanRow.Adresa                  = tboxAdresa.Text;
+                if (ValidateIme("ime") && ValidateIme("prezime") && ValidateDatumRodenja() && ValidateZanimanje() && ValidateAdresa() && ValidateTelefon())
+                {
+                    ClanRow.Ime                     = tboxIme.Text;
+                    ClanRow.Prezime                 = tboxPrezime.Text;
+                    ClanRow.OIB                     = tboxOib.Text;
+                    ClanRow.DatumRodenja            = Convert.ToDateTime(tboxDatumRodenja.Text);
+                    ClanRow.Zanimanje               = tboxZanimanje.Text;
+                    ClanRow.Drustvo_ID              = cboxDrustvo.SelectedValue.ToString();
+                    ClanRow.Mjesto_ID               = cboxMjesto.SelectedValue.ToString();
+                    ClanRow.Telefon                 = tboxTelefon.Text;
+                    ClanRow.Email                   = tboxEmail.Text;
+                    ClanRow.Adresa                  = tboxAdresa.Text;
 
-                this.DialogResult               = DialogResult.OK;
-            }
-            else
-            {
-                MessageBox.Show("Molimo unesite sve potrebne podatke");
-            }
-            
+                    this.DialogResult               = DialogResult.OK;
+                }
+                else
+                {
+                    MessageBox.Show("Unesite sve potrebne podatke");
+                }
+            }           
         }
 
         private void RefreshComboDrustvo()
@@ -170,12 +172,12 @@ namespace INFOS_Project_X
 
             if(box.Text == "")
             {
-                errProvider             .SetError(box, "Molimo unesite " + name + " člana");
+                errProvider             .SetError(box, "Unesite " + name + " člana");
                 bStatus                 = false;
             }
             else if (!PomocneFunkcije.IsValidIme(box.Text))
             {
-                errProvider             .SetError(box, "Molimo unesite ispravano " + name);
+                errProvider             .SetError(box, "Unesite ispravano " + name);
                 bStatus                 = false;
             }
             else
@@ -191,12 +193,18 @@ namespace INFOS_Project_X
             bool bStatus                = true;
             if (tboxOib.Text == "")
             {
-                errProviderOIB          .SetError(tboxOib, "Molimo unesite OIB člana");
+                errProviderOIB          .SetError(tboxOib, "Unesite OIB člana");
                 bStatus                 = false;
             }
             else if(!PomocneFunkcije.isValidOIB(tboxOib.Text))
             {
-                errProviderOIB          .SetError(tboxOib, "Molimo unesite ispravan OIB člana");
+                errProviderOIB          .SetError(tboxOib, "Unesite ispravan OIB člana");
+                bStatus                 = false;
+            }
+            else if (!PomocneFunkcije.IDExists(tboxOib.Text, MaticniPodaci.Clan))
+            {
+                MessageBox              .Show("Član sa unesenim OIB-om već postoji");
+                errProviderOIB          .SetError(tboxOib, "Unesite jedinstveni OIB člana");
                 bStatus                 = false;
             }
             else
@@ -212,12 +220,12 @@ namespace INFOS_Project_X
             bool bStatus                = true;
             if (tboxDatumRodenja.Text == "")
             {
-                errProviderDatumRodenja .SetError(tboxDatumRodenja, "Molimo unesite datum rođenja člana");
+                errProviderDatumRodenja .SetError(tboxDatumRodenja, "Unesite datum rođenja člana");
                 bStatus                 = false;
             }
             else if(!PomocneFunkcije.isValidDatumRodenja(tboxDatumRodenja.Text))
             {
-                errProviderDatumRodenja .SetError(tboxDatumRodenja, "Molimo unesite ispravan datum rođenja člana");
+                errProviderDatumRodenja .SetError(tboxDatumRodenja, "Unesite ispravan datum rođenja člana");
                 bStatus                 = false;
             }
             else
@@ -233,7 +241,7 @@ namespace INFOS_Project_X
             bool bStatus                = true;
             if (!PomocneFunkcije.IsValidIme(tboxZanimanje.Text))
             {
-                errProviderZanimanje    .SetError(tboxZanimanje, "Molimo unesite ispravan naziv zanimanja");
+                errProviderZanimanje    .SetError(tboxZanimanje, "Unesite ispravan naziv zanimanja");
                 bStatus                 = false;
             }
             else
@@ -249,7 +257,7 @@ namespace INFOS_Project_X
             bool bStatus                = true;
             if (!PomocneFunkcije.isValidTelefon(tboxTelefon.Text))
             {
-                errProviderTelefon      .SetError(tboxTelefon, "Molimo unesite ispravan broj telefona");
+                errProviderTelefon      .SetError(tboxTelefon, "Unesite ispravan broj telefona");
                 bStatus                 = false;
             }
             else
@@ -265,7 +273,7 @@ namespace INFOS_Project_X
             bool bStatus                = true;
             if (!PomocneFunkcije.isValidAdresa(tboxAdresa.Text))
             {
-                errProviderAdresa       .SetError(tboxAdresa, "Molimo unesite ispravanu adresu");
+                errProviderAdresa       .SetError(tboxAdresa, "Unesite ispravanu adresu");
                 bStatus                 = false;
             }
             else

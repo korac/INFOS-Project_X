@@ -27,6 +27,64 @@ namespace INFOS_Project_X
             }
         }
 
+        public static bool IDExists(string ID, MaticniPodaci matpod)
+        {
+            switch (matpod)
+            {
+                case MaticniPodaci.Clan:
+
+                    infosXDatabaseDataSetTableAdapters.ClanTableAdapter clanTA          = new infosXDatabaseDataSetTableAdapters.ClanTableAdapter();
+
+                    var clanOibCount        = clanTA.CheckIfOibExists(ID);
+                    if (clanOibCount.HasValue && clanOibCount > 0)
+                    {
+                        return false;
+                    }
+                    return true;
+                    break;
+
+                case MaticniPodaci.Drustva:
+
+                    infosXDatabaseDataSetTableAdapters.DrustvoTableAdapter drustvoTA    = new infosXDatabaseDataSetTableAdapters.DrustvoTableAdapter();
+
+                    var drustvoIDCount      = drustvoTA.CheckIfIDExists(ID);
+                    if (drustvoIDCount.HasValue && drustvoIDCount > 0)
+                    {
+                        return false;
+                    }
+                    return true;
+                    break;
+
+                case MaticniPodaci.Mjesta:
+
+                    infosXDatabaseDataSetTableAdapters.MjestoTableAdapter mjestoTA      = new infosXDatabaseDataSetTableAdapters.MjestoTableAdapter();
+
+                    var mjestoIDCount       = mjestoTA.CheckIfIDExists(ID);
+                    if (mjestoIDCount.HasValue && mjestoIDCount > 0)
+                    {
+                        Console.WriteLine(mjestoIDCount);
+                        return false;
+                    }
+                    return true;
+                    break;
+
+                case MaticniPodaci.Drzave:
+
+                    infosXDatabaseDataSetTableAdapters.DrzavaTableAdapter drzavaTA      = new infosXDatabaseDataSetTableAdapters.DrzavaTableAdapter();
+
+                    var drzavaIDCount       = drzavaTA.CheckIfIDExists(ID);
+                    if (drzavaIDCount.HasValue && drzavaIDCount > 0)
+                    {
+                        return false;
+                    }
+                    return true;
+                    break;
+
+                default:
+                    return false;
+            }
+        }
+
         public static bool IsValidIme(string ime)
         {
             foreach (char l in ime)
@@ -68,6 +126,18 @@ namespace INFOS_Project_X
             foreach (char l in telefon)
             {
                 if (!Char.IsDigit(l) && Char.ToString(l) != "-" && Char.ToString(l) != " ")
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        public static bool isValidPozivni(string pozivniBroj)
+        {
+            foreach (char l in pozivniBroj)
+            {
+                if (!Char.IsDigit(l) && Char.ToString(l) != "+")
                 {
                     return false;
                 }
