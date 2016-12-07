@@ -36,6 +36,8 @@ namespace INFOS_Project_X
             {
                 this.Text                   = "Uredi mjesto";
 
+                tboxMjestoID.Enabled        = false;
+
                 tboxMjestoID.Text           = MjestoRow.ID;
                 tboxIme.Text                = MjestoRow.Ime;
 
@@ -118,7 +120,7 @@ namespace INFOS_Project_X
                 errProviderID           .SetError(tboxMjestoID, "Unesite ID mjesta");
                 bStatus                 = false;
             }
-            else if (!PomocneFunkcije.IDExists(tboxMjestoID.Text, MaticniPodaci.Mjesta))
+            else if (!_isUredi && !PomocneFunkcije.IDExists(tboxMjestoID.Text, MaticniPodaci.Mjesta))
             {
                 MessageBox              .Show("Unijeli ste već postojeći ID");
                 errProviderID           .SetError(tboxMjestoID, "Unesite jedinstveni ID mjesta");

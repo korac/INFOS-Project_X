@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DodajUrediClanForm));
             this.btnOdaberiMjesta = new System.Windows.Forms.Button();
             this.cboxMjesto = new System.Windows.Forms.ComboBox();
             this.btnOdustani = new System.Windows.Forms.Button();
@@ -385,6 +386,7 @@
             this.Controls.Add(this.lblUrediIme);
             this.Controls.Add(this.tboxIme);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "DodajUrediClanForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DodajUrediClanForm";

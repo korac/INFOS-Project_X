@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DodajUrediDrustvoForm));
             this.btnOdustani = new System.Windows.Forms.Button();
             this.btnPrihvati = new System.Windows.Forms.Button();
             this.lblUrediEmail = new System.Windows.Forms.Label();
@@ -281,6 +282,7 @@
             this.Controls.Add(this.lblUrediNaziv);
             this.Controls.Add(this.tboxNaziv);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "DodajUrediDrustvoForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UrediDrustvoForm";

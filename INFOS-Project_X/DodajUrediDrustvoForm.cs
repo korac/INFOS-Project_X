@@ -34,6 +34,8 @@ namespace INFOS_Project_X
             {
                 this.Text                   = "Uredi društvo";
 
+                tboxDrustvoID.Enabled       = false;
+
                 tboxDrustvoID.Text          = DrustvoRow.ID;
                 tboxNaziv.Text              = DrustvoRow.Naziv;
                 tboxAdresa.Text             = DrustvoRow.IsAdresaNull() ? "" : DrustvoRow.Adresa;
@@ -141,7 +143,7 @@ namespace INFOS_Project_X
                 errProviderID           .SetError(tboxDrustvoID, "Unesite ID društva");
                 bStatus                 = false;
             }
-            else if (!PomocneFunkcije.IDExists(tboxDrustvoID.Text, MaticniPodaci.Drustva))
+            else if (!_isUredi && !PomocneFunkcije.IDExists(tboxDrustvoID.Text, MaticniPodaci.Drustva))
             {
                 MessageBox              .Show("Unijeli ste već postojeći ID");
                 errProviderID           .SetError(tboxDrustvoID, "Unesite jedinstveni ID drustvo");

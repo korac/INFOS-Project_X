@@ -37,6 +37,8 @@ namespace INFOS_Project_X
             {
                 this.Text                   = "Uredi člana";
 
+                tboxOib.Enabled             = false;
+
                 tboxIme.Text                = ClanRow.Ime;
                 tboxPrezime.Text            = ClanRow.Prezime;
                 tboxOib.Text                = ClanRow.OIB;
@@ -82,18 +84,19 @@ namespace INFOS_Project_X
             {
                 if (ValidateIme("ime") && ValidateIme("prezime") && ValidateDatumRodenja() && ValidateZanimanje() && ValidateAdresa() && ValidateTelefon())
                 {
-                    ClanRow.Ime                     = tboxIme.Text;
-                    ClanRow.Prezime                 = tboxPrezime.Text;
-                    ClanRow.OIB                     = tboxOib.Text;
-                    ClanRow.DatumRodenja            = Convert.ToDateTime(tboxDatumRodenja.Text);
-                    ClanRow.Zanimanje               = tboxZanimanje.Text;
-                    ClanRow.Drustvo_ID              = cboxDrustvo.SelectedValue.ToString();
-                    ClanRow.Mjesto_ID               = cboxMjesto.SelectedValue.ToString();
-                    ClanRow.Telefon                 = tboxTelefon.Text;
-                    ClanRow.Email                   = tboxEmail.Text;
-                    ClanRow.Adresa                  = tboxAdresa.Text;
+                    ClanRow.Ime             = tboxIme.Text;
+                    ClanRow.Prezime         = tboxPrezime.Text;
+                    ClanRow.OIB             = tboxOib.Text;
 
-                    this.DialogResult               = DialogResult.OK;
+                    ClanRow.DatumRodenja    = Convert.ToDateTime(tboxDatumRodenja.Text);
+                    ClanRow.Zanimanje       = tboxZanimanje.Text;
+                    ClanRow.Drustvo_ID      = cboxDrustvo.SelectedValue.ToString();
+                    ClanRow.Mjesto_ID       = cboxMjesto.SelectedValue.ToString();
+                    ClanRow.Telefon         = tboxTelefon.Text;
+                    ClanRow.Email           = tboxEmail.Text;
+                    ClanRow.Adresa          = tboxAdresa.Text;
+
+                    this.DialogResult       = DialogResult.OK;
                 }
                 else
                 {
@@ -201,7 +204,7 @@ namespace INFOS_Project_X
                 errProviderOIB          .SetError(tboxOib, "Unesite ispravan OIB člana");
                 bStatus                 = false;
             }
-            else if (!PomocneFunkcije.IDExists(tboxOib.Text, MaticniPodaci.Clan))
+            else if (!_isUredi && !PomocneFunkcije.IDExists(tboxOib.Text, MaticniPodaci.Clan))
             {
                 MessageBox              .Show("Član sa unesenim OIB-om već postoji");
                 errProviderOIB          .SetError(tboxOib, "Unesite jedinstveni OIB člana");

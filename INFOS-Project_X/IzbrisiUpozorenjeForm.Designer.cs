@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(IzbrisiUpozorenjeForm));
             this.lblPoruka = new System.Windows.Forms.Label();
             this.btnIzbrisi = new System.Windows.Forms.Button();
             this.btnOdustani = new System.Windows.Forms.Button();
@@ -84,6 +85,7 @@
             this.Controls.Add(this.btnIzbrisi);
             this.Controls.Add(this.lblPoruka);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "IzbrisiUpozorenjeForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Izbrisati?";

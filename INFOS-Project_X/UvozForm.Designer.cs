@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UvozForm));
             this.dgvUvoz = new System.Windows.Forms.DataGridView();
             this.btnPohrani = new System.Windows.Forms.Button();
             this.btnOdustani = new System.Windows.Forms.Button();
@@ -36,9 +37,15 @@
             // 
             // dgvUvoz
             // 
+            this.dgvUvoz.AllowUserToResizeColumns = false;
+            this.dgvUvoz.AllowUserToResizeRows = false;
             this.dgvUvoz.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvUvoz.Location = new System.Drawing.Point(12, 71);
+            this.dgvUvoz.MultiSelect = false;
             this.dgvUvoz.Name = "dgvUvoz";
+            this.dgvUvoz.ReadOnly = true;
+            this.dgvUvoz.RowHeadersVisible = false;
+            this.dgvUvoz.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvUvoz.Size = new System.Drawing.Size(664, 266);
             this.dgvUvoz.TabIndex = 1;
             // 
@@ -83,6 +90,7 @@
             this.Controls.Add(this.btnPohrani);
             this.Controls.Add(this.dgvUvoz);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "UvozForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Uvoz";

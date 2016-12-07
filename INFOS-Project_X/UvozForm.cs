@@ -64,6 +64,7 @@ namespace INFOS_Project_X
                             }
 
                             dgvUvoz.DataSource          = ds.Clan;
+                            PomocneFunkcije.AutoSizeDgvColumns(dgvUvoz.Columns);
                             break;
 
                         case MaticniPodaci.Drustva:
@@ -86,6 +87,7 @@ namespace INFOS_Project_X
                             }
 
                             dgvUvoz.DataSource          = ds.Drustvo;
+                            PomocneFunkcije.AutoSizeDgvColumns(dgvUvoz.Columns);
                             break;
 
                         case MaticniPodaci.Mjesta:
@@ -104,6 +106,7 @@ namespace INFOS_Project_X
                             }
 
                             dgvUvoz.DataSource          = ds.Mjesto;
+                            PomocneFunkcije.AutoSizeDgvColumns(dgvUvoz.Columns);
                             break;
 
                         case MaticniPodaci.Drzave:
@@ -125,13 +128,19 @@ namespace INFOS_Project_X
                             }
                     
                             dgvUvoz.DataSource          = ds.Drzava;
+                            PomocneFunkcije.AutoSizeDgvColumns(dgvUvoz.Columns);
                             break;
                     }
+                }
+                else
+                {
+                    this.Close();
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Greška s uvozom vanjske XML datoteke: " + ex.Message);
+                this.Close();
             }
      
         }

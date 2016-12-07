@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(IzlazUpozorenjeForm));
             this.btnIzadi = new System.Windows.Forms.Button();
             this.btnOdustani = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -82,6 +83,7 @@
             this.Controls.Add(this.btnOdustani);
             this.Controls.Add(this.btnIzadi);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "IzlazUpozorenjeForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pozor";

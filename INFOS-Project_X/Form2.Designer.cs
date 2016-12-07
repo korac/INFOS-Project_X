@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
             this.dgvPrikaz = new System.Windows.Forms.DataGridView();
             this.lblPrikaz = new System.Windows.Forms.Label();
             this.btnDodaj = new System.Windows.Forms.Button();
@@ -192,6 +193,7 @@
             this.Controls.Add(this.dgvPrikaz);
             this.Controls.Add(this.gboxStart);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimizeBox = false;
             this.Name = "Form2";
             this.ShowIcon = false;

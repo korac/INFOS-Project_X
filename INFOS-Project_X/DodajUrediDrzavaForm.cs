@@ -27,6 +27,9 @@ namespace INFOS_Project_X
             {
                 this.Text               = "Uredi državu";
 
+                tboxDrzavaID.Enabled    = false;
+
+                tboxDrzavaID.Text       = DrzavaRow.ID;
                 tboxIme.Text            = DrzavaRow.Ime;
                 tboxJezik.Text          = DrzavaRow.Jezik;
                 tboxPozivni.Text        = DrzavaRow.PozivniBroj;
@@ -98,7 +101,7 @@ namespace INFOS_Project_X
                 errProviderID           .SetError(tboxDrzavaID, "Unesite ID države");
                 bStatus                 = false;
             }
-            else if (!PomocneFunkcije.IDExists(tboxDrzavaID.Text, MaticniPodaci.Drzave))
+            else if (!_isUredi && !PomocneFunkcije.IDExists(tboxDrzavaID.Text, MaticniPodaci.Drzave))
             {
                 MessageBox              .Show("Unijeli ste već postojeći ID");
                 errProviderID           .SetError(tboxDrzavaID, "Unesite jedinstveni ID države");
