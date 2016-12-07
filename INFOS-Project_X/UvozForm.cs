@@ -32,101 +32,108 @@ namespace INFOS_Project_X
         {
             btnPohrani.Visible      = true;
             btnOdustani.Visible     = true;
-            OpenFileDialog openXml  = new OpenFileDialog();
 
-            if(openXml.ShowDialog() == DialogResult.OK)
+            try
             {
-                XDocument xmlDoc    = XDocument.Load(openXml.FileName);
+                OpenFileDialog openXml  = new OpenFileDialog();
 
-                switch (_maticniPodaci)
+                if(openXml.ShowDialog() == DialogResult.OK)
                 {
-                    case MaticniPodaci.Clan:
+                    XDocument xmlDoc    = XDocument.Load(openXml.FileName);
 
-                        foreach (var i in xmlDoc.Descendants("Clan"))
-                        {
-                            infosXDatabaseDataSet.ClanRow clanRow   = ds.Clan.NewClanRow();
+                    switch (_maticniPodaci)
+                    {
+                        case MaticniPodaci.Clan:
 
-                            clanRow.OIB             = i.Element("OIB").Value;
-                            clanRow.Ime             = i.Element("Ime").Value;
-                            clanRow.Prezime         = i.Element("Prezime").Value;
-                            clanRow.DatumRodenja    = Convert.ToDateTime(i.Element("DatumRodenja").Value);
-                            clanRow.Zanimanje       = (i.Element("Zanimanje").Value != "") ? i.Element("Zanimanje").Value : "";
-                            clanRow.Drustvo_ID      = i.Element("Drustvo_ID").Value;
-                            clanRow.Mjesto_ID       = (i.Element("Mjesto_ID").Value != "") ? i.Element("Mjesto_ID").Value : null;
-                            clanRow.Email           = (i.Element("Email").Value != "") ? i.Element("Email").Value : "";
-                            clanRow.Adresa          = (i.Element("Adresa").Value != "") ? i.Element("Adresa").Value : "";
-                            clanRow.Telefon         = (i.Element("Telefon").Value != "") ? i.Element("Telefon").Value : "";
+                            foreach (var i in xmlDoc.Descendants("Clan"))
+                            {
+                                infosXDatabaseDataSet.ClanRow clanRow   = ds.Clan.NewClanRow();
 
-                            ds.Clan                 .AddClanRow(clanRow);
-                        }
+                                clanRow.OIB             = i.Element("OIB").Value;
+                                clanRow.Ime             = i.Element("Ime").Value;
+                                clanRow.Prezime         = i.Element("Prezime").Value;
+                                clanRow.DatumRodenja    = Convert.ToDateTime(i.Element("DatumRodenja").Value);
+                                clanRow.Zanimanje       = (i.Element("Zanimanje").Value != "") ? i.Element("Zanimanje").Value : "";
+                                clanRow.Drustvo_ID      = i.Element("Drustvo_ID").Value;
+                                clanRow.Mjesto_ID       = (i.Element("Mjesto_ID").Value != "") ? i.Element("Mjesto_ID").Value : null;
+                                clanRow.Email           = (i.Element("Email").Value != "") ? i.Element("Email").Value : "";
+                                clanRow.Adresa          = (i.Element("Adresa").Value != "") ? i.Element("Adresa").Value : "";
+                                clanRow.Telefon         = (i.Element("Telefon").Value != "") ? i.Element("Telefon").Value : "";
 
-                        dgvUvoz.DataSource          = ds.Clan;
-                        break;
+                                ds.Clan                 .AddClanRow(clanRow);
+                            }
 
-                    case MaticniPodaci.Drustva:
+                            dgvUvoz.DataSource          = ds.Clan;
+                            break;
 
-                        int j = 1;
-                        foreach(var i in xmlDoc.Descendants("Drustvo"))
-                        {
-                            infosXDatabaseDataSet.DrustvoRow drustvoRow    = ds.Drustvo.NewDrustvoRow();
+                        case MaticniPodaci.Drustva:
 
-                            drustvoRow.ID           = "drustvo" + j;
-                            drustvoRow.Naziv        = i.Element("Naziv").Value;
-                            drustvoRow.Adresa       = (i.Element("Adresa").Value != "") ? i.Element("Adresa").Value : ""; //null
-                            drustvoRow.Email        = (i.Element("Email").Value != "") ? i.Element("Email").Value : ""; //null
-                            drustvoRow.Mjesto_ID    = i.Element("Mjesto_ID").Value;
-                            drustvoRow.BrojRacuna   = (i.Element("BrojRacuna").Value != "") ? i.Element("BrojRacuna").Value : ""; //null
-                            drustvoRow.Telefon      = (i.Element("Telefon").Value != "") ? i.Element("Telefon").Value : ""; //null
+                            int j = 1;
+                            foreach(var i in xmlDoc.Descendants("Drustvo"))
+                            {
+                                infosXDatabaseDataSet.DrustvoRow drustvoRow    = ds.Drustvo.NewDrustvoRow();
 
-                            ds.Drustvo              .AddDrustvoRow(drustvoRow);
-                            j++;
-                        }
+                                drustvoRow.ID           = "drustvo" + j;
+                                drustvoRow.Naziv        = i.Element("Naziv").Value;
+                                drustvoRow.Adresa       = (i.Element("Adresa").Value != "") ? i.Element("Adresa").Value : ""; //null
+                                drustvoRow.Email        = (i.Element("Email").Value != "") ? i.Element("Email").Value : ""; //null
+                                drustvoRow.Mjesto_ID    = i.Element("Mjesto_ID").Value;
+                                drustvoRow.BrojRacuna   = (i.Element("BrojRacuna").Value != "") ? i.Element("BrojRacuna").Value : ""; //null
+                                drustvoRow.Telefon      = (i.Element("Telefon").Value != "") ? i.Element("Telefon").Value : ""; //null
 
-                        dgvUvoz.DataSource          = ds.Drustvo;
-                        break;
+                                ds.Drustvo              .AddDrustvoRow(drustvoRow);
+                                j++;
+                            }
 
-                    case MaticniPodaci.Mjesta:
+                            dgvUvoz.DataSource          = ds.Drustvo;
+                            break;
 
-                        int k = 1;
-                        foreach(var i in xmlDoc.Descendants("Mjesto"))
-                        {
-                            infosXDatabaseDataSet.MjestoRow mjestoRow   = ds.Mjesto.NewMjestoRow();
+                        case MaticniPodaci.Mjesta:
 
-                            mjestoRow.ID            = "mjesto" + k;
-                            mjestoRow.Ime           = i.Element("Ime").Value;
-                            mjestoRow.Drzava_ID     = i.Element("Drzava_ID").Value;
+                            int k = 1;
+                            foreach(var i in xmlDoc.Descendants("Mjesto"))
+                            {
+                                infosXDatabaseDataSet.MjestoRow mjestoRow   = ds.Mjesto.NewMjestoRow();
+
+                                mjestoRow.ID            = "mjesto" + k;
+                                mjestoRow.Ime           = i.Element("Ime").Value;
+                                mjestoRow.Drzava_ID     = i.Element("Drzava_ID").Value;
                         
-                            ds.Mjesto               .AddMjestoRow(mjestoRow);
-                            k++;
-                        }
+                                ds.Mjesto               .AddMjestoRow(mjestoRow);
+                                k++;
+                            }
 
-                        dgvUvoz.DataSource          = ds.Mjesto;
-                        break;
+                            dgvUvoz.DataSource          = ds.Mjesto;
+                            break;
 
-                    case MaticniPodaci.Drzave:
+                        case MaticniPodaci.Drzave:
 
-                        int p = 1;
-                        foreach(var i in xmlDoc.Descendants("Drzava"))
-                        {
-                            infosXDatabaseDataSet.DrzavaRow drzavaRow   = ds.Drzava.NewDrzavaRow();
+                            int p = 1;
+                            foreach(var i in xmlDoc.Descendants("Drzava"))
+                            {
+                                infosXDatabaseDataSet.DrzavaRow drzavaRow   = ds.Drzava.NewDrzavaRow();
 
-                            drzavaRow.ID            = "drzava" + p;
-                            drzavaRow.Ime           = i.Element("Ime").Value;
-                            drzavaRow.Jezik         = i.Element("Jezik").Value;
-                            drzavaRow.PozivniBroj   = i.Element("PozivniBroj").Value;
-                            drzavaRow.Valuta        = i.Element("Valuta").Value;
+                                drzavaRow.ID            = "drzava" + p;
+                                drzavaRow.Ime           = i.Element("Ime").Value;
+                                drzavaRow.Jezik         = i.Element("Jezik").Value;
+                                drzavaRow.PozivniBroj   = i.Element("PozivniBroj").Value;
+                                drzavaRow.Valuta        = i.Element("Valuta").Value;
 
-                            ds.Drzava               .AddDrzavaRow(drzavaRow);
+                                ds.Drzava               .AddDrzavaRow(drzavaRow);
 
-                            p++;
-                        }
+                                p++;
+                            }
                     
-                        dgvUvoz.DataSource          = ds.Drzava;
-                        break;
+                            dgvUvoz.DataSource          = ds.Drzava;
+                            break;
+                    }
                 }
             }
-
-            
+            catch (Exception ex)
+            {
+                MessageBox.Show("Greška s uvozom vanjske XML datoteke: " + ex.Message);
+            }
+     
         }
 
         private void btnPohrani_Click(object sender, EventArgs e)
