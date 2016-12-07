@@ -35,46 +35,58 @@
             // 
             // lblPoruka
             // 
+            this.lblPoruka.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblPoruka.AutoSize = true;
             this.lblPoruka.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblPoruka.Location = new System.Drawing.Point(90, 51);
+            this.lblPoruka.ForeColor = System.Drawing.Color.LightGray;
+            this.lblPoruka.Location = new System.Drawing.Point(48, 53);
             this.lblPoruka.Name = "lblPoruka";
-            this.lblPoruka.Size = new System.Drawing.Size(61, 20);
+            this.lblPoruka.Size = new System.Drawing.Size(79, 20);
             this.lblPoruka.TabIndex = 0;
-            this.lblPoruka.Text = "Poruka";
+            this.lblPoruka.Text = "PORUKA";
             this.lblPoruka.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // btnIzbrisi
             // 
-            this.btnIzbrisi.Location = new System.Drawing.Point(66, 131);
+            this.btnIzbrisi.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.btnIzbrisi.FlatAppearance.BorderSize = 0;
+            this.btnIzbrisi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnIzbrisi.Location = new System.Drawing.Point(78, 112);
             this.btnIzbrisi.Name = "btnIzbrisi";
-            this.btnIzbrisi.Size = new System.Drawing.Size(154, 42);
+            this.btnIzbrisi.Size = new System.Drawing.Size(114, 45);
             this.btnIzbrisi.TabIndex = 1;
-            this.btnIzbrisi.Text = "Izbriši";
-            this.btnIzbrisi.UseVisualStyleBackColor = true;
+            this.btnIzbrisi.Text = "IZBRIŠI";
+            this.btnIzbrisi.UseVisualStyleBackColor = false;
             this.btnIzbrisi.Click += new System.EventHandler(this.btnIzbrisi_Click);
             // 
             // btnOdustani
             // 
-            this.btnOdustani.Location = new System.Drawing.Point(262, 131);
+            this.btnOdustani.BackColor = System.Drawing.Color.IndianRed;
+            this.btnOdustani.FlatAppearance.BorderSize = 0;
+            this.btnOdustani.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOdustani.Location = new System.Drawing.Point(198, 112);
             this.btnOdustani.Name = "btnOdustani";
-            this.btnOdustani.Size = new System.Drawing.Size(154, 42);
+            this.btnOdustani.Size = new System.Drawing.Size(114, 45);
             this.btnOdustani.TabIndex = 2;
-            this.btnOdustani.Text = "Odustani";
-            this.btnOdustani.UseVisualStyleBackColor = true;
+            this.btnOdustani.Text = "ODUSTANI";
+            this.btnOdustani.UseVisualStyleBackColor = false;
             this.btnOdustani.Click += new System.EventHandler(this.btnOdustani_Click);
             // 
             // IzbrisiUpozorenjeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(482, 217);
+            this.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.ClientSize = new System.Drawing.Size(381, 178);
             this.Controls.Add(this.btnOdustani);
             this.Controls.Add(this.btnIzbrisi);
             this.Controls.Add(this.lblPoruka);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "IzbrisiUpozorenjeForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "IzbrisiUpozorenjeForm";
+            this.Text = "Izbrisati?";
             this.ResumeLayout(false);
             this.PerformLayout();
 

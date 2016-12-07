@@ -57,16 +57,17 @@
             // 
             this.lblUrediIme.AutoSize = true;
             this.lblUrediIme.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblUrediIme.Location = new System.Drawing.Point(78, 68);
+            this.lblUrediIme.ForeColor = System.Drawing.Color.LightGray;
+            this.lblUrediIme.Location = new System.Drawing.Point(88, 75);
             this.lblUrediIme.Name = "lblUrediIme";
-            this.lblUrediIme.Size = new System.Drawing.Size(34, 17);
+            this.lblUrediIme.Size = new System.Drawing.Size(35, 17);
             this.lblUrediIme.TabIndex = 27;
-            this.lblUrediIme.Text = "Ime:";
+            this.lblUrediIme.Text = "IME:";
             // 
             // tboxIme
             // 
             this.tboxIme.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.tboxIme.Location = new System.Drawing.Point(127, 68);
+            this.tboxIme.Location = new System.Drawing.Point(138, 72);
             this.tboxIme.Name = "tboxIme";
             this.tboxIme.Size = new System.Drawing.Size(206, 23);
             this.tboxIme.TabIndex = 26;
@@ -76,16 +77,17 @@
             // 
             this.lblUrediJezik.AutoSize = true;
             this.lblUrediJezik.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblUrediJezik.Location = new System.Drawing.Point(68, 107);
+            this.lblUrediJezik.ForeColor = System.Drawing.Color.LightGray;
+            this.lblUrediJezik.Location = new System.Drawing.Point(74, 118);
             this.lblUrediJezik.Name = "lblUrediJezik";
-            this.lblUrediJezik.Size = new System.Drawing.Size(44, 17);
+            this.lblUrediJezik.Size = new System.Drawing.Size(49, 17);
             this.lblUrediJezik.TabIndex = 29;
-            this.lblUrediJezik.Text = "Jezik:";
+            this.lblUrediJezik.Text = "JEZIK:";
             // 
             // tboxJezik
             // 
             this.tboxJezik.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.tboxJezik.Location = new System.Drawing.Point(127, 104);
+            this.tboxJezik.Location = new System.Drawing.Point(138, 115);
             this.tboxJezik.Name = "tboxJezik";
             this.tboxJezik.Size = new System.Drawing.Size(206, 23);
             this.tboxJezik.TabIndex = 28;
@@ -95,16 +97,17 @@
             // 
             this.lblUrediPozivni.AutoSize = true;
             this.lblUrediPozivni.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblUrediPozivni.Location = new System.Drawing.Point(27, 149);
+            this.lblUrediPozivni.ForeColor = System.Drawing.Color.LightGray;
+            this.lblUrediPozivni.Location = new System.Drawing.Point(16, 163);
             this.lblUrediPozivni.Name = "lblUrediPozivni";
-            this.lblUrediPozivni.Size = new System.Drawing.Size(85, 17);
+            this.lblUrediPozivni.Size = new System.Drawing.Size(107, 17);
             this.lblUrediPozivni.TabIndex = 31;
-            this.lblUrediPozivni.Text = "Pozivni broj:";
+            this.lblUrediPozivni.Text = "POZIVNI BROJ:";
             // 
             // tboxPozivni
             // 
             this.tboxPozivni.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.tboxPozivni.Location = new System.Drawing.Point(127, 146);
+            this.tboxPozivni.Location = new System.Drawing.Point(138, 160);
             this.tboxPozivni.Name = "tboxPozivni";
             this.tboxPozivni.Size = new System.Drawing.Size(206, 23);
             this.tboxPozivni.TabIndex = 30;
@@ -114,16 +117,17 @@
             // 
             this.lblUrediValuta.AutoSize = true;
             this.lblUrediValuta.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblUrediValuta.Location = new System.Drawing.Point(60, 188);
+            this.lblUrediValuta.ForeColor = System.Drawing.Color.LightGray;
+            this.lblUrediValuta.Location = new System.Drawing.Point(57, 208);
             this.lblUrediValuta.Name = "lblUrediValuta";
-            this.lblUrediValuta.Size = new System.Drawing.Size(52, 17);
+            this.lblUrediValuta.Size = new System.Drawing.Size(66, 17);
             this.lblUrediValuta.TabIndex = 33;
-            this.lblUrediValuta.Text = "Valuta:";
+            this.lblUrediValuta.Text = "VALUTA:";
             // 
             // tboxValuta
             // 
             this.tboxValuta.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.tboxValuta.Location = new System.Drawing.Point(127, 185);
+            this.tboxValuta.Location = new System.Drawing.Point(138, 205);
             this.tboxValuta.Name = "tboxValuta";
             this.tboxValuta.Size = new System.Drawing.Size(206, 23);
             this.tboxValuta.TabIndex = 32;
@@ -131,22 +135,28 @@
             // 
             // btnOdustani
             // 
-            this.btnOdustani.Location = new System.Drawing.Point(211, 237);
+            this.btnOdustani.BackColor = System.Drawing.Color.IndianRed;
+            this.btnOdustani.FlatAppearance.BorderSize = 0;
+            this.btnOdustani.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOdustani.Location = new System.Drawing.Point(243, 251);
             this.btnOdustani.Name = "btnOdustani";
-            this.btnOdustani.Size = new System.Drawing.Size(101, 30);
+            this.btnOdustani.Size = new System.Drawing.Size(101, 42);
             this.btnOdustani.TabIndex = 40;
-            this.btnOdustani.Text = "Odustani";
-            this.btnOdustani.UseVisualStyleBackColor = true;
+            this.btnOdustani.Text = "ODUSTANI";
+            this.btnOdustani.UseVisualStyleBackColor = false;
             this.btnOdustani.Click += new System.EventHandler(this.btnOdustani_Click);
             // 
             // btnPrihvati
             // 
-            this.btnPrihvati.Location = new System.Drawing.Point(93, 237);
+            this.btnPrihvati.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.btnPrihvati.FlatAppearance.BorderSize = 0;
+            this.btnPrihvati.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPrihvati.Location = new System.Drawing.Point(136, 251);
             this.btnPrihvati.Name = "btnPrihvati";
-            this.btnPrihvati.Size = new System.Drawing.Size(101, 30);
+            this.btnPrihvati.Size = new System.Drawing.Size(101, 42);
             this.btnPrihvati.TabIndex = 39;
-            this.btnPrihvati.Text = "Prihvati";
-            this.btnPrihvati.UseVisualStyleBackColor = true;
+            this.btnPrihvati.Text = "PRIHVATI";
+            this.btnPrihvati.UseVisualStyleBackColor = false;
             this.btnPrihvati.Click += new System.EventHandler(this.btnPrihvati_Click);
             // 
             // errProviderIme
@@ -173,16 +183,17 @@
             // 
             this.lblDrzavaID.AutoSize = true;
             this.lblDrzavaID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lblDrzavaID.ForeColor = System.Drawing.Color.LightGray;
             this.lblDrzavaID.Location = new System.Drawing.Point(38, 32);
             this.lblDrzavaID.Name = "lblDrzavaID";
-            this.lblDrzavaID.Size = new System.Drawing.Size(74, 17);
+            this.lblDrzavaID.Size = new System.Drawing.Size(85, 17);
             this.lblDrzavaID.TabIndex = 42;
-            this.lblDrzavaID.Text = "Drzava ID:";
+            this.lblDrzavaID.Text = "DRŽAVA ID:";
             // 
             // tboxDrzavaID
             // 
             this.tboxDrzavaID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.tboxDrzavaID.Location = new System.Drawing.Point(127, 29);
+            this.tboxDrzavaID.Location = new System.Drawing.Point(138, 29);
             this.tboxDrzavaID.Name = "tboxDrzavaID";
             this.tboxDrzavaID.Size = new System.Drawing.Size(206, 23);
             this.tboxDrzavaID.TabIndex = 41;
@@ -197,7 +208,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(379, 289);
+            this.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.ClientSize = new System.Drawing.Size(379, 310);
             this.Controls.Add(this.lblDrzavaID);
             this.Controls.Add(this.tboxDrzavaID);
             this.Controls.Add(this.btnOdustani);
@@ -210,6 +222,7 @@
             this.Controls.Add(this.tboxJezik);
             this.Controls.Add(this.lblUrediIme);
             this.Controls.Add(this.tboxIme);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "DodajUrediDrzavaForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DodajUrediDrzavaForm";

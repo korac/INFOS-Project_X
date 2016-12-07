@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Splash));
             this.lblNaslov = new System.Windows.Forms.Label();
             this.lblSpajanje = new System.Windows.Forms.Label();
             this.bworker = new System.ComponentModel.BackgroundWorker();
@@ -77,6 +78,7 @@
             this.Controls.Add(this.lblNaslov);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Splash";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Splash";

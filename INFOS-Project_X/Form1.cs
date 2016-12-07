@@ -58,10 +58,46 @@ namespace INFOS_Project_X
             newMDIChild                     .Show();
         }
 
-        private void tsmiUvezi_Click(object sender, EventArgs e)
+        //private void tsmiUvezi_Click(object sender, EventArgs e)
+        //{
+        //    UvozForm uvoz           = new UvozForm();
+        //    if(uvoz.ShowDialog() == DialogResult.OK)
+        //    {
+        //        MessageBox.Show("Spremljeno u bazu");
+        //    }
+        //}
+
+        private void tsmiClanovi_Click(object sender, EventArgs e)
         {
-            UvozForm uvoz           = new UvozForm();
-            if(uvoz.ShowDialog() == DialogResult.OK)
+            UvozForm uvoz = new UvozForm(MaticniPodaci.Clan);
+            if (uvoz.ShowDialog() == DialogResult.OK)
+            {
+                MessageBox.Show("Spremljeno u bazu");
+            }
+        }
+
+        private void tsmiDrustva_Click(object sender, EventArgs e)
+        {
+            UvozForm uvoz = new UvozForm(MaticniPodaci.Drustva);
+            if (uvoz.ShowDialog() == DialogResult.OK)
+            {
+                MessageBox.Show("Spremljeno u bazu");
+            }
+        }
+
+        private void tsmiMjesta_Click(object sender, EventArgs e)
+        {
+            UvozForm uvoz = new UvozForm(MaticniPodaci.Mjesta);
+            if (uvoz.ShowDialog() == DialogResult.OK)
+            {
+                MessageBox.Show("Spremljeno u bazu");
+            }
+        }
+
+        private void tsmiDrzave_Click(object sender, EventArgs e)
+        {
+            UvozForm uvoz = new UvozForm(MaticniPodaci.Drzave);
+            if (uvoz.ShowDialog() == DialogResult.OK)
             {
                 MessageBox.Show("Spremljeno u bazu");
             }
@@ -73,5 +109,6 @@ namespace INFOS_Project_X
             izlaz                       .ShowDialog();
         }
 
+        
     }
 }

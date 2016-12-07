@@ -91,29 +91,36 @@
             // 
             // btnOdustani
             // 
+            this.btnOdustani.BackColor = System.Drawing.Color.IndianRed;
+            this.btnOdustani.FlatAppearance.BorderSize = 0;
+            this.btnOdustani.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOdustani.Location = new System.Drawing.Point(281, 532);
             this.btnOdustani.Name = "btnOdustani";
-            this.btnOdustani.Size = new System.Drawing.Size(101, 30);
+            this.btnOdustani.Size = new System.Drawing.Size(101, 42);
             this.btnOdustani.TabIndex = 48;
-            this.btnOdustani.Text = "Odustani";
-            this.btnOdustani.UseVisualStyleBackColor = true;
+            this.btnOdustani.Text = "ODUSTANI";
+            this.btnOdustani.UseVisualStyleBackColor = false;
             this.btnOdustani.Click += new System.EventHandler(this.btnOdustani_Click);
             // 
             // btnPrihvati
             // 
-            this.btnPrihvati.Location = new System.Drawing.Point(163, 532);
+            this.btnPrihvati.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.btnPrihvati.FlatAppearance.BorderSize = 0;
+            this.btnPrihvati.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPrihvati.Location = new System.Drawing.Point(174, 532);
             this.btnPrihvati.Name = "btnPrihvati";
-            this.btnPrihvati.Size = new System.Drawing.Size(101, 30);
+            this.btnPrihvati.Size = new System.Drawing.Size(101, 42);
             this.btnPrihvati.TabIndex = 47;
-            this.btnPrihvati.Text = "Prihvati";
-            this.btnPrihvati.UseVisualStyleBackColor = true;
+            this.btnPrihvati.Text = "PRIHVATI";
+            this.btnPrihvati.UseVisualStyleBackColor = false;
             this.btnPrihvati.Click += new System.EventHandler(this.btnPrihvati_Click);
             // 
             // lblUrediOib
             // 
             this.lblUrediOib.AutoSize = true;
             this.lblUrediOib.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblUrediOib.Location = new System.Drawing.Point(122, 146);
+            this.lblUrediOib.ForeColor = System.Drawing.Color.LightGray;
+            this.lblUrediOib.Location = new System.Drawing.Point(123, 146);
             this.lblUrediOib.Name = "lblUrediOib";
             this.lblUrediOib.Size = new System.Drawing.Size(35, 17);
             this.lblUrediOib.TabIndex = 46;
@@ -132,11 +139,12 @@
             // 
             this.lblUrediZanimanje.AutoSize = true;
             this.lblUrediZanimanje.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblUrediZanimanje.Location = new System.Drawing.Point(79, 246);
+            this.lblUrediZanimanje.ForeColor = System.Drawing.Color.LightGray;
+            this.lblUrediZanimanje.Location = new System.Drawing.Point(69, 246);
             this.lblUrediZanimanje.Name = "lblUrediZanimanje";
-            this.lblUrediZanimanje.Size = new System.Drawing.Size(78, 17);
+            this.lblUrediZanimanje.Size = new System.Drawing.Size(89, 17);
             this.lblUrediZanimanje.TabIndex = 44;
-            this.lblUrediZanimanje.Text = "Zanimanje:";
+            this.lblUrediZanimanje.Text = "ZANIMANJE:";
             // 
             // tboxZanimanje
             // 
@@ -151,21 +159,23 @@
             // 
             this.lblUrediMjesto.AutoSize = true;
             this.lblUrediMjesto.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblUrediMjesto.Location = new System.Drawing.Point(99, 341);
+            this.lblUrediMjesto.ForeColor = System.Drawing.Color.LightGray;
+            this.lblUrediMjesto.Location = new System.Drawing.Point(90, 341);
             this.lblUrediMjesto.Name = "lblUrediMjesto";
-            this.lblUrediMjesto.Size = new System.Drawing.Size(53, 17);
+            this.lblUrediMjesto.Size = new System.Drawing.Size(68, 17);
             this.lblUrediMjesto.TabIndex = 42;
-            this.lblUrediMjesto.Text = "Mjesto:";
+            this.lblUrediMjesto.Text = "MJESTO:";
             // 
             // lblUrediDatumRodenja
             // 
             this.lblUrediDatumRodenja.AutoSize = true;
             this.lblUrediDatumRodenja.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblUrediDatumRodenja.Location = new System.Drawing.Point(52, 194);
+            this.lblUrediDatumRodenja.ForeColor = System.Drawing.Color.LightGray;
+            this.lblUrediDatumRodenja.Location = new System.Drawing.Point(27, 194);
             this.lblUrediDatumRodenja.Name = "lblUrediDatumRodenja";
-            this.lblUrediDatumRodenja.Size = new System.Drawing.Size(105, 17);
+            this.lblUrediDatumRodenja.Size = new System.Drawing.Size(131, 17);
             this.lblUrediDatumRodenja.TabIndex = 41;
-            this.lblUrediDatumRodenja.Text = "Datum rođenja:";
+            this.lblUrediDatumRodenja.Text = "DATUM ROĐENJA:";
             // 
             // tboxDatumRodenja
             // 
@@ -180,11 +190,12 @@
             // 
             this.lblUrediPrezime.AutoSize = true;
             this.lblUrediPrezime.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblUrediPrezime.Location = new System.Drawing.Point(94, 95);
+            this.lblUrediPrezime.ForeColor = System.Drawing.Color.LightGray;
+            this.lblUrediPrezime.Location = new System.Drawing.Point(86, 95);
             this.lblUrediPrezime.Name = "lblUrediPrezime";
-            this.lblUrediPrezime.Size = new System.Drawing.Size(63, 17);
+            this.lblUrediPrezime.Size = new System.Drawing.Size(72, 17);
             this.lblUrediPrezime.TabIndex = 39;
-            this.lblUrediPrezime.Text = "Prezime:";
+            this.lblUrediPrezime.Text = "PREZIME:";
             // 
             // tboxPrezime
             // 
@@ -199,11 +210,12 @@
             // 
             this.lblUrediIme.AutoSize = true;
             this.lblUrediIme.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lblUrediIme.ForeColor = System.Drawing.Color.LightGray;
             this.lblUrediIme.Location = new System.Drawing.Point(123, 44);
             this.lblUrediIme.Name = "lblUrediIme";
-            this.lblUrediIme.Size = new System.Drawing.Size(34, 17);
+            this.lblUrediIme.Size = new System.Drawing.Size(35, 17);
             this.lblUrediIme.TabIndex = 37;
-            this.lblUrediIme.Text = "Ime:";
+            this.lblUrediIme.Text = "IME:";
             // 
             // tboxIme
             // 
@@ -236,21 +248,23 @@
             // 
             this.lblUrediDrustvo.AutoSize = true;
             this.lblUrediDrustvo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblUrediDrustvo.Location = new System.Drawing.Point(96, 295);
+            this.lblUrediDrustvo.ForeColor = System.Drawing.Color.LightGray;
+            this.lblUrediDrustvo.Location = new System.Drawing.Point(78, 294);
             this.lblUrediDrustvo.Name = "lblUrediDrustvo";
-            this.lblUrediDrustvo.Size = new System.Drawing.Size(61, 17);
+            this.lblUrediDrustvo.Size = new System.Drawing.Size(80, 17);
             this.lblUrediDrustvo.TabIndex = 51;
-            this.lblUrediDrustvo.Text = "Društvo:";
+            this.lblUrediDrustvo.Text = "DRUŠTVO:";
             // 
             // lblUrediTelefon
             // 
             this.lblUrediTelefon.AutoSize = true;
             this.lblUrediTelefon.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblUrediTelefon.Location = new System.Drawing.Point(92, 390);
+            this.lblUrediTelefon.ForeColor = System.Drawing.Color.LightGray;
+            this.lblUrediTelefon.Location = new System.Drawing.Point(82, 390);
             this.lblUrediTelefon.Name = "lblUrediTelefon";
-            this.lblUrediTelefon.Size = new System.Drawing.Size(60, 17);
+            this.lblUrediTelefon.Size = new System.Drawing.Size(76, 17);
             this.lblUrediTelefon.TabIndex = 55;
-            this.lblUrediTelefon.Text = "Telefon:";
+            this.lblUrediTelefon.Text = "TELEFON:";
             // 
             // tboxTelefon
             // 
@@ -265,11 +279,12 @@
             // 
             this.lblUrediEmail.AutoSize = true;
             this.lblUrediEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lblUrediEmail.ForeColor = System.Drawing.Color.LightGray;
             this.lblUrediEmail.Location = new System.Drawing.Point(106, 437);
             this.lblUrediEmail.Name = "lblUrediEmail";
-            this.lblUrediEmail.Size = new System.Drawing.Size(46, 17);
+            this.lblUrediEmail.Size = new System.Drawing.Size(52, 17);
             this.lblUrediEmail.TabIndex = 57;
-            this.lblUrediEmail.Text = "Email:";
+            this.lblUrediEmail.Text = "EMAIL:";
             // 
             // tboxEmail
             // 
@@ -283,11 +298,12 @@
             // 
             this.lblUrediAdresa.AutoSize = true;
             this.lblUrediAdresa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblUrediAdresa.Location = new System.Drawing.Point(95, 483);
+            this.lblUrediAdresa.ForeColor = System.Drawing.Color.LightGray;
+            this.lblUrediAdresa.Location = new System.Drawing.Point(90, 483);
             this.lblUrediAdresa.Name = "lblUrediAdresa";
-            this.lblUrediAdresa.Size = new System.Drawing.Size(57, 17);
+            this.lblUrediAdresa.Size = new System.Drawing.Size(68, 17);
             this.lblUrediAdresa.TabIndex = 59;
-            this.lblUrediAdresa.Text = "Adresa:";
+            this.lblUrediAdresa.Text = "ADRESA:";
             // 
             // tboxAdresa
             // 
@@ -342,6 +358,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.WindowFrame;
             this.ClientSize = new System.Drawing.Size(461, 586);
             this.Controls.Add(this.lblUrediAdresa);
             this.Controls.Add(this.tboxAdresa);
@@ -367,6 +384,7 @@
             this.Controls.Add(this.tboxPrezime);
             this.Controls.Add(this.lblUrediIme);
             this.Controls.Add(this.tboxIme);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "DodajUrediClanForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DodajUrediClanForm";

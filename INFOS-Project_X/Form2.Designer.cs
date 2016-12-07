@@ -137,9 +137,10 @@
             this.btnOdustani.FlatAppearance.BorderSize = 0;
             this.btnOdustani.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOdustani.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnOdustani.ForeColor = System.Drawing.Color.Black;
             this.btnOdustani.Location = new System.Drawing.Point(686, 400);
             this.btnOdustani.Name = "btnOdustani";
-            this.btnOdustani.Size = new System.Drawing.Size(107, 45);
+            this.btnOdustani.Size = new System.Drawing.Size(114, 45);
             this.btnOdustani.TabIndex = 14;
             this.btnOdustani.Text = "ODUSTANI";
             this.btnOdustani.UseVisualStyleBackColor = false;
@@ -152,6 +153,7 @@
             this.btnSpremiXML.FlatAppearance.BorderSize = 0;
             this.btnSpremiXML.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSpremiXML.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnSpremiXML.ForeColor = System.Drawing.Color.Black;
             this.btnSpremiXML.Location = new System.Drawing.Point(13, 400);
             this.btnSpremiXML.Name = "btnSpremiXML";
             this.btnSpremiXML.Size = new System.Drawing.Size(164, 45);

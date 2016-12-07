@@ -18,190 +18,115 @@ namespace INFOS_Project_X
         infosXDatabaseDataSetTableAdapters.DrustvoTableAdapter drustvoTA        = new infosXDatabaseDataSetTableAdapters.DrustvoTableAdapter();
         infosXDatabaseDataSetTableAdapters.MjestoTableAdapter mjestoTA          = new infosXDatabaseDataSetTableAdapters.MjestoTableAdapter();
         infosXDatabaseDataSetTableAdapters.DrzavaTableAdapter drzavaTA          = new infosXDatabaseDataSetTableAdapters.DrzavaTableAdapter();
-        public UvozForm()
+
+        MaticniPodaci _maticniPodaci;
+
+        public UvozForm(MaticniPodaci maticniPodaci)
         {
             InitializeComponent();
+
+            _maticniPodaci      = maticniPodaci;
         }
 
-        private void btnUveziClanove_Click(object sender, EventArgs e)
+        private void UvozForm_Load(object sender, EventArgs e)
         {
-            try
-            {
-                OpenFileDialog openXml                  = new OpenFileDialog();
+            btnPohrani.Visible      = true;
+            btnOdustani.Visible     = true;
+            OpenFileDialog openXml  = new OpenFileDialog();
 
-                if (openXml.ShowDialog() == DialogResult.OK)
+            if(openXml.ShowDialog() == DialogResult.OK)
+            {
+                XDocument xmlDoc    = XDocument.Load(openXml.FileName);
+
+                switch (_maticniPodaci)
                 {
-                    btnUveziClanove.Visible             = false;
-                    btnUveziDrustva.Visible             = false;
-                    btnUveziMjesta.Visible              = false;
-                    btnUveziDrzave.Visible              = false;
+                    case MaticniPodaci.Clan:
 
-                    btnPohrani.Visible                  = true;
-                    btnOdustani.Visible                 = true;
-                    dgvUvoz.Visible                     = true;
+                        foreach (var i in xmlDoc.Descendants("Clan"))
+                        {
+                            infosXDatabaseDataSet.ClanRow clanRow   = ds.Clan.NewClanRow();
 
-                    XDocument xmlDoc                    = XDocument.Load(openXml.FileName);
+                            clanRow.OIB             = i.Element("OIB").Value;
+                            clanRow.Ime             = i.Element("Ime").Value;
+                            clanRow.Prezime         = i.Element("Prezime").Value;
+                            clanRow.DatumRodenja    = Convert.ToDateTime(i.Element("DatumRodenja").Value);
+                            clanRow.Zanimanje       = (i.Element("Zanimanje").Value != "") ? i.Element("Zanimanje").Value : "";
+                            clanRow.Drustvo_ID      = i.Element("Drustvo_ID").Value;
+                            clanRow.Mjesto_ID       = (i.Element("Mjesto_ID").Value != "") ? i.Element("Mjesto_ID").Value : null;
+                            clanRow.Email           = (i.Element("Email").Value != "") ? i.Element("Email").Value : "";
+                            clanRow.Adresa          = (i.Element("Adresa").Value != "") ? i.Element("Adresa").Value : "";
+                            clanRow.Telefon         = (i.Element("Telefon").Value != "") ? i.Element("Telefon").Value : "";
 
-                    foreach (var i in xmlDoc.Descendants("Clan"))
-                    {
-                        infosXDatabaseDataSet.ClanRow clanRow   = ds.Clan.NewClanRow();
+                            ds.Clan                 .AddClanRow(clanRow);
+                        }
 
-                        clanRow.OIB                     = i.Element("OIB").Value;
-                        clanRow.Ime                     = i.Element("Ime").Value;
-                        clanRow.Prezime                 = i.Element("Prezime").Value;
-                        clanRow.DatumRodenja            = Convert.ToDateTime(i.Element("DatumRodenja").Value);
-                        clanRow.Zanimanje               = (i.Element("Zanimanje").Value != "") ? i.Element("Zanimanje").Value : "";
-                        clanRow.Drustvo_ID              = i.Element("Drustvo_ID").Value;
-                        clanRow.Mjesto_ID               = (i.Element("Mjesto_ID").Value != "") ? i.Element("Mjesto_ID").Value : null;
-                        clanRow.Email                   = (i.Element("Email").Value != "") ? i.Element("Email").Value : "";
-                        clanRow.Adresa                  = (i.Element("Adresa").Value != "") ? i.Element("Adresa").Value : "";
-                        clanRow.Telefon                 = (i.Element("Telefon").Value != "") ? i.Element("Telefon").Value : "";
+                        dgvUvoz.DataSource          = ds.Clan;
+                        break;
 
-                        ds.Clan                         .AddClanRow(clanRow);
-                    }
+                    case MaticniPodaci.Drustva:
 
-                    dgvUvoz.DataSource                  = ds.Clan;
-                }
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show("Greška sa uvozom vanjske XML datoteke: \n" + ex.Message);
-                //throw ex;
-            }
-        }
+                        int j = 1;
+                        foreach(var i in xmlDoc.Descendants("Drustvo"))
+                        {
+                            infosXDatabaseDataSet.DrustvoRow drustvoRow    = ds.Drustvo.NewDrustvoRow();
 
+                            drustvoRow.ID           = "drustvo" + j;
+                            drustvoRow.Naziv        = i.Element("Naziv").Value;
+                            drustvoRow.Adresa       = (i.Element("Adresa").Value != "") ? i.Element("Adresa").Value : ""; //null
+                            drustvoRow.Email        = (i.Element("Email").Value != "") ? i.Element("Email").Value : ""; //null
+                            drustvoRow.Mjesto_ID    = i.Element("Mjesto_ID").Value;
+                            drustvoRow.BrojRacuna   = (i.Element("BrojRacuna").Value != "") ? i.Element("BrojRacuna").Value : ""; //null
+                            drustvoRow.Telefon      = (i.Element("Telefon").Value != "") ? i.Element("Telefon").Value : ""; //null
 
-        private void btnUveziDrustva_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                OpenFileDialog  openXml                 = new OpenFileDialog();
-                
-                if(openXml.ShowDialog() == DialogResult.OK)
-                {
-                    btnUveziClanove.Visible             = false;
-                    btnUveziDrustva.Visible             = false;
-                    btnUveziMjesta.Visible              = false;
-                    btnUveziDrzave.Visible              = false;
+                            ds.Drustvo              .AddDrustvoRow(drustvoRow);
+                            j++;
+                        }
 
-                    btnPohrani.Visible                  = true;
-                    btnOdustani.Visible                 = true;
-                    dgvUvoz.Visible                     = true;
+                        dgvUvoz.DataSource          = ds.Drustvo;
+                        break;
 
-                    XDocument xmlDoc                    = XDocument.Load(openXml.FileName);
+                    case MaticniPodaci.Mjesta:
 
-                    int j = 1;
-                    foreach(var i in xmlDoc.Descendants("Drustvo"))
-                    {
-                        infosXDatabaseDataSet.DrustvoRow drustvoRow    = ds.Drustvo.NewDrustvoRow();
+                        int k = 1;
+                        foreach(var i in xmlDoc.Descendants("Mjesto"))
+                        {
+                            infosXDatabaseDataSet.MjestoRow mjestoRow   = ds.Mjesto.NewMjestoRow();
 
-                        drustvoRow.ID                   = "drustvo" + j;
-                        drustvoRow.Naziv                = i.Element("Naziv").Value;
-                        drustvoRow.Adresa               = (i.Element("Adresa").Value != "") ? i.Element("Adresa").Value : ""; //null
-                        drustvoRow.Email                = (i.Element("Email").Value != "") ? i.Element("Email").Value : ""; //null
-                        drustvoRow.Mjesto_ID            = i.Element("Mjesto_ID").Value;
-                        drustvoRow.BrojRacuna           = (i.Element("BrojRacuna").Value != "") ? i.Element("BrojRacuna").Value : ""; //null
-                        drustvoRow.Telefon              = (i.Element("Telefon").Value != "") ? i.Element("Telefon").Value : ""; //null
-
-                        ds.Drustvo                      .AddDrustvoRow(drustvoRow);
-                        j++;
-                    }
-
-                    dgvUvoz.DataSource                  = ds.Drustvo;
-                }                
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Greška sa uvozom vanjske XML datoteke: \n" + ex.Message);
-                //throw ex;
-            }
-        }
-
-        private void btnUveziMjesta_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                OpenFileDialog openXml                  = new OpenFileDialog();
-
-                if(openXml.ShowDialog() == DialogResult.OK)
-                {
-                    btnUveziClanove.Visible             = false;
-                    btnUveziDrustva.Visible             = false;
-                    btnUveziMjesta.Visible              = false;
-                    btnUveziDrzave.Visible              = false;
-
-                    btnPohrani.Visible                  = true;
-                    btnOdustani.Visible                 = true;
-                    dgvUvoz.Visible                     = true;
-
-                    XDocument xmlDoc                    = XDocument.Load(openXml.FileName);
-
-                    int j = 1;
-                    foreach(var i in xmlDoc.Descendants("Mjesto"))
-                    {
-                        infosXDatabaseDataSet.MjestoRow mjestoRow       = ds.Mjesto.NewMjestoRow();
-
-                        mjestoRow.ID                    = "mjesto" + j;
-                        mjestoRow.Ime                   = i.Element("Ime").Value;
-                        mjestoRow.Drzava_ID             = i.Element("Drzava_ID").Value;
+                            mjestoRow.ID            = "mjesto" + k;
+                            mjestoRow.Ime           = i.Element("Ime").Value;
+                            mjestoRow.Drzava_ID     = i.Element("Drzava_ID").Value;
                         
-                        ds.Mjesto                       .AddMjestoRow(mjestoRow);
-                        j++;
-                    }
+                            ds.Mjesto               .AddMjestoRow(mjestoRow);
+                            k++;
+                        }
 
-                    dgvUvoz.DataSource                  = ds.Mjesto;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Greška sa uvozom vanjske XML datoteke: \n" + ex.Message);
-                //throw ex;
-            }
-        }
+                        dgvUvoz.DataSource          = ds.Mjesto;
+                        break;
 
-        private void btnUveziDrzave_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                OpenFileDialog openXml                  = new OpenFileDialog();
+                    case MaticniPodaci.Drzave:
 
-                if(openXml.ShowDialog() == DialogResult.OK)
-                {
-                    btnUveziClanove.Visible             = false;
-                    btnUveziDrustva.Visible             = false;
-                    btnUveziMjesta.Visible              = false;
-                    btnUveziDrzave.Visible              = false;
+                        int p = 1;
+                        foreach(var i in xmlDoc.Descendants("Drzava"))
+                        {
+                            infosXDatabaseDataSet.DrzavaRow drzavaRow   = ds.Drzava.NewDrzavaRow();
 
-                    btnPohrani.Visible                  = true;
-                    btnOdustani.Visible                 = true;
-                    dgvUvoz.Visible                     = true;
+                            drzavaRow.ID            = "drzava" + p;
+                            drzavaRow.Ime           = i.Element("Ime").Value;
+                            drzavaRow.Jezik         = i.Element("Jezik").Value;
+                            drzavaRow.PozivniBroj   = i.Element("PozivniBroj").Value;
+                            drzavaRow.Valuta        = i.Element("Valuta").Value;
 
-                    XDocument xmlDoc                    = XDocument.Load(openXml.FileName);
+                            ds.Drzava               .AddDrzavaRow(drzavaRow);
 
-                    int j = 1;
-                    foreach(var i in xmlDoc.Descendants("Drzava"))
-                    {
-                        infosXDatabaseDataSet.DrzavaRow drzavaRow       = ds.Drzava.NewDrzavaRow();
-
-                        drzavaRow.ID                    = "drzava" + j;
-                        drzavaRow.Ime                   = i.Element("Ime").Value;
-                        drzavaRow.Jezik                 = i.Element("Jezik").Value;
-                        drzavaRow.PozivniBroj           = i.Element("PozivniBroj").Value;
-                        drzavaRow.Valuta                = i.Element("Valuta").Value;
-
-                        ds.Drzava                       .AddDrzavaRow(drzavaRow);
-
-                        j++;
-                    }
+                            p++;
+                        }
                     
-                    dgvUvoz.DataSource                  = ds.Drzava;
+                        dgvUvoz.DataSource          = ds.Drzava;
+                        break;
                 }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Greška sa uvozom vanjske XML datoteke: \n" + ex.Message);
-                throw ex;
-            }
+
+            
         }
 
         private void btnPohrani_Click(object sender, EventArgs e)
@@ -254,6 +179,7 @@ namespace INFOS_Project_X
         {
             this.Close();
         }
+
 
     }
 }

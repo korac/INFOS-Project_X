@@ -28,17 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.tsmiDatoteka = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiUvezi = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiClanovi = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiDrustva = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiMjesta = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiDrzave = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiIzlaz = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiMaticniPodaci = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiClan = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiDrustvo = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiMjesto = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiDrzava = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiProzor = new System.Windows.Forms.ToolStripMenuItem();
             this.infosXDatabaseDataSet1 = new INFOS_Project_X.infosXDatabaseDataSet();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.infosXDatabaseDataSet1)).BeginInit();
@@ -55,10 +59,8 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiDatoteka,
-            this.tsmiMaticniPodaci,
-            this.tsmiProzor});
+            this.tsmiMaticniPodaci});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.MdiWindowListItem = this.tsmiProzor;
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.menuStrip1.Size = new System.Drawing.Size(751, 24);
@@ -76,10 +78,42 @@
             // 
             // tsmiUvezi
             // 
+            this.tsmiUvezi.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiClanovi,
+            this.tsmiDrustva,
+            this.tsmiMjesta,
+            this.tsmiDrzave});
             this.tsmiUvezi.Name = "tsmiUvezi";
             this.tsmiUvezi.Size = new System.Drawing.Size(102, 22);
             this.tsmiUvezi.Text = "Uvezi";
-            this.tsmiUvezi.Click += new System.EventHandler(this.tsmiUvezi_Click);
+            // 
+            // tsmiClanovi
+            // 
+            this.tsmiClanovi.Name = "tsmiClanovi";
+            this.tsmiClanovi.Size = new System.Drawing.Size(114, 22);
+            this.tsmiClanovi.Text = "Članovi";
+            this.tsmiClanovi.Click += new System.EventHandler(this.tsmiClanovi_Click);
+            // 
+            // tsmiDrustva
+            // 
+            this.tsmiDrustva.Name = "tsmiDrustva";
+            this.tsmiDrustva.Size = new System.Drawing.Size(114, 22);
+            this.tsmiDrustva.Text = "Društva";
+            this.tsmiDrustva.Click += new System.EventHandler(this.tsmiDrustva_Click);
+            // 
+            // tsmiMjesta
+            // 
+            this.tsmiMjesta.Name = "tsmiMjesta";
+            this.tsmiMjesta.Size = new System.Drawing.Size(114, 22);
+            this.tsmiMjesta.Text = "Mjesta";
+            this.tsmiMjesta.Click += new System.EventHandler(this.tsmiMjesta_Click);
+            // 
+            // tsmiDrzave
+            // 
+            this.tsmiDrzave.Name = "tsmiDrzave";
+            this.tsmiDrzave.Size = new System.Drawing.Size(114, 22);
+            this.tsmiDrzave.Text = "Države";
+            this.tsmiDrzave.Click += new System.EventHandler(this.tsmiDrzave_Click);
             // 
             // tsmiIzlaz
             // 
@@ -127,12 +161,6 @@
             this.tsmiDrzava.Text = "Država";
             this.tsmiDrzava.Click += new System.EventHandler(this.tsmiDrzava_Click);
             // 
-            // tsmiProzor
-            // 
-            this.tsmiProzor.Name = "tsmiProzor";
-            this.tsmiProzor.Size = new System.Drawing.Size(53, 20);
-            this.tsmiProzor.Text = "Prozor";
-            // 
             // infosXDatabaseDataSet1
             // 
             this.infosXDatabaseDataSet1.DataSetName = "infosXDatabaseDataSet";
@@ -145,6 +173,7 @@
             this.BackColor = System.Drawing.SystemColors.WindowFrame;
             this.ClientSize = new System.Drawing.Size(751, 375);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
@@ -162,7 +191,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
         private infosXDatabaseDataSet infosXDatabaseDataSet1;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem tsmiProzor;
         private System.Windows.Forms.ToolStripMenuItem tsmiDatoteka;
         private System.Windows.Forms.ToolStripMenuItem tsmiIzlaz;
         private System.Windows.Forms.ToolStripMenuItem tsmiMaticniPodaci;
@@ -171,6 +199,10 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiDrzava;
         private System.Windows.Forms.ToolStripMenuItem tsmiClan;
         private System.Windows.Forms.ToolStripMenuItem tsmiUvezi;
+        private System.Windows.Forms.ToolStripMenuItem tsmiClanovi;
+        private System.Windows.Forms.ToolStripMenuItem tsmiDrustva;
+        private System.Windows.Forms.ToolStripMenuItem tsmiMjesta;
+        private System.Windows.Forms.ToolStripMenuItem tsmiDrzave;
     }
 }
 
