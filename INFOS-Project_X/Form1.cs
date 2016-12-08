@@ -51,6 +51,7 @@ namespace INFOS_Project_X
 
         private void menuItemClickHandler(MaticniPodaci matpod)
         {
+            MainScreenOff();
             ClearMdiChildren();
             Form2 newMDIChild               = new Form2(matpod, false);
             newMDIChild.MdiParent           = this;
@@ -58,14 +59,10 @@ namespace INFOS_Project_X
             newMDIChild                     .Show();
         }
 
-        //private void tsmiUvezi_Click(object sender, EventArgs e)
-        //{
-        //    UvozForm uvoz           = new UvozForm();
-        //    if(uvoz.ShowDialog() == DialogResult.OK)
-        //    {
-        //        MessageBox.Show("Spremljeno u bazu");
-        //    }
-        //}
+        private void MainScreenOff()
+        {
+            panel.Visible = false;
+        }
 
         private void tsmiClanovi_Click(object sender, EventArgs e)
         {

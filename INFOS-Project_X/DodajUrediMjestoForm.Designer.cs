@@ -50,7 +50,7 @@
             this.lblUrediIme.AutoSize = true;
             this.lblUrediIme.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.lblUrediIme.ForeColor = System.Drawing.Color.LightGray;
-            this.lblUrediIme.Location = new System.Drawing.Point(73, 71);
+            this.lblUrediIme.Location = new System.Drawing.Point(98, 64);
             this.lblUrediIme.Name = "lblUrediIme";
             this.lblUrediIme.Size = new System.Drawing.Size(35, 17);
             this.lblUrediIme.TabIndex = 25;
@@ -59,7 +59,8 @@
             // tboxIme
             // 
             this.tboxIme.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.tboxIme.Location = new System.Drawing.Point(123, 68);
+            this.tboxIme.Location = new System.Drawing.Point(139, 61);
+            this.tboxIme.MaxLength = 50;
             this.tboxIme.Name = "tboxIme";
             this.tboxIme.Size = new System.Drawing.Size(206, 23);
             this.tboxIme.TabIndex = 24;
@@ -70,7 +71,7 @@
             this.lblUrediDrzava.AutoSize = true;
             this.lblUrediDrzava.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.lblUrediDrzava.ForeColor = System.Drawing.Color.LightGray;
-            this.lblUrediDrzava.Location = new System.Drawing.Point(40, 112);
+            this.lblUrediDrzava.Location = new System.Drawing.Point(65, 106);
             this.lblUrediDrzava.Name = "lblUrediDrzava";
             this.lblUrediDrzava.Size = new System.Drawing.Size(68, 17);
             this.lblUrediDrzava.TabIndex = 28;
@@ -79,14 +80,14 @@
             // cboxDrzava
             // 
             this.cboxDrzava.FormattingEnabled = true;
-            this.cboxDrzava.Location = new System.Drawing.Point(123, 112);
+            this.cboxDrzava.Location = new System.Drawing.Point(139, 106);
             this.cboxDrzava.Name = "cboxDrzava";
             this.cboxDrzava.Size = new System.Drawing.Size(170, 21);
             this.cboxDrzava.TabIndex = 35;
             // 
             // btnOdaberiDrzavu
             // 
-            this.btnOdaberiDrzavu.Location = new System.Drawing.Point(299, 111);
+            this.btnOdaberiDrzavu.Location = new System.Drawing.Point(315, 105);
             this.btnOdaberiDrzavu.Name = "btnOdaberiDrzavu";
             this.btnOdaberiDrzavu.Size = new System.Drawing.Size(30, 21);
             this.btnOdaberiDrzavu.TabIndex = 36;
@@ -99,7 +100,8 @@
             this.btnOdustani.BackColor = System.Drawing.Color.IndianRed;
             this.btnOdustani.FlatAppearance.BorderSize = 0;
             this.btnOdustani.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOdustani.Location = new System.Drawing.Point(228, 158);
+            this.btnOdustani.ForeColor = System.Drawing.Color.White;
+            this.btnOdustani.Location = new System.Drawing.Point(244, 149);
             this.btnOdustani.Name = "btnOdustani";
             this.btnOdustani.Size = new System.Drawing.Size(101, 42);
             this.btnOdustani.TabIndex = 38;
@@ -112,7 +114,8 @@
             this.btnPrihvati.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.btnPrihvati.FlatAppearance.BorderSize = 0;
             this.btnPrihvati.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPrihvati.Location = new System.Drawing.Point(121, 158);
+            this.btnPrihvati.ForeColor = System.Drawing.Color.White;
+            this.btnPrihvati.Location = new System.Drawing.Point(137, 149);
             this.btnPrihvati.Name = "btnPrihvati";
             this.btnPrihvati.Size = new System.Drawing.Size(101, 42);
             this.btnPrihvati.TabIndex = 37;
@@ -130,16 +133,17 @@
             this.lblMjestoID.AutoSize = true;
             this.lblMjestoID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.lblMjestoID.ForeColor = System.Drawing.Color.LightGray;
-            this.lblMjestoID.Location = new System.Drawing.Point(23, 28);
+            this.lblMjestoID.Location = new System.Drawing.Point(24, 35);
             this.lblMjestoID.Name = "lblMjestoID";
-            this.lblMjestoID.Size = new System.Drawing.Size(85, 17);
+            this.lblMjestoID.Size = new System.Drawing.Size(109, 17);
             this.lblMjestoID.TabIndex = 40;
-            this.lblMjestoID.Text = "MJESTO ID:";
+            this.lblMjestoID.Text = "ŠIFRA MJESTA:";
             // 
             // tboxMjestoID
             // 
             this.tboxMjestoID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.tboxMjestoID.Location = new System.Drawing.Point(123, 25);
+            this.tboxMjestoID.Location = new System.Drawing.Point(139, 32);
+            this.tboxMjestoID.MaxLength = 50;
             this.tboxMjestoID.Name = "tboxMjestoID";
             this.tboxMjestoID.Size = new System.Drawing.Size(206, 23);
             this.tboxMjestoID.TabIndex = 39;
@@ -155,7 +159,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.WindowFrame;
-            this.ClientSize = new System.Drawing.Size(370, 216);
+            this.ClientSize = new System.Drawing.Size(384, 212);
             this.Controls.Add(this.lblMjestoID);
             this.Controls.Add(this.tboxMjestoID);
             this.Controls.Add(this.btnOdustani);

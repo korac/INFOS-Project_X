@@ -39,7 +39,8 @@ namespace INFOS_Project_X
 
             btnOdaberi.Visible                          = odaberi;
             btnOdustani.Visible                         = odaberi;
-            btnSpremiXML.Visible                        = !odaberi;
+
+            gboxIzvozUvoz.Visible                       = !odaberi;
 
             clanTA.Connection.ConnectionString          = PomocneFunkcije.connectionString;
             drustvoTA.Connection.ConnectionString       = PomocneFunkcije.connectionString;
@@ -208,8 +209,11 @@ namespace INFOS_Project_X
                         DodajUrediClanForm dodajClanForm                    = new DodajUrediClanForm(newClanRow, false);
                         if(dodajClanForm.ShowDialog() == DialogResult.OK)
                         {
+                            ds.Drustvo          .Clear();
+                            drustvoTA           .Fill(ds.Drustvo);
+
                             ds.Clan             .AddClanRow(dodajClanForm.ClanRow);
-                            clanTA              .Update(ds.Clan);
+                            clanTA              .Update(ds.Clan);                            
                             MessageBox          .Show("Zapis je uspješno spremljen");
                             ds                  .AcceptChanges();
                         }
@@ -225,6 +229,9 @@ namespace INFOS_Project_X
                         DodajUrediDrustvoForm dodajDrustvoForm              = new DodajUrediDrustvoForm(newDrustvoRow, false);
                         if (dodajDrustvoForm.ShowDialog() == DialogResult.OK)
                         {
+                            ds.Mjesto           .Clear();
+                            mjestoTA            .Fill(ds.Mjesto);
+
                             ds.Drustvo          .AddDrustvoRow(dodajDrustvoForm.DrustvoRow);
                             drustvoTA           .Update(ds.Drustvo);
                             MessageBox          .Show("Zapis je uspješno spremljen!");
@@ -243,6 +250,9 @@ namespace INFOS_Project_X
                         DodajUrediMjestoForm dodajMjestoForm                = new DodajUrediMjestoForm(newMjestoRow, false);
                         if(dodajMjestoForm.ShowDialog() == DialogResult.OK)
                         {
+                            ds.Drzava           .Clear();
+                            drzavaTA            .Fill(ds.Drzava);
+
                             ds.Mjesto           .AddMjestoRow(dodajMjestoForm.MjestoRow);
                             mjestoTA            .Update(ds.Mjesto);
                             MessageBox          .Show("Zapis je uspješno spremljen!");
@@ -476,6 +486,7 @@ namespace INFOS_Project_X
             {
                 case MaticniPodaci.Clan:
 
+                    saveFile.FileName = "Clanovi-" + DateTime.Now.ToString("dd_MM_yyyy__HH_mm_ss");
                     if(saveFile.ShowDialog() == DialogResult.OK)
                     {
                         foreach (infosXDatabaseDataSet.ClanRow row in ds.Clan)
@@ -541,6 +552,7 @@ namespace INFOS_Project_X
 
                 case MaticniPodaci.Drustva:
 
+                    saveFile.FileName = "Drustva-" + DateTime.Now.ToString("dd_MM_yyyy__HH_mm_ss");
                     if (saveFile.ShowDialog() == DialogResult.OK)
                     {
                         foreach(infosXDatabaseDataSet.DrustvoRow row in ds.Drustvo)
@@ -590,6 +602,7 @@ namespace INFOS_Project_X
 
                 case MaticniPodaci.Mjesta:
 
+                    saveFile.FileName = "Mjesta-" + DateTime.Now.ToString("dd_MM_yyyy__HH_mm_ss");
                     if (saveFile.ShowDialog() == DialogResult.OK)
                     {
                         foreach(infosXDatabaseDataSet.MjestoRow row in ds.Mjesto)
@@ -623,6 +636,7 @@ namespace INFOS_Project_X
 
                 case MaticniPodaci.Drzave:
 
+                    saveFile.FileName = "Drzave-" + DateTime.Now.ToString("dd_MM_yyyy__HH_mm_ss");
                     if (saveFile.ShowDialog() == DialogResult.OK)
                     {
                         foreach(infosXDatabaseDataSet.DrzavaRow row in ds.Drzava)
@@ -659,5 +673,13 @@ namespace INFOS_Project_X
             }
         }
 
+        private void btnUvezi_Click(object sender, EventArgs e)
+        {
+            UvozForm uvoz   = new UvozForm(_maticniPodaci);
+            if (uvoz.ShowDialog() == DialogResult.OK)
+            {
+                MessageBox.Show("Spremljeno u bazu");
+            }
+        }
     }
 }

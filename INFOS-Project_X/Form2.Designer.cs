@@ -36,10 +36,13 @@
             this.btnIzbrisi = new System.Windows.Forms.Button();
             this.btnOdaberi = new System.Windows.Forms.Button();
             this.btnOdustani = new System.Windows.Forms.Button();
-            this.btnSpremiXML = new System.Windows.Forms.Button();
             this.gboxStart = new System.Windows.Forms.GroupBox();
+            this.gboxIzvozUvoz = new System.Windows.Forms.GroupBox();
+            this.btnUveziXML = new System.Windows.Forms.Button();
+            this.btnSpremiXML = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrikaz)).BeginInit();
             this.gboxStart.SuspendLayout();
+            this.gboxIzvozUvoz.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvPrikaz
@@ -76,7 +79,7 @@
             this.btnDodaj.FlatAppearance.BorderSize = 0;
             this.btnDodaj.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDodaj.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btnDodaj.ForeColor = System.Drawing.Color.Black;
+            this.btnDodaj.ForeColor = System.Drawing.Color.White;
             this.btnDodaj.Location = new System.Drawing.Point(12, 16);
             this.btnDodaj.Name = "btnDodaj";
             this.btnDodaj.Size = new System.Drawing.Size(83, 38);
@@ -91,7 +94,7 @@
             this.btnUredi.FlatAppearance.BorderSize = 0;
             this.btnUredi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUredi.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btnUredi.ForeColor = System.Drawing.Color.Black;
+            this.btnUredi.ForeColor = System.Drawing.Color.White;
             this.btnUredi.Location = new System.Drawing.Point(101, 16);
             this.btnUredi.Name = "btnUredi";
             this.btnUredi.Size = new System.Drawing.Size(83, 38);
@@ -106,7 +109,7 @@
             this.btnIzbrisi.FlatAppearance.BorderSize = 0;
             this.btnIzbrisi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnIzbrisi.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btnIzbrisi.ForeColor = System.Drawing.Color.Black;
+            this.btnIzbrisi.ForeColor = System.Drawing.Color.White;
             this.btnIzbrisi.Location = new System.Drawing.Point(190, 16);
             this.btnIzbrisi.Name = "btnIzbrisi";
             this.btnIzbrisi.Size = new System.Drawing.Size(83, 38);
@@ -122,8 +125,8 @@
             this.btnOdaberi.FlatAppearance.BorderSize = 0;
             this.btnOdaberi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOdaberi.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btnOdaberi.ForeColor = System.Drawing.Color.Black;
-            this.btnOdaberi.Location = new System.Drawing.Point(566, 400);
+            this.btnOdaberi.ForeColor = System.Drawing.Color.White;
+            this.btnOdaberi.Location = new System.Drawing.Point(564, 404);
             this.btnOdaberi.Name = "btnOdaberi";
             this.btnOdaberi.Size = new System.Drawing.Size(114, 45);
             this.btnOdaberi.TabIndex = 13;
@@ -138,30 +141,14 @@
             this.btnOdustani.FlatAppearance.BorderSize = 0;
             this.btnOdustani.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOdustani.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btnOdustani.ForeColor = System.Drawing.Color.Black;
-            this.btnOdustani.Location = new System.Drawing.Point(686, 400);
+            this.btnOdustani.ForeColor = System.Drawing.Color.White;
+            this.btnOdustani.Location = new System.Drawing.Point(684, 404);
             this.btnOdustani.Name = "btnOdustani";
             this.btnOdustani.Size = new System.Drawing.Size(114, 45);
             this.btnOdustani.TabIndex = 14;
             this.btnOdustani.Text = "ODUSTANI";
             this.btnOdustani.UseVisualStyleBackColor = false;
             this.btnOdustani.Click += new System.EventHandler(this.btnOdustani_Click);
-            // 
-            // btnSpremiXML
-            // 
-            this.btnSpremiXML.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnSpremiXML.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.btnSpremiXML.FlatAppearance.BorderSize = 0;
-            this.btnSpremiXML.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSpremiXML.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btnSpremiXML.ForeColor = System.Drawing.Color.Black;
-            this.btnSpremiXML.Location = new System.Drawing.Point(13, 400);
-            this.btnSpremiXML.Name = "btnSpremiXML";
-            this.btnSpremiXML.Size = new System.Drawing.Size(164, 45);
-            this.btnSpremiXML.TabIndex = 15;
-            this.btnSpremiXML.Text = "SPREMI XML";
-            this.btnSpremiXML.UseVisualStyleBackColor = false;
-            this.btnSpremiXML.Click += new System.EventHandler(this.btnSpremiXML_Click);
             // 
             // gboxStart
             // 
@@ -177,6 +164,51 @@
             this.gboxStart.TabStop = false;
             this.gboxStart.Text = "Kontrole";
             // 
+            // gboxIzvozUvoz
+            // 
+            this.gboxIzvozUvoz.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.gboxIzvozUvoz.Controls.Add(this.btnUveziXML);
+            this.gboxIzvozUvoz.Controls.Add(this.btnSpremiXML);
+            this.gboxIzvozUvoz.ForeColor = System.Drawing.Color.LightGray;
+            this.gboxIzvozUvoz.Location = new System.Drawing.Point(16, 390);
+            this.gboxIzvozUvoz.Name = "gboxIzvozUvoz";
+            this.gboxIzvozUvoz.Size = new System.Drawing.Size(273, 75);
+            this.gboxIzvozUvoz.TabIndex = 19;
+            this.gboxIzvozUvoz.TabStop = false;
+            this.gboxIzvozUvoz.Text = "Izvoz/Uvoz";
+            // 
+            // btnUveziXML
+            // 
+            this.btnUveziXML.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnUveziXML.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnUveziXML.FlatAppearance.BorderSize = 0;
+            this.btnUveziXML.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUveziXML.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnUveziXML.ForeColor = System.Drawing.Color.White;
+            this.btnUveziXML.Location = new System.Drawing.Point(139, 19);
+            this.btnUveziXML.Name = "btnUveziXML";
+            this.btnUveziXML.Size = new System.Drawing.Size(114, 45);
+            this.btnUveziXML.TabIndex = 17;
+            this.btnUveziXML.Text = "UVEZI DATOTEKU (XML)";
+            this.btnUveziXML.UseVisualStyleBackColor = false;
+            this.btnUveziXML.Click += new System.EventHandler(this.btnUvezi_Click);
+            // 
+            // btnSpremiXML
+            // 
+            this.btnSpremiXML.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnSpremiXML.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.btnSpremiXML.FlatAppearance.BorderSize = 0;
+            this.btnSpremiXML.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSpremiXML.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnSpremiXML.ForeColor = System.Drawing.Color.White;
+            this.btnSpremiXML.Location = new System.Drawing.Point(19, 19);
+            this.btnSpremiXML.Name = "btnSpremiXML";
+            this.btnSpremiXML.Size = new System.Drawing.Size(114, 45);
+            this.btnSpremiXML.TabIndex = 15;
+            this.btnSpremiXML.Text = "IZVEZI DATOTEKU (XML)";
+            this.btnSpremiXML.UseVisualStyleBackColor = false;
+            this.btnSpremiXML.Click += new System.EventHandler(this.btnSpremiXML_Click);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -186,7 +218,7 @@
             this.BackColor = System.Drawing.SystemColors.WindowFrame;
             this.ClientSize = new System.Drawing.Size(821, 471);
             this.ControlBox = false;
-            this.Controls.Add(this.btnSpremiXML);
+            this.Controls.Add(this.gboxIzvozUvoz);
             this.Controls.Add(this.btnOdustani);
             this.Controls.Add(this.btnOdaberi);
             this.Controls.Add(this.lblPrikaz);
@@ -202,6 +234,7 @@
             this.Load += new System.EventHandler(this.Form2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrikaz)).EndInit();
             this.gboxStart.ResumeLayout(false);
+            this.gboxIzvozUvoz.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -216,7 +249,9 @@
         private System.Windows.Forms.Button btnIzbrisi;
         private System.Windows.Forms.Button btnOdaberi;
         private System.Windows.Forms.Button btnOdustani;
-        private System.Windows.Forms.Button btnSpremiXML;
         private System.Windows.Forms.GroupBox gboxStart;
+        private System.Windows.Forms.GroupBox gboxIzvozUvoz;
+        private System.Windows.Forms.Button btnUveziXML;
+        private System.Windows.Forms.Button btnSpremiXML;
     }
 }

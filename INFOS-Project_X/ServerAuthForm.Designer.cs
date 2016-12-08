@@ -56,7 +56,7 @@
             this.lblNazivServera.AutoSize = true;
             this.lblNazivServera.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.lblNazivServera.ForeColor = System.Drawing.Color.LightGray;
-            this.lblNazivServera.Location = new System.Drawing.Point(42, 54);
+            this.lblNazivServera.Location = new System.Drawing.Point(36, 46);
             this.lblNazivServera.Name = "lblNazivServera";
             this.lblNazivServera.Size = new System.Drawing.Size(121, 17);
             this.lblNazivServera.TabIndex = 0;
@@ -64,7 +64,7 @@
             // 
             // tboxNazivServera
             // 
-            this.tboxNazivServera.Location = new System.Drawing.Point(169, 54);
+            this.tboxNazivServera.Location = new System.Drawing.Point(163, 46);
             this.tboxNazivServera.Name = "tboxNazivServera";
             this.tboxNazivServera.Size = new System.Drawing.Size(237, 20);
             this.tboxNazivServera.TabIndex = 1;
@@ -72,7 +72,7 @@
             // 
             // tboxImeBaze
             // 
-            this.tboxImeBaze.Location = new System.Drawing.Point(169, 98);
+            this.tboxImeBaze.Location = new System.Drawing.Point(163, 72);
             this.tboxImeBaze.Name = "tboxImeBaze";
             this.tboxImeBaze.Size = new System.Drawing.Size(237, 20);
             this.tboxImeBaze.TabIndex = 3;
@@ -83,7 +83,7 @@
             this.lblImeBaze.AutoSize = true;
             this.lblImeBaze.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.lblImeBaze.ForeColor = System.Drawing.Color.LightGray;
-            this.lblImeBaze.Location = new System.Drawing.Point(88, 98);
+            this.lblImeBaze.Location = new System.Drawing.Point(82, 72);
             this.lblImeBaze.Name = "lblImeBaze";
             this.lblImeBaze.Size = new System.Drawing.Size(75, 17);
             this.lblImeBaze.TabIndex = 2;
@@ -91,7 +91,7 @@
             // 
             // tboxKorisnickoIme
             // 
-            this.tboxKorisnickoIme.Location = new System.Drawing.Point(169, 180);
+            this.tboxKorisnickoIme.Location = new System.Drawing.Point(163, 125);
             this.tboxKorisnickoIme.Name = "tboxKorisnickoIme";
             this.tboxKorisnickoIme.Size = new System.Drawing.Size(237, 20);
             this.tboxKorisnickoIme.TabIndex = 5;
@@ -102,7 +102,7 @@
             this.lblKorisnickoIme.AutoSize = true;
             this.lblKorisnickoIme.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.lblKorisnickoIme.ForeColor = System.Drawing.Color.LightGray;
-            this.lblKorisnickoIme.Location = new System.Drawing.Point(40, 180);
+            this.lblKorisnickoIme.Location = new System.Drawing.Point(34, 125);
             this.lblKorisnickoIme.Name = "lblKorisnickoIme";
             this.lblKorisnickoIme.Size = new System.Drawing.Size(123, 17);
             this.lblKorisnickoIme.TabIndex = 4;
@@ -110,7 +110,7 @@
             // 
             // tboxLozinka
             // 
-            this.tboxLozinka.Location = new System.Drawing.Point(169, 224);
+            this.tboxLozinka.Location = new System.Drawing.Point(163, 151);
             this.tboxLozinka.Name = "tboxLozinka";
             this.tboxLozinka.PasswordChar = '*';
             this.tboxLozinka.Size = new System.Drawing.Size(237, 20);
@@ -122,7 +122,7 @@
             this.lblLozinka.AutoSize = true;
             this.lblLozinka.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.lblLozinka.ForeColor = System.Drawing.Color.LightGray;
-            this.lblLozinka.Location = new System.Drawing.Point(92, 224);
+            this.lblLozinka.Location = new System.Drawing.Point(86, 151);
             this.lblLozinka.Name = "lblLozinka";
             this.lblLozinka.Size = new System.Drawing.Size(71, 17);
             this.lblLozinka.TabIndex = 6;
@@ -133,8 +133,8 @@
             this.btnSpoji.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.btnSpoji.FlatAppearance.BorderSize = 0;
             this.btnSpoji.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSpoji.ForeColor = System.Drawing.Color.Black;
-            this.btnSpoji.Location = new System.Drawing.Point(169, 269);
+            this.btnSpoji.ForeColor = System.Drawing.Color.White;
+            this.btnSpoji.Location = new System.Drawing.Point(163, 195);
             this.btnSpoji.Name = "btnSpoji";
             this.btnSpoji.Size = new System.Drawing.Size(114, 45);
             this.btnSpoji.TabIndex = 8;
@@ -147,8 +147,8 @@
             this.btnOdustani.BackColor = System.Drawing.Color.IndianRed;
             this.btnOdustani.FlatAppearance.BorderSize = 0;
             this.btnOdustani.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOdustani.ForeColor = System.Drawing.Color.Black;
-            this.btnOdustani.Location = new System.Drawing.Point(292, 269);
+            this.btnOdustani.ForeColor = System.Drawing.Color.White;
+            this.btnOdustani.Location = new System.Drawing.Point(286, 195);
             this.btnOdustani.Name = "btnOdustani";
             this.btnOdustani.Size = new System.Drawing.Size(114, 45);
             this.btnOdustani.TabIndex = 9;
@@ -162,7 +162,7 @@
             this.ckBox.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.ckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.ckBox.ForeColor = System.Drawing.Color.LightGray;
-            this.ckBox.Location = new System.Drawing.Point(43, 139);
+            this.ckBox.Location = new System.Drawing.Point(37, 98);
             this.ckBox.Name = "ckBox";
             this.ckBox.Size = new System.Drawing.Size(142, 21);
             this.ckBox.TabIndex = 11;
@@ -195,7 +195,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.WindowFrame;
-            this.ClientSize = new System.Drawing.Size(452, 336);
+            this.ClientSize = new System.Drawing.Size(443, 263);
             this.Controls.Add(this.ckBox);
             this.Controls.Add(this.btnOdustani);
             this.Controls.Add(this.btnSpoji);

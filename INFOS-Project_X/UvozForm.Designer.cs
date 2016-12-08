@@ -54,7 +54,7 @@
             this.btnPohrani.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.btnPohrani.FlatAppearance.BorderSize = 0;
             this.btnPohrani.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPohrani.ForeColor = System.Drawing.Color.Black;
+            this.btnPohrani.ForeColor = System.Drawing.Color.White;
             this.btnPohrani.Location = new System.Drawing.Point(12, 12);
             this.btnPohrani.Name = "btnPohrani";
             this.btnPohrani.Size = new System.Drawing.Size(151, 46);
@@ -70,7 +70,7 @@
             this.btnOdustani.BackColor = System.Drawing.Color.IndianRed;
             this.btnOdustani.FlatAppearance.BorderSize = 0;
             this.btnOdustani.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOdustani.ForeColor = System.Drawing.Color.Black;
+            this.btnOdustani.ForeColor = System.Drawing.Color.White;
             this.btnOdustani.Location = new System.Drawing.Point(525, 12);
             this.btnOdustani.Name = "btnOdustani";
             this.btnOdustani.Size = new System.Drawing.Size(151, 46);
